@@ -7,7 +7,7 @@ void conductivity() {
   Serial2.write(cond, sizeof(cond));  // Send the query data to the NPK sensor
 
   unsigned long startMillis = millis();  // Get the current time in milliseconds
-  while (millis() - startMillis < 1000) {
+  // while (millis() - startMillis < 1000) {
     Serial2.readBytes(receivedData2, sizeof(receivedData2));  // Read the received data into the receivedData array
 
     // Parse and print the received data in decimal format
@@ -15,7 +15,8 @@ void conductivity() {
 
     Serial.print("Soil conductivity: ");
     Serial.println((float)soilConductivity / 10.0);
-  }
+    delay(1000);
+  // }
 }
 
 void pH() {
@@ -25,7 +26,7 @@ void pH() {
   Serial2.write(pH, sizeof(pH));  // Send the query data to the NPK sensor
 
   unsigned long startMillis = millis();  // Get the current time in milliseconds
-  while (millis() - startMillis < 1000) {
+  // while (millis() - startMillis < 1000) {
 
     Serial2.readBytes(receivedData3, sizeof(receivedData3));  // Read the received data into the receivedData array
 
@@ -34,7 +35,8 @@ void pH() {
 
     Serial.print("Soil pH: ");
     Serial.println((float)soilpH / 100.0);
-  }
+    delay(1000);
+  // }
 }
 
 void nitrogen() {
@@ -44,7 +46,7 @@ void nitrogen() {
   Serial2.write(nitrogen, sizeof(nitrogen));  // Send the query data to the NPK sensor
   
   unsigned long startMillis = millis();  // Get the current time in milliseconds
-  while (millis() - startMillis < 1000) {
+  // while (millis() - startMillis < 1000) {
     Serial2.readBytes(receivedData4, sizeof(receivedData4));  // Read the received data into the receivedData array
 
     // Parse and print the received data in decimal format
@@ -58,5 +60,6 @@ void nitrogen() {
     Serial.println((float)soilPhosphorus / 10.0);
     Serial.print("Soil Potassium: ");
     Serial.println((float)soilPotassium / 10.0);
-  }
+    delay(1000);
+  // }
 }

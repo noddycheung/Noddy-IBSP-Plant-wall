@@ -66,7 +66,7 @@ void UltrasonicSensor::update() {
   }
 }
 
-// float UltrasonicSensor::getWaterLevel() {
-//   // Implement the water level calculation if needed
-//   return 0.0;  // Replace with the actual water level calculation
-// }
+float UltrasonicSensor::getWaterLevel() {
+  // Implement the water level calculation if needed
+  return 0.0;  // Replace with the actual water level calculation
+}
