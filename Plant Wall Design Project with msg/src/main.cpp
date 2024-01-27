@@ -13,15 +13,16 @@
 
 #include "pinmap.h"
 
-HardwareSerial* serial_;
+// HardwareSerial* serial_;
 
-void init(HardwareSerial* serial){ 
-    serial = serial_;
+// unsigned char encryptkey[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+// unsigned char encryptkey[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-    serial_->begin(9600);
-    unsigned char encryptkey[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    // unsigned char encryptkey[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-}
+// void init(HardwareSerial* serial){ 
+//     serial = serial_;
+
+//     serial_->begin(9600);
+// }
 
 FlowSensor flowSensor(FlowSensor1);
 
@@ -63,13 +64,12 @@ void setup() {
   // soilSensor.begin(); // Initialize the communication with the soil sensor
   flowSensor.begin();
   pinSetup();
-
   waterLevelSensor.begin();// Configure ultrasonic sensor
 
   valveInit(); // Configure solenoid valve
 
-
   //nanoMsg.init(&Serial);
+  // init(&Serial);
 
   pump.initializePump(); // Initialize the pump
 
@@ -80,7 +80,7 @@ void loop() {
   byte temp[] = {0x01,0x03,0x00,0x12,0x00,0x02,0x64,0x0e}; //temp
   byte receivedData[9];
 
-  Serial2.write(temp, sizeof(temp));  // Send the query data to the NPK sensor
+  Serial2.write(temp, sizeof(temp));  // Send the query data to the NPK sensor2
   delay(1000);  // Wait for 1 second
 
   Serial2.readBytes(receivedData, sizeof(receivedData));  // Read the received data into the receivedData array
@@ -144,31 +144,36 @@ void loop() {
 
   if (Serial.available())
   {
-      char data[8];
-      // char data[16];
-        data[0] = 0x01; //packet type is ack
-        data[1] = highByte(soilTemperature);
-        data[2] = highByte(soilHumidity);
-        // data[3] = highByte(flowSensor.getflowRate()); //Transmitting/Source Station ID highByte
-        // data[4] = highByte(waterLevelSensor.update()); //Transmitting/Source Station ID lowByte
-        // data[5] = buf[5];
-        // data[6] = buf[6];
-        // data[7] = buf[6];
-        // data[8] = buf[6];
-        // data[9] = buf[6];
-        // data[10] = buf[6];
-        // data[11] = buf[6];
-        // data[12] = buf[6];
-        // data[13] = buf[6];
-        // data[14] = buf[6];
-        // data[15] = buf[6];
-        data[7] = 0x00;
-        // Serial.println(data);
-        serial_->write(data, sizeof(data));
-      }
-    else
-    {
-      Serial.println("Receive failed");
-    }
+    unsigned char data[20];
+    // char data[16];
+    //0xFF=(1111 1111)
+    //0x01=(0000 0001)
+      data[0]  = 0x01; //open identify code
+      data[1]  = 0x03; //open identify code
+      data[2]  = highByte(soilTemperature);
+      data[3]  = lowByte(soilTemperature);
+      data[4]  = highByte(soilHumidity);
+      data[5]  = lowByte(soilHumidity);
+      data[6]  = 0x00; //Transmitting/Source Station ID highByte
+      data[7]  = 0x00; //Transmitting/Source Station ID lowByte
+      data[8]  = 0x00;
+      data[9]  = 0x00;
+      data[10] = 0x00;
+      data[11] = 0x00;
+      data[12] = 0x00;
+      data[13] = 0x00;
+      data[14] = 0x00;
+      data[15] = 0x00;
+      data[16] = 0x00;
+      data[17] = 0x00;
+      data[18] = 0x03; //close identify code
+      data[19] = 0x01; //close identify code
+      // Serial.println(data);
+      Serial.write(data, sizeof(data));
+      // serial_->write(data, sizeof(data));
+  }
+  else
+  {
+    Serial.println("Receive failed");
+  }
 }
-

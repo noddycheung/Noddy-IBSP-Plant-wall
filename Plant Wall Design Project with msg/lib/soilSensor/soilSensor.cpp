@@ -12,9 +12,9 @@ void conductivity() {
 
     // Parse and print the received data in decimal format
     unsigned int soilConductivity = (receivedData2[3] << 8) | receivedData2[4];
-
+    soilConductivity= (float)soilConductivity / 10.0;
     Serial.print("Soil conductivity: ");
-    Serial.println((float)soilConductivity / 10.0);
+    Serial.println(soilConductivity);
     delay(1000);
   // }
 }
