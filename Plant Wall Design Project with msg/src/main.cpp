@@ -10,19 +10,16 @@
 // #include "waterLvSensor.h"
 #include "UltrasonicSensor.h"
 #include "waterPump.h"
-
 #include "pinmap.h"
 
 // HardwareSerial* serial_;
 
-// unsigned char encryptkey[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-// unsigned char encryptkey[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+byte SuperPlant[9] = {};
 
-// void init(HardwareSerial* serial){ 
-//     serial = serial_;
-
-//     serial_->begin(9600);
-// }
+// char a = 'a';
+// printf((int)a); //97
+// printf((byte)a); //0x61
+// printf("%X", a);
 
 FlowSensor flowSensor(FlowSensor1);
 
@@ -32,6 +29,8 @@ SolenoidValve Valve1(solenoidValve1);
 
 waterPump pump(waterPumpPinA, waterPumpPinB);
 UltrasonicSensor waterLevelSensor(trigPin, echoPin);
+
+SoilSensor soilSensor();
 
 
 void pinSetup(){
@@ -84,44 +83,48 @@ void loop() {
   delay(1000);  // Wait for 1 second
 
   Serial2.readBytes(receivedData, sizeof(receivedData));  // Read the received data into the receivedData array
+  Serial.println("Received Data:");
 
   // Parse and print the received data in decimal format
-  unsigned int soilTemperature = (receivedData[5] << 8) | receivedData[6];
+  unsigned int soilTemperature = (receivedData[5] << 8) | receivedData[6]; //uint16_t
   unsigned int soilHumidity = (receivedData[3] << 8) | receivedData[4];
 
-  soilTemperature = ((float)soilTemperature / 10.0);
-  soilHumidity = ((float)soilHumidity / 10.0);
+  Serial.print("Soil Temperature: ");
+  uint TemperatureValue = (float)soilTemperature / 10.0 * 100.0;
+  Serial.println(TemperatureValue);
 
-  
+  Serial.print("Soil Humidity: ");
+  uint HumidityValue = (float)soilHumidity / 10.0 * 100.0;
+  Serial.println(HumidityValue);
+
   //Soil Humidity Contrl Pump
-  if (soilHumidity < 30) {
-    pump.pumpRate(90);
+  // if (soilHumidity < 3000) {
+  //   pump.pumpRate(90);
 
-    // Get Flowrate control Valve
-    flowSensor.getflowRate();
-    if (flowSensor.totalMilliLitres < flowSensor.TargetValue) {
-      Valve1.valveOpen();
-      // Serial.println("Debug");
-      }
-    else if(flowSensor.totalMilliLitres >= flowSensor.TargetValue) {
-        Valve1.valveClose();
-        // Serial.println("Close Debug");
-        pump.pumpRate(0);
-        flowSensor.reset();
-      }
-  }
-  else {
-    pump.pumpRate(0);
-  }
+  //   // Get Flowrate control Valve
+  //   flowSensor.getflowRate();
+  //   if (flowSensor.totalMilliLitres < flowSensor.TargetValue) {
+  //     Valve1.valveOpen();
+  //     // Serial.println("Debug");
+  //     }
+  //   else if(flowSensor.totalMilliLitres >= flowSensor.TargetValue) {
+  //       Valve1.valveClose();
+  //       // Serial.println("Close Debug");
+  //       pump.pumpRate(0);
+  //       flowSensor.reset();
+  //     }
+  // }
+  // else {
+  //   pump.pumpRate(0);
+  // }
 
-
-  conductivity(); // Call the conductivity function
-  pH(); // Call the pH function
-  nitrogen(); // Call the nitrogen function
+  // conductivity(); // Call the conductivity function
+  // pH(); // Call the pH function
+  // nitrogen(); // Call the nitrogen function
 
 
   // ultrasonic
-  waterLevelSensor.update();
+  // waterLevelSensor.update();
 
   //waterPump
   // pump.pumpRate(90);
@@ -137,43 +140,26 @@ void loop() {
   // if(!nanoMsg.read()){
   //   return; 
   // }
+
+  
+  SuperPlant[0] = (byte)0xff;
+  SuperPlant[1] = (byte)((TemperatureValue & 0xFF00) >> 8);
+  SuperPlant[2] = (byte)((TemperatureValue & 0x00FF));
+  SuperPlant[3] = (byte)((HumidityValue & 0xFF00) >> 8);
+  SuperPlant[4] = (byte)((HumidityValue & 0x00FF));
+  SuperPlant[5] = (byte)(0xff);
+  SuperPlant[6] = (byte)(0xff);
+  SuperPlant[7] = (byte)(0xff);
+  SuperPlant[8] = (byte)(0xff);
+  Serial.write(SuperPlant, sizeof(SuperPlant));
+
+
   Serial.println("----------");
   delay(1000);
-  
+  // float printsoiltemp;
+  // unsigned char const * p = reinterpret_cast<unsigned char const *> (&printsoiltemp);
+  // for (std::size_t i = 0; i != sizeof (float); ++i) {
+  //     std::printf ("The byte #%zu is 0x%02X\n", i, p [i]);
+  // }
 
-
-  if (Serial.available())
-  {
-    unsigned char data[20];
-    // char data[16];
-    //0xFF=(1111 1111)
-    //0x01=(0000 0001)
-      data[0]  = 0x01; //open identify code
-      data[1]  = 0x03; //open identify code
-      data[2]  = highByte(soilTemperature);
-      data[3]  = lowByte(soilTemperature);
-      data[4]  = highByte(soilHumidity);
-      data[5]  = lowByte(soilHumidity);
-      data[6]  = 0x00; //Transmitting/Source Station ID highByte
-      data[7]  = 0x00; //Transmitting/Source Station ID lowByte
-      data[8]  = 0x00;
-      data[9]  = 0x00;
-      data[10] = 0x00;
-      data[11] = 0x00;
-      data[12] = 0x00;
-      data[13] = 0x00;
-      data[14] = 0x00;
-      data[15] = 0x00;
-      data[16] = 0x00;
-      data[17] = 0x00;
-      data[18] = 0x03; //close identify code
-      data[19] = 0x01; //close identify code
-      // Serial.println(data);
-      Serial.write(data, sizeof(data));
-      // serial_->write(data, sizeof(data));
-  }
-  else
-  {
-    Serial.println("Receive failed");
-  }
 }

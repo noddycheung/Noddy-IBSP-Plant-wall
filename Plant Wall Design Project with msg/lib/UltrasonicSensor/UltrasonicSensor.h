@@ -19,7 +19,7 @@ class UltrasonicSensor {
     UltrasonicSensor(int trigPin, int echoPin);
     void begin();
     void update();
-    float getWaterLevel();
+    // float getWaterLevel();
 };
 
 #endif

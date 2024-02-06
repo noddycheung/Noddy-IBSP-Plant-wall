@@ -66,7 +66,31 @@ void UltrasonicSensor::update() {
   }
 }
 
-float UltrasonicSensor::getWaterLevel() {
-  // Implement the water level calculation if needed
-  return 0.0;  // Replace with the actual water level calculation
-}
+// float UltrasonicSensor::getWaterLevel() {
+//   unsigned long currentMillis = millis();
+//   if (currentMillis - previousMillis >= interval) {
+//     previousMillis = currentMillis;
+    
+//     // Transmitting pulse
+//     digitalWrite(trigPin, LOW);
+//     delayMicroseconds(2);
+//     digitalWrite(trigPin, HIGH);
+//     delayMicroseconds(10);
+//     digitalWrite(trigPin, LOW);
+
+//     // Waiting for pulse
+//     t = pulseIn(echoPin, HIGH);
+
+//     // Calculating distance
+//     h = t*0.017; 
+
+//     h = h - fullTankDistance;  //5cm
+//     h = emptyTankDistance - h - fullTankDistance;  //20cm
+
+//     // distance in %, 0-100 %
+//     total = emptyTankDistance-fullTankDistance;
+//     hp = h/total*100;
+//   }
+
+//   return hp;
+// }
