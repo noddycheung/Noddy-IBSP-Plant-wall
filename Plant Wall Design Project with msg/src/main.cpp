@@ -14,7 +14,7 @@
 
 // HardwareSerial* serial_;
 
-byte SuperPlant[15] = {};
+byte SuperPlant[17] = {};
 
 // char a = 'a';
 // printf((int)a); //97
@@ -82,6 +82,7 @@ void loop() {
   int nitrogenValue = mySoilSensor.nitrogen();
   int phosphorusValue = mySoilSensor.Phosphorus();
   int potassiumValue = mySoilSensor.Potassium();
+  int waterLevel = waterLevelSensor.getDistance();
 
   // //soilSensor
   // byte temp[] = {0x01,0x03,0x00,0x12,0x00,0x02,0x64,0x0e}; //temp
@@ -165,23 +166,23 @@ void loop() {
   // }
 
   
-  SuperPlant[0] = (byte)0xff;
-  SuperPlant[1] = (byte)((temperature & 0xFF00) >> 8);
-  SuperPlant[2] = (byte)((temperature & 0x00FF));
-  SuperPlant[3] = (byte)((humidity & 0xFF00) >> 8);
-  SuperPlant[4] = (byte)((humidity & 0x00FF));
-  SuperPlant[5] = (byte)((conductivity & 0xFF00) >> 8);
-  SuperPlant[6] = (byte)((conductivity & 0x00FF));
-  SuperPlant[7] = (byte)((pHValue & 0xFF00) >> 8);
-  SuperPlant[8] = (byte)((pHValue & 0x00FF));
-  SuperPlant[9] = (byte)((nitrogenValue & 0xFF00) >> 8);
+  SuperPlant[ 0] = (byte)0xff;
+  SuperPlant[ 1] = (byte)((temperature & 0xFF00) >> 8);
+  SuperPlant[ 2] = (byte)((temperature & 0x00FF));
+  SuperPlant[ 3] = (byte)((humidity & 0xFF00) >> 8);
+  SuperPlant[ 4] = (byte)((humidity & 0x00FF));
+  SuperPlant[ 5] = (byte)((conductivity & 0xFF00) >> 8);
+  SuperPlant[ 6] = (byte)((conductivity & 0x00FF));
+  SuperPlant[ 7] = (byte)((pHValue & 0xFF00) >> 8);
+  SuperPlant[ 8] = (byte)((pHValue & 0x00FF));
+  SuperPlant[ 9] = (byte)((nitrogenValue & 0xFF00) >> 8);
   SuperPlant[10] = (byte)((nitrogenValue & 0x00FF));
   SuperPlant[11] = (byte)((phosphorusValue & 0xFF00) >> 8);
   SuperPlant[12] = (byte)((phosphorusValue & 0x00FF));
   SuperPlant[13] = (byte)((potassiumValue & 0xFF00) >> 8);
   SuperPlant[14] = (byte)((potassiumValue & 0x00FF));
-  // SuperPlant[15] = (byte)((waterLevelSensor.distance() & 0xFF00) >> 8);
-  // SuperPlant[16] = (byte)((waterLevelSensor.distance() & 0x00FF));
+  SuperPlant[15] = (byte)((waterLevel & 0xFF00) >> 8);
+  SuperPlant[16] = (byte)((waterLevel & 0x00FF));
   Serial.write(SuperPlant, sizeof(SuperPlant));
 
   // SuperPlant[5] = (byte)((conductivity & 0xFF00) >> 8);
@@ -194,7 +195,7 @@ void loop() {
   // SuperPlant[7] = (byte)0xff;
   // SuperPlant[8] = (byte)0xff;
 
-  Serial.println("----------");
+  // Serial.println("----------");
   delay(1000);
   // float printsoiltemp;
   // unsigned char const * p = reinterpret_cast<unsigned char const *> (&printsoiltemp);

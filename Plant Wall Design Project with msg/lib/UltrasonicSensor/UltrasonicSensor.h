@@ -18,8 +18,8 @@ class UltrasonicSensor {
   public:
     UltrasonicSensor(int trigPin, int echoPin);
     void begin();
-    void update();
-    // float getWaterLevel();
+    // void update();
+    int getDistance();
 };
 
 #endif

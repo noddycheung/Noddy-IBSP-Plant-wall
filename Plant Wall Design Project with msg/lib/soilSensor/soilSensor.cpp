@@ -8,7 +8,7 @@ int SoilSensor::TemperatureValue() {
   // delay(1000);
   // Replace Serial2 with a parameter passed to the function
   Serial2.readBytes(receivedData, sizeof(receivedData));
-  Serial.println("Received Data:");
+  // Serial.println("Received Data:");
   unsigned int soilTemperature = (receivedData[5] << 8) | receivedData[6];
   // Serial.print("Soil Temperature: ");
   uint TemperatureValue = (float)soilTemperature / 10.0 * 100.0;
@@ -23,7 +23,7 @@ int SoilSensor::HumidityValue() {
   // delay(1000);
   // Replace Serial2 with a parameter passed to the function
   Serial2.readBytes(receivedData, sizeof(receivedData));
-  Serial.println("Received Data:");
+  // Serial.println("Received Data:");
   unsigned int soilHumidity = (receivedData[3] << 8) | receivedData[4];
 
   // Serial.print("Soil Humidity: ");
