@@ -14,7 +14,7 @@
 
 // HardwareSerial* serial_;
 
-byte SuperPlant[9] = {};
+byte SuperPlant[15] = {};
 
 // char a = 'a';
 // printf((int)a); //97
@@ -30,7 +30,7 @@ SolenoidValve Valve1(solenoidValve1);
 waterPump pump(waterPumpPinA, waterPumpPinB);
 UltrasonicSensor waterLevelSensor(trigPin, echoPin);
 
-SoilSensor soilSensor();
+SoilSensor mySoilSensor;
 
 
 void pinSetup(){
@@ -75,29 +75,52 @@ void setup() {
 }
 
 void loop() {
-  //soilSensor
-  byte temp[] = {0x01,0x03,0x00,0x12,0x00,0x02,0x64,0x0e}; //temp
-  byte receivedData[9];
+  int temperature = mySoilSensor.TemperatureValue();
+  int humidity = mySoilSensor.HumidityValue();
+  int conductivity = mySoilSensor.conductivity();
+  int pHValue = mySoilSensor.pH();
+  int nitrogenValue = mySoilSensor.nitrogen();
+  int phosphorusValue = mySoilSensor.Phosphorus();
+  int potassiumValue = mySoilSensor.Potassium();
 
-  Serial2.write(temp, sizeof(temp));  // Send the query data to the NPK sensor2
-  delay(1000);  // Wait for 1 second
+  // //soilSensor
+  // byte temp[] = {0x01,0x03,0x00,0x12,0x00,0x02,0x64,0x0e}; //temp
+  // byte receivedData[9];
 
-  Serial2.readBytes(receivedData, sizeof(receivedData));  // Read the received data into the receivedData array
-  Serial.println("Received Data:");
+  // Serial2.write(temp, sizeof(temp));  // Send the query data to the NPK sensor2
+  // delay(1000);  // Wait for 1 second
 
-  // Parse and print the received data in decimal format
-  unsigned int soilTemperature = (receivedData[5] << 8) | receivedData[6]; //uint16_t
-  unsigned int soilHumidity = (receivedData[3] << 8) | receivedData[4];
+  // Serial2.readBytes(receivedData, sizeof(receivedData));  // Read the received data into the receivedData array
+  // Serial.println("Received Data:");
 
-  Serial.print("Soil Temperature: ");
-  uint TemperatureValue = (float)soilTemperature / 10.0 * 100.0;
-  Serial.println(TemperatureValue);
+  // // Parse and print the received data in decimal format
+  // unsigned int soilTemperature = (receivedData[5] << 8) | receivedData[6]; //uint16_t
+  // unsigned int soilHumidity = (receivedData[3] << 8) | receivedData[4];
 
-  Serial.print("Soil Humidity: ");
-  uint HumidityValue = (float)soilHumidity / 10.0 * 100.0;
-  Serial.println(HumidityValue);
+  // Serial.print("Soil Temperature: ");
+  // uint TemperatureValue = (float)soilTemperature / 10.0 * 100.0;
+  // Serial.println(TemperatureValue);
 
-  //Soil Humidity Contrl Pump
+  // Serial.print("Soil Humidity: ");
+  // uint HumidityValue = (float)soilHumidity / 10.0 * 100.0;
+  // Serial.println(HumidityValue);
+
+
+
+  // Serial.print("Temperature: ");
+  // Serial.println(temperature);
+  // Serial.print("Humidity: ");
+  // Serial.println(humidity);
+  // Serial.print("Soil Conductivity: ");
+  // Serial.println(conductivity);
+  // Serial.print("Soil pH: ");
+  // Serial.println(pHValue);
+
+
+///////////////////////////////////////////////////////////////
+
+
+  // Soil Humidity Contrl Pump
   // if (soilHumidity < 3000) {
   //   pump.pumpRate(90);
 
@@ -143,16 +166,33 @@ void loop() {
 
   
   SuperPlant[0] = (byte)0xff;
-  SuperPlant[1] = (byte)((TemperatureValue & 0xFF00) >> 8);
-  SuperPlant[2] = (byte)((TemperatureValue & 0x00FF));
-  SuperPlant[3] = (byte)((HumidityValue & 0xFF00) >> 8);
-  SuperPlant[4] = (byte)((HumidityValue & 0x00FF));
-  SuperPlant[5] = (byte)(0xff);
-  SuperPlant[6] = (byte)(0xff);
-  SuperPlant[7] = (byte)(0xff);
-  SuperPlant[8] = (byte)(0xff);
+  SuperPlant[1] = (byte)((temperature & 0xFF00) >> 8);
+  SuperPlant[2] = (byte)((temperature & 0x00FF));
+  SuperPlant[3] = (byte)((humidity & 0xFF00) >> 8);
+  SuperPlant[4] = (byte)((humidity & 0x00FF));
+  SuperPlant[5] = (byte)((conductivity & 0xFF00) >> 8);
+  SuperPlant[6] = (byte)((conductivity & 0x00FF));
+  SuperPlant[7] = (byte)((pHValue & 0xFF00) >> 8);
+  SuperPlant[8] = (byte)((pHValue & 0x00FF));
+  SuperPlant[9] = (byte)((nitrogenValue & 0xFF00) >> 8);
+  SuperPlant[10] = (byte)((nitrogenValue & 0x00FF));
+  SuperPlant[11] = (byte)((phosphorusValue & 0xFF00) >> 8);
+  SuperPlant[12] = (byte)((phosphorusValue & 0x00FF));
+  SuperPlant[13] = (byte)((potassiumValue & 0xFF00) >> 8);
+  SuperPlant[14] = (byte)((potassiumValue & 0x00FF));
+  // SuperPlant[15] = (byte)((waterLevelSensor.distance() & 0xFF00) >> 8);
+  // SuperPlant[16] = (byte)((waterLevelSensor.distance() & 0x00FF));
   Serial.write(SuperPlant, sizeof(SuperPlant));
 
+  // SuperPlant[5] = (byte)((conductivity & 0xFF00) >> 8);
+  // SuperPlant[6] = (byte)((conductivity & 0x00FF));
+  // SuperPlant[7] = (byte)((pHValue & 0xFF00) >> 8);
+  // SuperPlant[8] = (byte)((pHValue & 0x00FF));
+
+  // SuperPlant[5] = (byte)0xff;
+  // SuperPlant[6] = (byte)0xff;
+  // SuperPlant[7] = (byte)0xff;
+  // SuperPlant[8] = (byte)0xff;
 
   Serial.println("----------");
   delay(1000);

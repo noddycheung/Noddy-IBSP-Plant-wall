@@ -27,6 +27,9 @@ void UltrasonicSensor::update() {
     t = pulseIn(echoPin, HIGH);
 
     // Calculating distance
+    // Serial.print(t);
+
+    // Calculating distance
     h = t*0.017; 
 
     h = h - fullTankDistance;  //5cm
