@@ -84,68 +84,30 @@ void loop() {
   int potassiumValue = mySoilSensor.Potassium();
   int waterLevel = waterLevelSensor.getDistance();
 
-  // //soilSensor
-  // byte temp[] = {0x01,0x03,0x00,0x12,0x00,0x02,0x64,0x0e}; //temp
-  // byte receivedData[9];
-
-  // Serial2.write(temp, sizeof(temp));  // Send the query data to the NPK sensor2
-  // delay(1000);  // Wait for 1 second
-
-  // Serial2.readBytes(receivedData, sizeof(receivedData));  // Read the received data into the receivedData array
-  // Serial.println("Received Data:");
-
-  // // Parse and print the received data in decimal format
-  // unsigned int soilTemperature = (receivedData[5] << 8) | receivedData[6]; //uint16_t
-  // unsigned int soilHumidity = (receivedData[3] << 8) | receivedData[4];
-
-  // Serial.print("Soil Temperature: ");
-  // uint TemperatureValue = (float)soilTemperature / 10.0 * 100.0;
-  // Serial.println(TemperatureValue);
-
-  // Serial.print("Soil Humidity: ");
-  // uint HumidityValue = (float)soilHumidity / 10.0 * 100.0;
-  // Serial.println(HumidityValue);
-
-
-
-  // Serial.print("Temperature: ");
-  // Serial.println(temperature);
-  // Serial.print("Humidity: ");
-  // Serial.println(humidity);
-  // Serial.print("Soil Conductivity: ");
-  // Serial.println(conductivity);
-  // Serial.print("Soil pH: ");
-  // Serial.println(pHValue);
-
-
 ///////////////////////////////////////////////////////////////
-
-
+//<error>
   // Soil Humidity Contrl Pump
-  // if (soilHumidity < 3000) {
-  //   pump.pumpRate(90);
+  if (humidity < 3000) {
+    pump.pumpRate(90);
 
-  //   // Get Flowrate control Valve
-  //   flowSensor.getflowRate();
-  //   if (flowSensor.totalMilliLitres < flowSensor.TargetValue) {
-  //     Valve1.valveOpen();
-  //     // Serial.println("Debug");
-  //     }
-  //   else if(flowSensor.totalMilliLitres >= flowSensor.TargetValue) {
-  //       Valve1.valveClose();
-  //       // Serial.println("Close Debug");
-  //       pump.pumpRate(0);
-  //       flowSensor.reset();
-  //     }
-  // }
-  // else {
-  //   pump.pumpRate(0);
-  // }
-
-  // conductivity(); // Call the conductivity function
-  // pH(); // Call the pH function
-  // nitrogen(); // Call the nitrogen function
-
+    // Get Flowrate control Valve
+    flowSensor.getflowRate();
+    if (flowSensor.totalMilliLitres < flowSensor.TargetValue) {
+      Valve1.valveOpen();
+      // Serial.println("Debug");
+      }
+    else if(flowSensor.totalMilliLitres >= flowSensor.TargetValue) {
+        Valve1.valveClose();
+        // Serial.println("Close Debug");
+        pump.pumpRate(0);
+        flowSensor.reset();
+      }
+  }
+  else {
+    pump.pumpRate(0);
+  }
+//</error>
+///////////////////////////////////////////////////////////////////////
 
   // ultrasonic
   // waterLevelSensor.update();
@@ -184,23 +146,6 @@ void loop() {
   SuperPlant[15] = (byte)((waterLevel & 0xFF00) >> 8);
   SuperPlant[16] = (byte)((waterLevel & 0x00FF));
   Serial.write(SuperPlant, sizeof(SuperPlant));
-
-  // SuperPlant[5] = (byte)((conductivity & 0xFF00) >> 8);
-  // SuperPlant[6] = (byte)((conductivity & 0x00FF));
-  // SuperPlant[7] = (byte)((pHValue & 0xFF00) >> 8);
-  // SuperPlant[8] = (byte)((pHValue & 0x00FF));
-
-  // SuperPlant[5] = (byte)0xff;
-  // SuperPlant[6] = (byte)0xff;
-  // SuperPlant[7] = (byte)0xff;
-  // SuperPlant[8] = (byte)0xff;
-
   // Serial.println("----------");
   delay(1000);
-  // float printsoiltemp;
-  // unsigned char const * p = reinterpret_cast<unsigned char const *> (&printsoiltemp);
-  // for (std::size_t i = 0; i != sizeof (float); ++i) {
-  //     std::printf ("The byte #%zu is 0x%02X\n", i, p [i]);
-  // }
-
 }
