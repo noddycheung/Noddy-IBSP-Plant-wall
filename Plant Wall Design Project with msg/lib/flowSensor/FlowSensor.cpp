@@ -21,9 +21,9 @@ void FlowSensor::getflowRate() {
     // Serial.println("valve high");
     flowRate = (pulse * 1000 / 60 / 11); // (Pulse frequency x 1000 mL) / 60 min / 11Q = flowrate in mL/s
     //flowRate = (pulse * 60 / 11); // (Pulse frequency x 60 min) / 11Q = flowrate in L/hour
-    Serial.print("Water Flow Per Sec:  ");
-    Serial.print(flowRate);
-    Serial.println(" mL/s   ");
+    // Serial.print("Water Flow Per Sec:  ");
+    // Serial.print(flowRate);
+    // Serial.println(" mL/s   ");
     //Serial.print(" L/h    ");
     lastTime = millis(); // update the last time
 

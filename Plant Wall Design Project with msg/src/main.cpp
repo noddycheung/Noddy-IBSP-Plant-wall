@@ -83,9 +83,33 @@ void loop() {
   int phosphorusValue = mySoilSensor.Phosphorus();
   int potassiumValue = mySoilSensor.Potassium();
   int waterLevel = waterLevelSensor.getDistance();
+  
+  delay(1000);
+
+  SuperPlant[ 0] = (byte)0xff;
+  SuperPlant[ 1] = (byte)((temperature & 0xFF00) >> 8);
+  SuperPlant[ 2] = (byte)((temperature & 0x00FF));
+  SuperPlant[ 3] = (byte)((humidity & 0xFF00) >> 8);
+  SuperPlant[ 4] = (byte)((humidity & 0x00FF));
+  SuperPlant[ 5] = (byte)((conductivity & 0xFF00) >> 8);
+  SuperPlant[ 6] = (byte)((conductivity & 0x00FF));
+  SuperPlant[ 7] = (byte)((pHValue & 0xFF00) >> 8);
+  SuperPlant[ 8] = (byte)((pHValue & 0x00FF));
+  SuperPlant[ 9] = (byte)((nitrogenValue & 0xFF00) >> 8);
+  SuperPlant[10] = (byte)((nitrogenValue & 0x00FF));
+  SuperPlant[11] = (byte)((phosphorusValue & 0xFF00) >> 8);
+  SuperPlant[12] = (byte)((phosphorusValue & 0x00FF));
+  SuperPlant[13] = (byte)((potassiumValue & 0xFF00) >> 8);
+  SuperPlant[14] = (byte)((potassiumValue & 0x00FF));
+  SuperPlant[15] = (byte)((waterLevel & 0xFF00) >> 8);
+  SuperPlant[16] = (byte)((waterLevel & 0x00FF));
+  Serial.write(SuperPlant, sizeof(SuperPlant));
+  // Serial.println("----------");
+  
 
 ///////////////////////////////////////////////////////////////
 //<error>
+
   // Soil Humidity Contrl Pump
   if (humidity < 3000) {
     pump.pumpRate(90);
@@ -94,11 +118,9 @@ void loop() {
     flowSensor.getflowRate();
     if (flowSensor.totalMilliLitres < flowSensor.TargetValue) {
       Valve1.valveOpen();
-      // Serial.println("Debug");
       }
     else if(flowSensor.totalMilliLitres >= flowSensor.TargetValue) {
         Valve1.valveClose();
-        // Serial.println("Close Debug");
         pump.pumpRate(0);
         flowSensor.reset();
       }
@@ -106,6 +128,7 @@ void loop() {
   else {
     pump.pumpRate(0);
   }
+  
 //</error>
 ///////////////////////////////////////////////////////////////////////
 
@@ -127,25 +150,4 @@ void loop() {
   //   return; 
   // }
 
-  
-  SuperPlant[ 0] = (byte)0xff;
-  SuperPlant[ 1] = (byte)((temperature & 0xFF00) >> 8);
-  SuperPlant[ 2] = (byte)((temperature & 0x00FF));
-  SuperPlant[ 3] = (byte)((humidity & 0xFF00) >> 8);
-  SuperPlant[ 4] = (byte)((humidity & 0x00FF));
-  SuperPlant[ 5] = (byte)((conductivity & 0xFF00) >> 8);
-  SuperPlant[ 6] = (byte)((conductivity & 0x00FF));
-  SuperPlant[ 7] = (byte)((pHValue & 0xFF00) >> 8);
-  SuperPlant[ 8] = (byte)((pHValue & 0x00FF));
-  SuperPlant[ 9] = (byte)((nitrogenValue & 0xFF00) >> 8);
-  SuperPlant[10] = (byte)((nitrogenValue & 0x00FF));
-  SuperPlant[11] = (byte)((phosphorusValue & 0xFF00) >> 8);
-  SuperPlant[12] = (byte)((phosphorusValue & 0x00FF));
-  SuperPlant[13] = (byte)((potassiumValue & 0xFF00) >> 8);
-  SuperPlant[14] = (byte)((potassiumValue & 0x00FF));
-  SuperPlant[15] = (byte)((waterLevel & 0xFF00) >> 8);
-  SuperPlant[16] = (byte)((waterLevel & 0x00FF));
-  Serial.write(SuperPlant, sizeof(SuperPlant));
-  // Serial.println("----------");
-  delay(1000);
 }
