@@ -84,20 +84,36 @@ while (True):
     # Decode the payload in Python
     Raw_temperature = (payload[1] << 8) | payload[2]
     temperature = Raw_temperature / 100.0
+    if temperature > 50:
+        temperature = 50
     Raw_humidity = (payload[3] << 8) | payload[4]
     humidity = Raw_humidity / 100.0
+    if humidity > 100:
+        humidity = 100
     Raw_conductivity = (payload[5] << 8) | payload[6]
     conductivity = Raw_conductivity / 100.0
+    if conductivity > 100:
+        conductivity = 100
     Raw_pHValue = (payload[7] << 8) | payload[8]
     pHValue = Raw_pHValue / 100.0
+    if pHValue > 14:
+        pHValue = 14
     Raw_nitrogen =  (payload[9] << 8) | payload[10]
     nitrogen = Raw_nitrogen / 100.0
+    if nitrogen > 100:
+        nitrogen = 100
     Raw_phosphorus = (payload[11] << 8) | payload[12]
     phosphorus = Raw_phosphorus / 100.0
+    if phosphorus > 100:
+        phosphorus = 100
     Raw_potassium = (payload[13] << 8) | payload[14]
     potassium = Raw_potassium / 100.0
+    if potassium > 100:
+        potassium = 100
     Raw_waterlevel = (payload[15] << 8) | payload[16]
     waterlevel = Raw_waterlevel
+    if waterlevel > 100:
+        waterlevel = 100
 
     # print("Temperature: ", temperature)
     # print("Temperature: ", str(temperature))
@@ -105,15 +121,25 @@ while (True):
     message = ''.join([str(x) for x in message])
 
     # a single publish, this can also be done in loops, etc.
-    client.publish("testing", payload=message)
-    # client.publish("Humidity: ", payload=str(humidity))
-    # client.publish("Conductivity: ", payload=str(conductivity))
-    # client.publish("pH Value: ", payload=str(pHValue))
-    # client.publish("Nitrogen: ", payload=str(nitrogen))
-    # client.publish("Phosphorus: ", payload=str(phosphorus))
-    # client.publish("Potassium: ", payload=str(potassium))
-    # client.publish("Water Level: ", payload=str(waterlevel))
+    # client.publish("testing", payload=message)
+    client.publish("temp", payload=temperature)
+    client.publish("humidity", payload=humidity)
+    client.publish("Conductivity", payload=conductivity)
+    client.publish("pH Value", payload=pHValue)
+    client.publish("Nitrogen", payload=nitrogen)
+    client.publish("Phosphorus", payload=phosphorus)
+    client.publish("Potassium", payload=potassium)
+    client.publish("Water Level", payload=waterlevel)
+    time.sleep(1)
 
-    # loop_forever for simplicity, here you need to stop the loop manually
+    # subscribe to all topics of encyclopedia by using the wildcard "#"
+    client.subscribe("temp/#")
+    client.subscribe("humidity/#")
+    client.subscribe("Conductivity/#")
+    client.subscribe("pH Value/#")
+    client.subscribe("Nitrogen/#")
+    client.subscribe("Phosphorus/#")
+    client.subscribe("Potassium/#")
+    client.subscribe("Water Level/#")
 # you can also use loop_start and loop_stop
 client.loop_forever()
