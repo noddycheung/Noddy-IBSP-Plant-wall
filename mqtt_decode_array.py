@@ -84,8 +84,8 @@ while (True):
     # Decode the payload in Python
     Raw_temperature = (payload[1] << 8) | payload[2]
     temperature = Raw_temperature / 100.0
-    if temperature > 50:
-        temperature = 50
+    if temperature > 100:
+        temperature = 100
     Raw_humidity = (payload[3] << 8) | payload[4]
     humidity = Raw_humidity / 100.0
     if humidity > 100:
