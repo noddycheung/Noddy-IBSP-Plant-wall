@@ -71,12 +71,12 @@ def on_message(client, userdata, msg):
 while (True):
     rx_raw = ser.read(17)  #
 
-    mystring = "";
-    for c in rx_raw:
-        mystring = mystring + " " + hex(c)
-    print("hexed: ")
-    print(mystring)
-    print("\n")
+    # mystring = "";
+    # for c in rx_raw:
+    #     mystring = mystring + " " + hex(c)
+    # print("hexed: ")
+    # print(mystring)
+    # print("\n")
 
 
     # Convert the hex string to bytes
@@ -117,8 +117,8 @@ while (True):
 
     # print("Temperature: ", temperature)
     # print("Temperature: ", str(temperature))
-    message = ("temp: ", temperature, " humid: ", humidity, " cond: ", conductivity, " pH: ", pHValue, " nitro: ", nitrogen, " phos: ", phosphorus, " pot: ", potassium, " water: ", waterlevel)
-    message = ''.join([str(x) for x in message])
+    # message = ("temp: ", temperature, " humid: ", humidity, " cond: ", conductivity, " pH: ", pHValue, " nitro: ", nitrogen, " phos: ", phosphorus, " pot: ", potassium, " water: ", waterlevel)
+    # message = ''.join([str(x) for x in message])
 
     # a single publish, this can also be done in loops, etc.
     # client.publish("testing", payload=message)
@@ -130,7 +130,7 @@ while (True):
     client.publish("Phosphorus", payload=phosphorus)
     client.publish("Potassium", payload=potassium)
     client.publish("Water Level", payload=waterlevel)
-    time.sleep(1)
+    # time.sleep(1)
 
     # subscribe to all topics of encyclopedia by using the wildcard "#"
     client.subscribe("temp/#")
