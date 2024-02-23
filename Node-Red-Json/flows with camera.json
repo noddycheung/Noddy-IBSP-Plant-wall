@@ -1,0 +1,201 @@
+[
+    {
+        "id": "da4fb43704281986",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "234eb326162618a7",
+        "type": "inject",
+        "z": "da4fb43704281986",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "c855aa5ecc02c319"
+            ]
+        ]
+    },
+    {
+        "id": "c855aa5ecc02c319",
+        "type": "function",
+        "z": "da4fb43704281986",
+        "name": "",
+        "func": "// create random position\nvar lat = 22.396428;\nvar lon = 114.109497;\n// 22.396428 and longitude 114.109497\nmsg.payload={\n    lat:lat, \n    lon:lon, \n    name:\"Mike\", \n    icon:\"male\", \n    color:\"#000\"};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 320,
+        "wires": [
+            [
+                "8efb49b36b4ea184",
+                "748987fcff9e9578"
+            ]
+        ]
+    },
+    {
+        "id": "7a281f412067ade3",
+        "type": "ui_button",
+        "z": "da4fb43704281986",
+        "name": "",
+        "group": "307cb55c70b1ba77",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Move Mike",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-male",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "c855aa5ecc02c319"
+            ]
+        ]
+    },
+    {
+        "id": "5463c26ab26a6ca7",
+        "type": "comment",
+        "z": "da4fb43704281986",
+        "name": "How to embed Map in Dashboard",
+        "info": "This example shows how to embed the Worldmap \nwithin the `node-red-dashboard`\n\nThe  flow creates a dashboard button that \ngenerates a randon position, with the required \nicon, and passes that to the worldmap. The\nmap is configured to automatically pan to the\nposition of any point that arrives.\n",
+        "x": 360,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "8efb49b36b4ea184",
+        "type": "worldmap-tracks",
+        "z": "da4fb43704281986",
+        "name": "",
+        "depth": "5",
+        "layer": "combined",
+        "smooth": false,
+        "x": 630,
+        "y": 280,
+        "wires": [
+            [
+                "748987fcff9e9578"
+            ]
+        ]
+    },
+    {
+        "id": "748987fcff9e9578",
+        "type": "ui_worldmap",
+        "z": "da4fb43704281986",
+        "group": "307cb55c70b1ba77",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "zoom": "",
+        "layer": "OSMC",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "hide",
+        "panit": "true",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "true",
+        "coords": "none",
+        "showgrid": "true",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,BU,RW,SN,AC,TL,HM",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriO,EsriDG,NatGeo,UKOS,OpTop",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 790,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "282ca4dccc06b29e",
+        "type": "ui_template",
+        "z": "da4fb43704281986",
+        "group": "3e1d7f38795d9c4b",
+        "name": "Camera",
+        "order": 1,
+        "width": 11,
+        "height": 8,
+        "format": "<html>\n\n<head>\n    <meta charset=\"utf-8\">\n    <title>Display Webcam Stream</title>\n    <style>\n        #container {\n            margin: 0px auto;\n            width: 500px;\n            height: 375px;\n            border: 10px #333 solid;\n        }\n\n        #videoElement {\n            width: 500px;\n            height: 375px;\n            background-color: #666;\n        }\n    </style>\n</head>\n\n<body>\n    <div id=\"container\">\n        <video autoplay=\"true\" id=\"videoElement\">\n        </video>\n    </div>\n    <script>\n        var video = document.querySelector(\"#videoElement\");\n\nif (navigator.mediaDevices.getUserMedia) {\n  navigator.mediaDevices.getUserMedia({ video: true })\n    .then(function (stream) {\n      video.srcObject = stream;\n    })\n    .catch(function (err0r) {\n      console.log(\"Something went wrong!\");\n    });\n}\n    </script>\n</body>\n\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 440,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "307cb55c70b1ba77",
+        "type": "ui_group",
+        "z": "da4fb43704281986",
+        "name": "World Map",
+        "tab": "78f1ee1b51ffe013",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3e1d7f38795d9c4b",
+        "type": "ui_group",
+        "name": "Camera",
+        "tab": "77cedf3b9bb86a96",
+        "order": 1,
+        "disp": true,
+        "width": "11",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "78f1ee1b51ffe013",
+        "type": "ui_tab",
+        "name": "Home Page",
+        "icon": "dashboard",
+        "order": 7,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "77cedf3b9bb86a96",
+        "type": "ui_tab",
+        "name": "Camera",
+        "icon": "dashboard",
+        "order": 6,
+        "disabled": false,
+        "hidden": false
+    }
+]
