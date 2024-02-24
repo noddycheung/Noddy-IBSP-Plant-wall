@@ -1,11 +1,1245 @@
 [
     {
+        "id": "fa9078e4e6426892",
+        "type": "tab",
+        "label": "IoT Green Wall",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "da4fb43704281986",
         "type": "tab",
         "label": "Flow 2",
         "disabled": false,
         "info": "",
         "env": []
+    },
+    {
+        "id": "2f6d8c27b7daa83b",
+        "type": "tab",
+        "label": "Object detection example flow",
+        "disabled": false,
+        "info": "This flow uses the https://developer.ibm.com/exchanges/models/all/max-object-detector/ deep learning model from the Model Asset Exchange to localize and identify multiple objects in a single image. Refer to the documentation for information about the returned message.\n\nInstall the following three modules to run this example flow:\n - [node-red-contrib-model-asset-exchange](https://www.npmjs.com/package/node-red-contrib-model-asset-exchange)\n - [node-red-contrib-browser-utils](https://www.npmjs.com/package/node-red-contrib-browser-utils)\n - [node-red-contrib-image-output](https://npmjs.org/package/node-red-contrib-image-output)\n \n> Note: The object-detector node has been pre-configured to use a hosted model evaluation instance. We recommend using your own local or cloud instance for purposes other than evaluation.\n\nTo adjust the size of the image output in this flow, double-click the **Image output** node. Image width is set to 300px by default."
+    },
+    {
+        "id": "c6fb6049be8e56d0",
+        "type": "mqtt-broker",
+        "name": "localhost",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "5864fb9168b05673",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#0080ff",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "green",
+                "default": "#4B7930",
+                "baseColor": "#119400",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#0080ff",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0080ff",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#4da6ff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0080ff",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "d026b35ea57bce21",
+        "type": "ui_tab",
+        "name": "IoT Green Wall Data",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "3d83bd59e68e6209",
+        "type": "ui_group",
+        "name": "Soil Sensor Value",
+        "tab": "d026b35ea57bce21",
+        "order": 1,
+        "disp": true,
+        "width": 18,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9f187c9062db51ce",
+        "type": "ui_group",
+        "name": "Soil Sensor Value Line Chart",
+        "tab": "d026b35ea57bce21",
+        "order": 5,
+        "disp": true,
+        "width": 18,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ee6f1a6d5efca213",
+        "type": "ui_group",
+        "name": "NPK Value",
+        "tab": "d026b35ea57bce21",
+        "order": 3,
+        "disp": true,
+        "width": 18,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a342b5e885792779",
+        "type": "ui_group",
+        "name": "Water Tank Level",
+        "tab": "d026b35ea57bce21",
+        "order": 4,
+        "disp": true,
+        "width": 18,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7ccfe2f3.3fd12c",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "477b3e43.1d624",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "477b3e43.1d624",
+        "type": "ui_tab",
+        "name": "Ohh",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "339d0edc.4ffe02",
+        "type": "ui_group",
+        "name": "Heure",
+        "tab": "a2490d0e.a872b",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "a2490d0e.a872b",
+        "type": "ui_tab",
+        "name": "Homey Dashboard",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "4bcece86c9053370",
+        "type": "ui_group",
+        "name": "Soil pH value",
+        "tab": "d026b35ea57bce21",
+        "order": 2,
+        "disp": true,
+        "width": 18,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "307cb55c70b1ba77",
+        "type": "ui_group",
+        "z": "da4fb43704281986",
+        "name": "World Map",
+        "tab": "78f1ee1b51ffe013",
+        "order": 1,
+        "disp": true,
+        "width": 25,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "78f1ee1b51ffe013",
+        "type": "ui_tab",
+        "name": "Home Page",
+        "icon": "dashboard",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "d920f16c.f3336",
+        "type": "ui_group",
+        "name": "Object Detecting Game",
+        "tab": "5967b7da.b44598",
+        "order": 2,
+        "disp": true,
+        "width": 21,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5ecf1e5d.c16c4",
+        "type": "ui_group",
+        "name": "WebCam",
+        "tab": "5967b7da.b44598",
+        "order": 1,
+        "disp": false,
+        "width": 20,
+        "collapse": false
+    },
+    {
+        "id": "5967b7da.b44598",
+        "type": "ui_tab",
+        "name": "AI Photo Booth",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "b008e5f0ee51e418",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "4bcece86c9053370",
+        "order": 1,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "9c2f2ee975fa12c9",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "4bcece86c9053370",
+        "order": 3,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "cab94cb2f37a59ba",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "4bcece86c9053370",
+        "order": 4,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "56424eac17819dfa",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "4bcece86c9053370",
+        "order": 5,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "5686a66005b07b39",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "4bcece86c9053370",
+        "order": 6,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "c2fac3963417c25a",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "4bcece86c9053370",
+        "order": 7,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "84235ab1fab5be66",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "4bcece86c9053370",
+        "order": 8,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "45595cc3edcdd463",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "4bcece86c9053370",
+        "order": 9,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "4ee1cbeb8cb44e4f",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "a342b5e885792779",
+        "order": 1,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "9a4be1d65617b852",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "a342b5e885792779",
+        "order": 3,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "78b0294154d0f1eb",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "a342b5e885792779",
+        "order": 4,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "70f32460d6534529",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "a342b5e885792779",
+        "order": 5,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "fa1fb0a5961aa5d5",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "a342b5e885792779",
+        "order": 6,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "f7793a2a61e44df3",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "a342b5e885792779",
+        "order": 7,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "f3bd4d62ab20a208",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "a342b5e885792779",
+        "order": 8,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "596257dfe8bff16d",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "a342b5e885792779",
+        "order": 9,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "acfdd9431d87098b",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "a342b5e885792779",
+        "order": 10,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "fe44206ea4e3c5ae",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "a342b5e885792779",
+        "order": 11,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "87618a7a17cc7503",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "127ce980893712b9",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "39b9b7889ca06d0e",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "97bd801cc5b41925",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3e2e77474331595d",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ee82230e3cedc55c",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 9,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "70df4b85651b3263",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 10,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c0b31f4fea3e56a8",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "0663fab876dc2b8b",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 12,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3ccc0bb767c31c24",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 13,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "eb98837d481e156f",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 15,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "5d4c4a50f80db738",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 16,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "190ad9d0f6106872",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 17,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ea41f89987343cb1",
+        "type": "ui_spacer",
+        "z": "fa9078e4e6426892",
+        "name": "spacer",
+        "group": "d920f16c.f3336",
+        "order": 18,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "5b134bd6529a9e68",
+        "type": "mqtt in",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "topic": "temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c6fb6049be8e56d0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 300,
+        "wires": [
+            [
+                "0e3556dc7e5e3aad",
+                "cf15be80ee883f44"
+            ]
+        ]
+    },
+    {
+        "id": "be11afa15b664795",
+        "type": "mqtt in",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "topic": "humidity",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c6fb6049be8e56d0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 400,
+        "wires": [
+            [
+                "0e3556dc7e5e3aad",
+                "42532a9e01482ebf"
+            ]
+        ]
+    },
+    {
+        "id": "85e197912f5cfa5a",
+        "type": "mqtt in",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "topic": "Conductivity",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c6fb6049be8e56d0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 500,
+        "wires": [
+            [
+                "0e3556dc7e5e3aad",
+                "fbca6d32c032386f"
+            ]
+        ]
+    },
+    {
+        "id": "f5588509e158c71a",
+        "type": "mqtt in",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "topic": "pH Value",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c6fb6049be8e56d0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 580,
+        "wires": [
+            [
+                "0e3556dc7e5e3aad",
+                "908e793379ec41cf"
+            ]
+        ]
+    },
+    {
+        "id": "86b4173444fc4faa",
+        "type": "mqtt in",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "topic": "Nitrogen",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c6fb6049be8e56d0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 700,
+        "y": 320,
+        "wires": [
+            [
+                "a701a6de7d97e861"
+            ]
+        ]
+    },
+    {
+        "id": "e936ec8e7b71833c",
+        "type": "mqtt in",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "topic": "Phosphorus",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c6fb6049be8e56d0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 590,
+        "y": 400,
+        "wires": [
+            [
+                "0e3556dc7e5e3aad",
+                "a8b41c0ef15988a2"
+            ]
+        ]
+    },
+    {
+        "id": "f7ec0c3d7087fc02",
+        "type": "mqtt in",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "topic": "Potassium",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c6fb6049be8e56d0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 600,
+        "y": 500,
+        "wires": [
+            [
+                "0e3556dc7e5e3aad",
+                "0f316021a1500aa3"
+            ]
+        ]
+    },
+    {
+        "id": "5f06dfa757e943b2",
+        "type": "mqtt in",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "topic": "Water Level",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c6fb6049be8e56d0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 590,
+        "y": 600,
+        "wires": [
+            [
+                "9b371dd3d983cb71",
+                "0e3556dc7e5e3aad"
+            ]
+        ]
+    },
+    {
+        "id": "9b371dd3d983cb71",
+        "type": "ui_gauge",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "group": "a342b5e885792779",
+        "order": 2,
+        "width": 8,
+        "height": 5,
+        "gtype": "wave",
+        "title": "Water Level",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 850,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "0e3556dc7e5e3aad",
+        "type": "ui_chart",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "group": "9f187c9062db51ce",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Soil Sensor Value",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#3faefd",
+            "#ffeb0a",
+            "#ff7f0e",
+            "#7300ff",
+            "#ed0dfd",
+            "#f70808",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 570,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c0185ced8a331c70",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "3d83bd59e68e6209",
+        "name": "temp",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "format": "<style>\n    #{{'gauge_'+$id}} .g-tick:nth-child(n+9){\n        background: linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2%,rgb(255 0 0 / 60%) 2%,rgb(255 0 0 / 60%)\n        10%,rgba(0,0,0,0) 10%);\n        height: 1.3px;\n        margin-bottom: -1.3px;\n    }\n    #{{'gauge_'+$id}} .g-subtick:nth-child(n+73){\n        background: linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2%,rgb(255 0 0 / 40%) 2%,rgb(255 0 0 / 40%)\n        6%,rgba(0,0,0,0) 6%);\n        height: 1.3px;\n        margin-bottom: -1.3px;\n    }\n    #{{'gauge_'+$id}} .g-num:nth-child(n+9){\n        color:#dc080899;\n    }\n</style>\n<div id=\"{{'gauge_'+$id}}\" class=\"g-container\" style=\"--gauge-value:0; --container-size:6; --gn-distance:14; --ga-tick-count:10; --ga-subtick-count:100; --g-unit:'°C'\">\n    <div id=\"bgr\" class=\"g-body\">\n        <div class=\"g-ring\">\n            <div class=\"g-rivets\">\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n            </div>\n            <div class=\"g-plate\">\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:10;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:11;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:10;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:12;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:13;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:14;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:15;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:16;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:17;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:18;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:19;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:20;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:22;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:23;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:24;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:25;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:26;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:27;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:28;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:29;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:30;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:32;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:33;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:34;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:35;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:36;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:37;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:38;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:39;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:40;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:42;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:43;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:44;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:45;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:46;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:47;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:48;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:49;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:50;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:52;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:53;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:54;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:55;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:56;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:57;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:58;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:59;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:60;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:62;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:63;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:64;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:65;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:66;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:67;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:68;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:69;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:70;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:72;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:73;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:74;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:75;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:76;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:77;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:78;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:79;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:80;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:82;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:83;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:84;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:85;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:86;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:87;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:88;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:89;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:90;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:92;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:93;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:94;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:95;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:96;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:97;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:98;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:99;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:100;\"></div>\n                </div>\n               <div class=\"g-nums\">\n                    <div class=\"g-num\" style=\"--ga-tick:1;\" >0</div>\n                    <div class=\"g-num\" style=\"--ga-tick:2;\">10</div>\n                    <div class=\"g-num\" style=\"--ga-tick:3;\">20</div>\n                    <div class=\"g-num\" style=\"--ga-tick:4;\">30</div>\n                    <div class=\"g-num\" style=\"--ga-tick:5;\">40</div>\n                    <div class=\"g-num\" style=\"--ga-tick:6;\">50</div>\n                    <div class=\"g-num\" style=\"--ga-tick:7;\">60</div>\n                    <div class=\"g-num\" style=\"--ga-tick:8;\">70</div>\n                    <div class=\"g-num\" style=\"--ga-tick:9;\">80</div>\n                    <div class=\"g-num\" style=\"--ga-tick:10;\">90</div>\n                    <div class=\"g-num\" style=\"--ga-tick:11;\">100</div>\n                </div>\n                <div class=\"g-label\">Temperature</div>\n                <div class=\"g-needle\"></div>\n                <div class=\"g-needle-ring\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n<script>\n(function(scope) {\n    let min = 0;\n    let max = 100;\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n        const v = Math.floor(((msg.payload - min) / (max - min)) * 100);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--gauge-value', v);\n        document.getElementById('gauge_val_'+scope.$id).innerText = v;\n    }\n   \n  });\n})(scope);\n</script>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 530,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cf15be80ee883f44",
+        "type": "function",
+        "z": "fa9078e4e6426892",
+        "name": "Random code",
+        "func": "let num = msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 300,
+        "wires": [
+            [
+                "c0185ced8a331c70"
+            ]
+        ]
+    },
+    {
+        "id": "42532a9e01482ebf",
+        "type": "function",
+        "z": "fa9078e4e6426892",
+        "name": "Random code",
+        "func": "let num = msg.payload;\n    return msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 400,
+        "wires": [
+            [
+                "1fdce5cbc50b79f4"
+            ]
+        ]
+    },
+    {
+        "id": "1fdce5cbc50b79f4",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "3d83bd59e68e6209",
+        "name": "humidity",
+        "order": 2,
+        "width": 6,
+        "height": 6,
+        "format": "<div id=\"{{'gauge_'+$id}}\" class=\"g-container\" style=\"--gauge-value:0; --container-size:6; --gn-distance:14; --ga-tick-count:10; --ga-subtick-count:100; --g-unit:'%'\">\n    <div id=\"bgr\" class=\"g-body\">\n        <div class=\"g-ring\">\n            <div class=\"g-rivets\">\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n            </div>\n            <div class=\"g-plate\">\n                <div class=\"g-sector g-sector-low\" style=\"transform: rotate(133deg) skew(-28deg, 0deg);\"></div>\n                <div class=\"g-sector g-sector-sub\" style=\"transform: rotate(251deg) skew(23deg, 0deg);\"></div>\n                <div class=\"g-sector g-sector-normal\" style=\"transform: rotate(318deg) skew(59deg, 0deg);\"></div>\n                <div class=\"g-sector g-sector-high\" style=\"transform: rotate(348deg) skew(31deg, 0deg);\"></div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:10;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:11;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:10;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:12;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:13;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:14;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:15;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:16;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:17;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:18;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:19;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:20;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:22;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:23;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:24;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:25;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:26;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:27;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:28;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:29;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:30;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:32;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:33;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:34;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:35;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:36;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:37;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:38;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:39;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:40;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:42;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:43;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:44;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:45;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:46;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:47;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:48;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:49;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:50;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:52;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:53;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:54;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:55;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:56;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:57;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:58;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:59;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:60;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:62;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:63;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:64;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:65;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:66;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:67;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:68;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:69;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:70;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:72;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:73;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:74;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:75;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:76;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:77;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:78;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:79;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:80;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:82;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:83;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:84;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:85;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:86;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:87;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:88;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:89;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:90;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:92;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:93;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:94;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:95;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:96;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:97;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:98;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:99;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:100;\"></div>\n                </div>\n               <div class=\"g-nums\">\n                    <div class=\"g-num\" style=\"--ga-tick:1;\" >0</div>\n                    <div class=\"g-num\" style=\"--ga-tick:2;\">10</div>\n                    <div class=\"g-num\" style=\"--ga-tick:3;\">20</div>\n                    <div class=\"g-num\" style=\"--ga-tick:4;\">30</div>\n                    <div class=\"g-num\" style=\"--ga-tick:5;\">40</div>\n                    <div class=\"g-num\" style=\"--ga-tick:6;\">50</div>\n                    <div class=\"g-num\" style=\"--ga-tick:7;\">60</div>\n                    <div class=\"g-num\" style=\"--ga-tick:8;\">70</div>\n                    <div class=\"g-num\" style=\"--ga-tick:9;\">80</div>\n                    <div class=\"g-num\" style=\"--ga-tick:10;\">90</div>\n                    <div class=\"g-num\" style=\"--ga-tick:11;\">100</div>\n                </div>\n                <div class=\"g-label\">Humidity</div>\n                <div class=\"g-needle\"></div>\n                <div class=\"g-needle-ring\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n<script>\n(function(scope) {\n    let min = 0;\n    let max = 100;\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n        const v = Math.floor(((msg.payload - min) / (max - min)) * 100);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--gauge-value', v);\n        document.getElementById('gauge_val_'+scope.$id).innerText = v;\n    }\n   \n  });\n})(scope);\n</script>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 440,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fbca6d32c032386f",
+        "type": "function",
+        "z": "fa9078e4e6426892",
+        "name": "Random code",
+        "func": "let num = msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 500,
+        "wires": [
+            [
+                "4bbcaf2097ca4b2e"
+            ]
+        ]
+    },
+    {
+        "id": "4bbcaf2097ca4b2e",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "3d83bd59e68e6209",
+        "name": "Conductivity",
+        "order": 3,
+        "width": 6,
+        "height": 6,
+        "format": "<div id=\"{{'gauge_'+$id}}\" class=\"g-container\" style=\"--gauge-value:0; --container-size:6; --gn-distance:14; --ga-tick-count:10; --ga-subtick-count:100; --g-unit:'us/cm'\">\n    <div id=\"bgr\" class=\"g-body\">\n        <div class=\"g-ring\">\n            <div class=\"g-rivets\">\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n            </div>\n            <div class=\"g-plate\">\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:11;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick\" style=\"--ga-tick:11;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:31;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:51;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:71;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:91;\"></div>\n                </div>\n               <div class=\"g-nums\">\n                    <div class=\"g-num\" style=\"--ga-tick:1;\" >0</div>\n                    <div class=\"g-num\" style=\"--ga-tick:3;\">20</div>\n                    <div class=\"g-num\" style=\"--ga-tick:5;\">40</div>\n                    <div class=\"g-num\" style=\"--ga-tick:7;\">60</div>\n                    <div class=\"g-num\" style=\"--ga-tick:9;\">80</div>\n                    <div class=\"g-num\" style=\"--ga-tick:11;\">100</div>\n                </div>\n                <div class=\"g-label\">Conductivity</div>\n                <div class=\"g-needle\"></div>\n                <div class=\"g-needle-ring\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n<script>\n(function(scope) {\n    let min = 0;\n    let max = 100;\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n        const v = Math.floor(((msg.payload - min) / (max - min)) * 100);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--gauge-value', v);\n        document.getElementById('gauge_val_'+scope.$id).innerText = v+\"\";\n    }\n   \n  });\n})(scope);\n</script>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 450,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b895c128c011ab09",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "ee6f1a6d5efca213",
+        "name": "Nitrogen",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "format": "<div id=\"{{'gauge_'+$id}}\" class=\"g-container\" style=\"--gauge-value:0; --container-size:6; --gn-distance:14; --ga-tick-count:10; --ga-subtick-count:100; --g-unit:'mg/kg'\">\n    <div id=\"bgr\" class=\"g-body\">\n        <div class=\"g-ring\">\n            <div class=\"g-rivets\">\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n            </div>\n            <div class=\"g-plate-bright-red\">\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:10;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:11;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:10;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:12;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:13;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:14;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:15;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:16;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:17;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:18;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:19;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:20;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:22;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:23;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:24;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:25;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:26;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:27;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:28;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:29;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:30;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:32;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:33;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:34;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:35;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:36;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:37;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:38;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:39;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:40;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:42;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:43;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:44;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:45;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:46;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:47;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:48;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:49;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:50;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:52;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:53;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:54;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:55;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:56;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:57;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:58;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:59;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:60;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:62;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:63;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:64;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:65;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:66;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:67;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:68;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:69;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:70;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:72;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:73;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:74;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:75;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:76;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:77;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:78;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:79;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:80;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:82;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:83;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:84;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:85;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:86;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:87;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:88;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:89;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:90;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:92;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:93;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:94;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:95;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:96;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:97;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:98;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:99;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:100;\"></div>\n                </div>\n               <div class=\"g-nums\">\n                    <div class=\"g-num\" style=\"--ga-tick:1;\" >0</div>\n                    <div class=\"g-num\" style=\"--ga-tick:2;\">10</div>\n                    <div class=\"g-num\" style=\"--ga-tick:3;\">20</div>\n                    <div class=\"g-num\" style=\"--ga-tick:4;\">30</div>\n                    <div class=\"g-num\" style=\"--ga-tick:5;\">40</div>\n                    <div class=\"g-num\" style=\"--ga-tick:6;\">50</div>\n                    <div class=\"g-num\" style=\"--ga-tick:7;\">60</div>\n                    <div class=\"g-num\" style=\"--ga-tick:8;\">70</div>\n                    <div class=\"g-num\" style=\"--ga-tick:9;\">80</div>\n                    <div class=\"g-num\" style=\"--ga-tick:10;\">90</div>\n                    <div class=\"g-num\" style=\"--ga-tick:11;\">100</div>\n                </div>\n                <div class=\"g-label\">Nitrogen</div>\n                <div class=\"g-needle\"></div>\n                <div class=\"g-needle-ring\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n<script>\n(function(scope) {\n    let min = 0;\n    let max = 100;\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n        const v = Math.floor(((msg.payload - min) / (max - min)) * 100);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--gauge-value', v);\n        document.getElementById('gauge_val_'+scope.$id).innerText = v;\n    }\n   \n  });\n})(scope);\n</script>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1100,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a701a6de7d97e861",
+        "type": "function",
+        "z": "fa9078e4e6426892",
+        "name": "Random code",
+        "func": "let num = msg.payload;\n    return msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 320,
+        "wires": [
+            [
+                "b895c128c011ab09"
+            ]
+        ]
+    },
+    {
+        "id": "da0a4471bb28aaa6",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "ee6f1a6d5efca213",
+        "name": "Phosphorus",
+        "order": 2,
+        "width": 6,
+        "height": 6,
+        "format": "<div id=\"{{'gauge_'+$id}}\" class=\"g-container\" style=\"--gauge-value:0; --container-size:6; --gn-distance:14; --ga-tick-count:10; --ga-subtick-count:100; --g-unit:'mg/kg'\">\n    <div id=\"bgr\" class=\"g-body\">\n        <div class=\"g-ring\">\n            <div class=\"g-rivets\">\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n            </div>\n            <div class=\"g-plate-bright\">\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:10;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:11;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:10;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:12;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:13;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:14;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:15;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:16;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:17;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:18;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:19;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:20;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:22;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:23;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:24;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:25;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:26;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:27;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:28;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:29;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:30;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:32;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:33;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:34;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:35;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:36;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:37;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:38;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:39;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:40;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:42;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:43;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:44;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:45;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:46;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:47;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:48;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:49;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:50;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:52;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:53;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:54;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:55;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:56;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:57;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:58;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:59;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:60;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:62;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:63;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:64;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:65;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:66;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:67;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:68;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:69;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:70;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:72;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:73;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:74;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:75;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:76;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:77;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:78;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:79;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:80;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:82;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:83;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:84;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:85;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:86;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:87;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:88;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:89;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:90;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:92;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:93;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:94;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:95;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:96;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:97;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:98;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:99;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:100;\"></div>\n                </div>\n               <div class=\"g-nums\">\n                    <div class=\"g-num\" style=\"--ga-tick:1;\" >0</div>\n                    <div class=\"g-num\" style=\"--ga-tick:2;\">10</div>\n                    <div class=\"g-num\" style=\"--ga-tick:3;\">20</div>\n                    <div class=\"g-num\" style=\"--ga-tick:4;\">30</div>\n                    <div class=\"g-num\" style=\"--ga-tick:5;\">40</div>\n                    <div class=\"g-num\" style=\"--ga-tick:6;\">50</div>\n                    <div class=\"g-num\" style=\"--ga-tick:7;\">60</div>\n                    <div class=\"g-num\" style=\"--ga-tick:8;\">70</div>\n                    <div class=\"g-num\" style=\"--ga-tick:9;\">80</div>\n                    <div class=\"g-num\" style=\"--ga-tick:10;\">90</div>\n                    <div class=\"g-num\" style=\"--ga-tick:11;\">100</div>\n                </div>\n                <div class=\"g-label\">Phosphorus</div>\n                <div class=\"g-needle\"></div>\n                <div class=\"g-needle-ring\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n<script>\n(function(scope) {\n    let min = 0;\n    let max = 100;\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n        const v = Math.floor(((msg.payload - min) / (max - min)) * 100);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--gauge-value', v);\n        document.getElementById('gauge_val_'+scope.$id).innerText = v;\n    }\n   \n  });\n})(scope);\n</script>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1110,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "55dc28832c4e78a0",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "ee6f1a6d5efca213",
+        "name": "Potassium",
+        "order": 3,
+        "width": 6,
+        "height": 6,
+        "format": "<div id=\"{{'gauge_'+$id}}\" class=\"g-container\" style=\"--gauge-value:0; --container-size:6; --gn-distance:14; --ga-tick-count:10; --ga-subtick-count:100; --g-unit:'mg/kg'\">\n    <div id=\"bgr\" class=\"g-body\">\n        <div class=\"g-ring\">\n            <div class=\"g-rivets\">\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n            </div>\n            <div class=\"g-plate-bright-blue\">\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:10;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:11;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:10;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:12;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:13;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:14;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:15;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:16;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:17;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:18;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:19;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:20;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:22;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:23;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:24;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:25;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:26;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:27;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:28;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:29;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:30;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:32;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:33;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:34;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:35;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:36;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:37;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:38;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:39;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:40;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:42;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:43;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:44;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:45;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:46;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:47;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:48;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:49;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:50;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:52;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:53;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:54;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:55;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:56;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:57;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:58;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:59;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:60;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:62;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:63;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:64;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:65;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:66;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:67;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:68;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:69;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:70;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:72;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:73;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:74;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:75;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:76;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:77;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:78;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:79;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:80;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:82;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:83;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:84;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:85;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:86;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:87;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:88;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:89;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:90;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:92;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:93;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:94;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:95;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:96;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:97;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:98;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:99;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:100;\"></div>\n                </div>\n               <div class=\"g-nums\">\n                    <div class=\"g-num\" style=\"--ga-tick:1;\" >0</div>\n                    <div class=\"g-num\" style=\"--ga-tick:2;\">10</div>\n                    <div class=\"g-num\" style=\"--ga-tick:3;\">20</div>\n                    <div class=\"g-num\" style=\"--ga-tick:4;\">30</div>\n                    <div class=\"g-num\" style=\"--ga-tick:5;\">40</div>\n                    <div class=\"g-num\" style=\"--ga-tick:6;\">50</div>\n                    <div class=\"g-num\" style=\"--ga-tick:7;\">60</div>\n                    <div class=\"g-num\" style=\"--ga-tick:8;\">70</div>\n                    <div class=\"g-num\" style=\"--ga-tick:9;\">80</div>\n                    <div class=\"g-num\" style=\"--ga-tick:10;\">90</div>\n                    <div class=\"g-num\" style=\"--ga-tick:11;\">100</div>\n                </div>\n                <div class=\"g-label\">Potassium</div>\n                <div class=\"g-needle\"></div>\n                <div class=\"g-needle-ring\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n<script>\n(function(scope) {\n    let min = 0;\n    let max = 100;\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n        const v = Math.floor(((msg.payload - min) / (max - min)) * 100);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--gauge-value', v);\n        document.getElementById('gauge_val_'+scope.$id).innerText = v;\n    }\n   \n  });\n})(scope);\n</script>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1070,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a8b41c0ef15988a2",
+        "type": "function",
+        "z": "fa9078e4e6426892",
+        "name": "Random code",
+        "func": "let num = msg.payload;\n    return msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 400,
+        "wires": [
+            [
+                "da0a4471bb28aaa6"
+            ]
+        ]
+    },
+    {
+        "id": "0f316021a1500aa3",
+        "type": "function",
+        "z": "fa9078e4e6426892",
+        "name": "Random code",
+        "func": "let num = msg.payload;\n    return msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 500,
+        "wires": [
+            [
+                "55dc28832c4e78a0"
+            ]
+        ]
+    },
+    {
+        "id": "16a23b2a5b789927",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "7ccfe2f3.3fd12c",
+        "name": "gauge-style",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<style id=\"hotNipi-gauge\">\n:root{\n    --needle-color:#001100;\n    --needle-second-color:#ff0000;\n    --red-ticks:9;\n    --sec-high-color:#ff00004f;\n    --sec-normal-color:#00ff004f;\n    --sec-low-color:#0000ff4f;\n    --sec-sub-color:#0000ff8f;\n}\n.g-container {\n    padding-top: 3px;\n    padding-bottom: 3px;\n    width: 100%;\n    height: 100%;\n    position: relative;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    user-select:none;\n}\n    \n.g-body {\n    width: 98%;\n    height: 98%;\n    border-radius: 15%;\n    position: relative;\n    display: flex;\n    align-content: center;\n    align-items: center;\n    justify-content: center;\n    box-shadow: 0px 5px 8px #00000045;\n    background: linear-gradient(0deg, rgba(78,78,78,1) 0%, rgba(215,215,215,1) 99%, rgba(236,236,236,1) 100%);\n}\n\n.g-body::before {    \n    content: \"\";\n    background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==\"); \n    background-repeat: repeat;\n    position: absolute;\n    top: 0px;\n    right: 0px;\n    bottom: 0px;\n    left: 0px;\n    opacity: 0.1;\n    border-radius:15%;\n}\n\n.g-sector{\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n   \n    transform-origin: 0 0;\n}\n.g-sector-high {\n    background: var(--sec-high-color);\n    transform: rotate(328deg) skew(12deg, 23deg);\n}\n.g-sector-normal {\n    background:var(--sec-normal-color);\n    transform: rotate(328deg) skew(12deg, 23deg);\n}\n.g-sector-low {\n    background:var(--sec-low-color);\n    transform: rotate(328deg) skew(12deg, 23deg);\n}\n.g-sector-sub {\n    background:var(--sec-sub-color);\n    transform: rotate(328deg) skew(12deg, 23deg);\n}\n\n.g-ring {\n    width: 94%;\n    height: 94%;\n    border-radius: 50%;\n    position: relative;\n    display: flex;\n    align-content: center;\n    align-items: center;\n    justify-content: center;\n    background: linear-gradient(180deg, rgba(78,78,78,1) 0%, rgba(215,215,215,1) 99%, rgba(236,236,236,1) 100%);\n}\n.g-plate {\n    overflow: hidden;\n    width: 93%;\n    height: 93%;\n    border-radius: 50%;\n    position: relative;\n    box-shadow: inset 0 0 15px #000000a3;\n    background: radial-gradient(circle, #dd8400 3%, rgb(196 205 209) 1%, rgb(177 183 186) 40%, rgb(191 193 194) 100%);\n}\n.g-plate-bright {\n    overflow:hidden;\n    width: 90%;\n    height: 90%;\n    border-radius: 50%;\n    position: relative;\n    box-shadow: inset 0 0 10px yellow;\n    background: radial-gradient(circle, #ed9400 3%, rgb(255, 255, 255) 1%, rgb(255, 255, 158) 40%, rgb(148, 154, 160) 100%);\n}\n\n<--.g-plate-bright-red {\noverflow: hidden;\nwidth: 90%;\nheight: 90%;\nborder-radius: 50%;\nposition: relative;\nbox-shadow: inset 0 0 10px red;\nbackground: radial-gradient(circle, #fca800 3%, rgb(255, 255, 255) 1%, rgb(255, 255, 200) 20%, rgb(180, 186, 192) 100%);\n}-->\n\n.g-plate-bright-red {\noverflow:hidden;\nwidth: 90%;\nheight: 90%;\nborder-radius: 50%;\nposition: relative;\nbox-shadow: inset 0 0 10px red;\nbackground: radial-gradient(circle, #ed9400 3%, rgb(255, 255, 255) 1%, rgb(255, 255, 158) 40%, rgb(148, 154, 160) 100%);\n}\n\n<--.g-plate-bright-blue {\noverflow: hidden;\nwidth: 90%;\nheight: 90%;\nborder-radius: 50%;\nposition: relative;\nbox-shadow: inset 0 0 10px blue;\nbackground: radial-gradient(circle, #00aaff 3%, rgb(255, 255, 255) 1%, rgb(255, 255, 200) 20%, rgb(180, 186, 192) 100%);\n}-->\n\n.g-plate-bright-blue {\noverflow:hidden;\nwidth: 90%;\nheight: 90%;\nborder-radius: 50%;\nposition: relative;\nbox-shadow: inset 0 0 10px blue;\nbackground: radial-gradient(circle, #ed9400 3%, rgb(255, 255, 255) 1%, rgb(255, 255, 158) 40%, rgb(148, 154, 160) 100%);\n}\n\n\n.g-ticks {\n    position: absolute;\n    top:0;\n    left:0;\n    width: 100%;\n    height: 100%;\n    filter: drop-shadow(2px 4px 6px black);\n}\n.g-tick {\n    transform: rotate(calc(calc(270deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(270deg / var(--ga-tick-count)) + 45deg)));\n    background: #000;\n    position: relative;\n    left: 0;\n    top: 50%;\n    width: 100%;\n    height: 1px;\n    margin-bottom: -1px;\n    background: linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2%,rgb(0 0 0 / 60%) 2%,rgb(0 0 0 / 60%) 10%,rgba(0,0,0,0) 10%);\n}\n.g-subtick {\n    transform: rotate(calc(calc(270deg / var(--ga-subtick-count)) * var(--ga-tick) - calc(calc(270deg / var(--ga-subtick-count)) + 45deg)));\n    background: #000;\n    position: relative;\n    left: 0;\n    top: 50%;\n    width: 100%;\n    height: 1px;\n    margin-bottom: -1px;\n    background: linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2%,rgb(0 0 0 / 40%) 2%,rgb(0 0 0 / 40%) 6%,rgba(0,0,0,0) 6%);\n}\n\n.g-num {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    text-align: center;\n    transform: translate(-50%, -50%) rotate(calc(calc(270deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(270deg /\n    var(--ga-tick-count)) + 45deg))) translate(calc(-1px * var(--container-size) * var(--gn-distance))) rotate(calc(calc(270deg / var(--ga-tick-count)) * var(--ga-tick) *-1 -\n    calc(calc(270deg / var(--ga-tick-count))*-1 - 45deg)));\n}\n\n.g-nums {\n    position: absolute;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    color: #000000a1;\n    font-size: calc(var(--container-size) * 20%);\n    font-weight: 500;\n    filter: drop-shadow(2px 4px 10px black);\n}\n.g-needle {\n    transform: rotate(calc(270deg * calc(var(--gauge-value, 0deg) / 100) - 45deg));\n    transition: transform 1s;\n    background: #000;\n    position: absolute;\n    left: 0;\n    top: 49%;\n    width: 100%;\n    height: 2%;\n    filter:drop-shadow(0px 1px 3px #00000080);\n    background: linear-gradient(90deg,rgba(2,0,36,0) 0,rgba(0,0,0,0) 15%,var(--needle-color) 15%,var(--needle-color) 50%,rgba(0,0,0,0) 50%);\n}\n.g-needle-second {\n    transform: rotate(calc(270deg * calc(var(--gauge-value-second, 0deg) / 100) - 45deg));\n    transition: transform 1s;\n    background: #000;\n    position: absolute;\n    left: 0;\n    top: 49%;\n    width: 100%;\n    height: 2%;\n    filter:drop-shadow(0px 1px 3px #ff000080);  \n    background: linear-gradient(90deg,rgba(2,0,36,0) 0,rgba(0,0,0,0) 15%,var(--needle-second-color) 15%,var(--needle-second-color) 50%,rgba(0,0,0,0) 50%);\n}\n.g-needle-ring {\n    position: absolute;\n    width: calc(var(--container-size) * 1.5%);\n    height: calc(var(--container-size) * 1.5%);\n    top: 50%;\n    left: 50%;\n    background: var(--needle-color);\n    border-radius: 50%;\n    transform: translate(-50%, -50%);\n    box-shadow: 0 1px 4px #0000009c;\n}\n.g-val{\n    position: absolute;\n    text-align: center;\n    left: 50%;\n    bottom: 8%;\n    width: 80px;\n    transform: translateX(-50%);\n    font-family: monospace;\n    font-size:  calc(var(--container-size) * 40%);\n    color: #000000a1;\n    filter: drop-shadow(2px 3px 2px #00000050);\n}\n\n.g-label{\n    position: absolute;\n    text-align: center;\n    left: 50%;\n    top: 58%;\n    width: 100%;\n    transform: translateX(-50%);\n    font-family: monospace;\n    font-size:  calc(var(--container-size) * 18%);\n    color: #000000a1;\n    filter: drop-shadow(2px 3px 2px #00000080);\n}\n.g-label::after{\n    content: var(--g-unit);\n    font-size: clamp(1em,calc(var(--container-size) * 40%),1.5em);\n    position: absolute;\n    left: 0;\n    top: 100%;\n    width: 100%;\n    height: 100%;\n}\n.g-rivets{\n    position: absolute;\n    left:0;\n    top:0;\n    width: 100%;\n    height: 100%;\n}\n\n.g-rivet {\n    position: absolute;\n    width: calc(var(--container-size) * 2px);\n    height: calc(var(--container-size) * 2px);\n    border-radius: 50px;\n    background: linear-gradient(135deg, #adadad 0%,#d3d3d3 51%,#d1d1d1 68%,#8c8c8c 100%);\n    box-shadow: 0px 2px 4px #000, -1px -1px 5px rgba(0,0,0,0.2);\n    border: 1px solid rgba(255,255,255,0.1);\n}\n.g-rivet:nth-child(1){\n    top:calc(var(--container-size) * 1.5px);\n    left:calc(var(--container-size) * 1.5px);\n}\n.g-rivet:nth-child(2){\n    top:calc(var(--container-size) * 1.5px);\n    right:calc(var(--container-size) * 1.5px);\n}\n.g-rivet:nth-child(3){\n    bottom:calc(var(--container-size) * 1.5px);\n    left:calc(var(--container-size) * 1.5px);\n}\n.g-rivet:nth-child(4){\n    bottom:calc(var(--container-size) * 1.5px);\n    right:calc(var(--container-size) * 1.5px);\n}\n\n.g-rivet::before {\n    content: '';\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    width: calc(var(--container-size) * 10%);\n    height: calc(var(--container-size) * 10%);\n    box-shadow: inset 0px 1px 2px #222;\n    transform: translate(-50%, -50%);\n    border-radius: 50%;\n    border-bottom: 1px solid rgba(255,255,255,0.3);\n}\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "global",
+        "className": "",
+        "x": 830,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d81aa8bc.35b81",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "339d0edc.4ffe02",
+        "name": "Node-Red Dashboard Custom CSS",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        root,\n        a,\n        button,\n        p,\n        div {\n            user-select: none !important;\n        }\n\n        body {\n            background: linear-gradient(55deg,\n                    #8a8a8a 0%,\n                    /* Dark gray for ground */\n                    #48814a 30%,\n                    /* Green for grass */\n                    #2c6020 100%\n                    /* Darker green for forest background */\n                );\n            touch-callout: none !important;\n            margin: 0;\n            font-family: 'Arial', sans-serif;\n            overflow-x: hidden;\n        }\n\n        body.nr-dashboard-theme md-toolbar,\n        body.nr-dashboard-theme md-content md-card {\n            background-color: transparent !important;\n            color: #FFFFFF;\n        }\n\n        ui-card-panel {\n            background-color: rgba(139, 188, 111, 0.3) !important;\n            /* Light green with transparency */\n            border-radius: 10px;\n            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n            transition: background-color 0.3s ease-in-out;\n        }\n\n        ui-card-panel:hover {\n            background-color: rgba(139, 188, 111, 0.4) !important;\n            /* Slightly darker on hover */\n        }\n\n        .md-card.md-default-theme,\n        md-card {\n            border-radius: 10px;\n            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n            transition: box-shadow 0.3s ease-in-out;\n        }\n\n        .md-card:hover {\n            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);\n        }\n\n        .nr-dashboard-switch.ng-scope {\n            background-color: rgba(139, 188, 111, 0.3) !important;\n            /* Light green switch background */\n            transition: background-color 0.3s ease-in-out;\n        }\n\n        .nr-dashboard-switch.ng-scope:hover {\n            background-color: rgba(139, 188, 111, 0.5) !important;\n            /* Darker green on hover */\n        }\n\n        .nr-dashboard-theme .nr-dashboard-button .md-button {\n            background-color: rgba(139, 188, 111, 0.3);\n            /* Light green button */\n            transition: background-color 0.3s ease-in-out;\n        }\n\n        .md-button {\n            border-radius: 10px;\n        }\n\n        .nr-dashboard-cardpanel layout-column {\n            background-color: rgba(139, 188, 111, 0.3) !important;\n            /* Slightly darker green with transparency */\n            border-radius: 10px;\n            transition: background-color 0.3s ease-in-out;\n        }\n\n        .nr-dashboard-theme ui-card-panel {\n            border: none;\n        }\n\n        .nr-dashboard-template {\n            overflow-y: visible;\n        }\n\n        .nr-dashboard-theme md-content md-card {\n            background-color: transparent !important;\n        }\n\n        .nr-dashboard-theme ui-card-panel p.nr-dashboard-cardtitle {\n            color: rgba(255, 255, 255, 0.8);\n            /* Lighter text color for readability */\n        }\n    </style>\n</head>\n\n<body>\n    <!-- Your HTML content goes here -->\n    <!-- Make sure to include any other necessary scripts or libraries -->\n    <script>\n        document.ontouchmove = function (e) {\n            e.preventDefault();\n        }\n    </script>\n</body>\n\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "global",
+        "className": "",
+        "x": 400,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "287a765dc1308829",
+        "type": "inject",
+        "z": "fa9078e4e6426892",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 840,
+        "wires": [
+            [
+                "bca3f4cd25d2c22d"
+            ]
+        ]
+    },
+    {
+        "id": "bca3f4cd25d2c22d",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "d920f16c.f3336",
+        "name": "gauge clock",
+        "order": 5,
+        "width": 4,
+        "height": 4,
+        "format": "<div class=\"g-wrapper g-wrapper-label-0\">\n<div id=\"{{'gauge_'+$id}}\" class=\"g-container\" style=\"--gauge-value:0; --container-size:4; --gn-distance:13.5; --ga-tick-count:12; --ga-subtick-count:60; --g-unit:''; --time-hour:0; --time-minute:0; --time-second:0; \">\n    <div id=\"bgr\" class=\"g-body\">\n        <div class=\"g-ring\">\n            <div class=\"g-rivets\">\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n            </div>\n            <div class=\"g-plate\">\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick clock\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:10;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:11;\"></div>\n                    <div class=\"g-tick clock\" style=\"--ga-tick:12;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:5;\"></div>\n\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:10;\"></div>\n                   \n                    <div class=\"g-subtick clock\" style=\"--ga-tick:12;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:13;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:14;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:15;\"></div>\n                    \n                    <div class=\"g-subtick clock\" style=\"--ga-tick:17;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:18;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:19;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:20;\"></div>\n\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:22;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:23;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:24;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:25;\"></div>\n\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:27;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:28;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:29;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:30;\"></div>\n\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:32;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:33;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:34;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:35;\"></div>\n\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:37;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:38;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:39;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:40;\"></div>\n\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:42;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:43;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:44;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:45;\"></div>\n\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:47;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:48;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:49;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:50;\"></div>\n\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:52;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:53;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:54;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:55;\"></div>\n\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:57;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:58;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:59;\"></div>\n                    <div class=\"g-subtick clock\" style=\"--ga-tick:60;\"></div>\n                </div>\n               <div class=\"g-nums\">\n                    <div class=\"g-num clock\" style=\"--ga-tick:1;\" >12</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:2;\">1</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:3;\">2</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:4;\">3</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:5;\">4</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:6;\">5</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:7;\">6</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:8;\">7</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:9;\">8</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:10;\">9</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:11;\">10</div>\n                    <div class=\"g-num clock\" style=\"--ga-tick:12;\">11</div>\n                    \n                </div>\n                <div class=\"g-label\">IVE(LWL)</div>\n                <div class=\"g-needle hour\"></div>\n                <div class=\"g-needle second\"></div>\n                <div class=\"g-needle minute\"></div>\n                <div class=\"g-needle-ring\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n</div>\n\n<script>\n(function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n\n        const now = new Date()        \n        const sec = now.getSeconds();\n        const secDeg = ''+(((sec / 60) * 360) + 90)+'deg';        \n        const mins = now.getMinutes();\n        const minsDeg = ''+(((mins / 60) * 360) + ((sec/60)*6) + 90)+'deg';        \n        const hour = now.getHours();\n        const hourDeg = ''+(((hour / 12) * 360) + ((mins/60)*30) + 90)+'deg';\n        \n        document.getElementById('gauge_'+scope.$id).style.setProperty('--time-hour', hourDeg);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--time-minute', minsDeg);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--time-second', secDeg);\n    }\n   \n  });\n})(scope);\n</script>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 550,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "908e793379ec41cf",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "4bcece86c9053370",
+        "name": "pH value",
+        "order": 2,
+        "width": 4,
+        "height": 4,
+        "format": "<div class=\"g-wrapper g-wrapper-label-0\">\n\n<div id=\"{{'gauge_'+$id}}\" class=\"g-container\" style=\"--gauge-value:100; --container-size:4; --gn-distance:28; --ga-tick-count:10; --ga-subtick-count:100; --g-unit:'pH'\">\n    <div id=\"bgr\" class=\"g-body quarter-top-right\">\n        <div class=\"g-ring\">\n            <div class=\"g-plate\">\n                <!-- <div class=\"g-zone low\"></div>\n                <div class=\"g-zone normal\"></div>\n                <div class=\"g-zone warn\"></div>\n                <div class=\"g-zone high\"></div> -->\n\n                <div class=\"g-zone high\"></div>\n                <div class=\"g-zone warn\"></div>\n                <div class=\"g-zone normal\"></div>\n                <div class=\"g-zone low\"></div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:10;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:11;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:10;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:12;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:13;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:14;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:15;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:16;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:17;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:18;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:19;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:20;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:22;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:23;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:24;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:25;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:26;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:27;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:28;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:29;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:30;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:32;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:33;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:34;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:35;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:36;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:37;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:38;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:39;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:40;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:42;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:43;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:44;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:45;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:46;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:47;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:48;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:49;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:50;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:52;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:53;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:54;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:55;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:56;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:57;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:58;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:59;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:60;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:62;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:63;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:64;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:65;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:66;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:67;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:68;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:69;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:70;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:72;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:73;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:74;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:75;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:76;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:77;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:78;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:79;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:80;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:82;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:83;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:84;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:85;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:86;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:87;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:88;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:89;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:90;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:92;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:93;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:94;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:95;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:96;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:97;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:98;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:99;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:100;\"></div>\n                </div>\n               <div class=\"g-nums\">\n                    <div class=\"g-num\" style=\"--ga-tick:1;\" >14</div>\n\n                    <div class=\"g-num\" style=\"--ga-tick:3;\">11.2</div>\n\n                    <div class=\"g-num\" style=\"--ga-tick:5;\">8.4</div>\n\n                    <div class=\"g-num\" style=\"--ga-tick:7;\">5.6</div>\n\n                    <div class=\"g-num\" style=\"--ga-tick:9;\">2.8</div>\n\n                    <div class=\"g-num\" style=\"--ga-tick:11;\">0</div>\n                </div>\n                <div class=\"g-label\"></div>\n                <div class=\"g-needle\"></div>\n                <div class=\"g-needle-ring\"></div>\n            </div>\n            <div class=\"g-val-ring\">\n                <div class=\"g-val-plate\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n</div>\n<script>\n    (function(scope) {\n    let min = 0;\n    let max = 100;\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n        const val = msg.payload;\n        const v = max - (((val / 14 * 100 - min) / (max - min)) * 100);\n        console.log(\"val=\");\n        console.log(val);\n        console.log(\"\\nv=\");\n        console.log(v);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--gauge-value', v);\n        document.getElementById('gauge_val_'+scope.$id).innerText = val.toFixed(1);\n    }\n   \n  });\n})(scope);\n</script>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 160,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1cb1a6c31522cc90",
+        "type": "ui_template",
+        "z": "fa9078e4e6426892",
+        "group": "",
+        "name": "gauge-style-advanced",
+        "order": 1,
+        "width": 10,
+        "height": 1,
+        "format": "<!--<link rel=\"stylesheet\" href=\"/css/hotnipi-gauge.css\">-->\n<style>\n:root {\n    --needle-color: #001100;\n    --needle-color-secondary: #ffdd30;\n    --target-needle-color: #ffa500;\n    --red-ticks: 9;\n    /*--zone-color-high: #ff5d4ebf; red\n    --zone-color-warn: #ffb52d8c; yellow\n    --zone-color-normal: #91ff4e85; green\n    --zone-color-low: #4ec3ff85* #blue\n    800080 purple 4B0082*/\n    --zone-color-high: #4B0082;\n    --zone-color-warn: #4ec3ff85;\n    --zone-color-normal: #91ff4e85;\n    --zone-color-low: #ff5d4ebf;\n}\n.g-zone {\n    position: absolute;\n    width: 82%;\n    height: 82%;\n    top: 8%;\n    left: 10%;\n    box-sizing: border-box;\n    border-radius: 0 100% 0 0;\n    border-color: var(--zone-color-normal);\n    border-top: 7px solid;\n    border-right: 7px solid;\n    clip-path: polygon(0% 0%, 100% 0%, 0% 0%, 0% 100% );\n}\n.g-zone.high {\n    border-color: var(--zone-color-high);\n    clip-path: polygon(0% 0%, 100% 0%, 16% 0%, 0% 100% );\n}\n.g-zone.warn {\n    border-color: var(--zone-color-warn);\n    clip-path: polygon(16% 0%, 100% 0%, 73% 0%, 0% 100% );\n}\n.g-zone.normal {\n    border-color: var(--zone-color-normal);\n    clip-path: polygon(0% 50%, 100% 0%, 100% 67%, 0% 100% );\n}\n.g-zone.low {\n    border-color: var(--zone-color-low);\n    clip-path: polygon(100% 68%, 100% 0%, 100% 100%, 0% 100% );\n}\n\n.g-wrapper-label-0 {\n    grid-template-rows: 1fr;\n}\n\n.g-wrapper-label-3 {\n    grid-template-rows: 1fr 3fr;\n}\n\n.g-wrapper-label-4 {\n    grid-template-rows: 1fr 4fr;\n}\n\n.g-wrapper {\n    display: grid;\n    width: 100%;\n    height: 100%;\n    align-content: center;\n    align-items: center;\n    justify-items: center;\n}\n\n.g-header {\n    display: flex;\n    text-align: center;\n}\n\n.g-wrapper-label-0 .g-container {\n    height: calc(100% - 6px);\n}\n\n.g-container {\n    position: relative;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    user-select: none;\n    width: 100%;\n    height: calc(100% - 10.5px);\n}\n\n.g-body {\n    position: relative;\n    display: flex;\n    align-content: center;\n    align-items: center;\n    justify-content: center;\n    height: 98%;\n    width: 98%;\n    border-radius: 15%;\n    box-shadow: 0px 5px 8px #00000045;\n    background: linear-gradient(0deg, rgba(78, 78, 78, 1) 0%, rgba(215, 215, 215, 1) 99%, rgba(236, 236, 236, 1) 100%);\n}\n\n.g-body::before {\n    content: \"\";\n    position: absolute;\n    top: 0px;\n    right: 0px;\n    bottom: 0px;\n    left: 0px;\n    opacity: 0.1;\n    border-radius: 15%;\n    background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==\");\n    background-repeat: repeat;\n}\n\n.g-ring {\n    position: relative;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    align-content: center;\n    width: 94%;\n    height: 94%;\n    border-radius: 50%;\n    background: linear-gradient(180deg, rgba(78, 78, 78, 1) 0%, rgba(215, 215, 215, 1) 99%, rgba(236, 236, 236, 1) 100%);\n}\n\n.quarter-top-right>.g-ring {\n    width: 90%;\n    height: 90%;\n    border-radius: 15% 85% 15% 15%;\n}\n.quarter-top-left>.g-ring {\n    width: 90%;\n    height: 90%;\n    border-radius: 85% 15% 15% 15%;\n}\n\n.g-plate {\n    position: relative;\n    overflow: hidden;\n    width: 93%;\n    height: 93%;\n    border-radius: 50%;\n    box-shadow: inset 0 0 15px #000000a3;\n    background: radial-gradient(circle, rgb(196 205 209) 0%, rgb(177 183 186) 40%, rgb(191 193 194) 100%);\n}\n\n.quarter-top-right *>.g-plate {\n    width: 95%;\n    height: 95%;\n    border-radius: 15% 100% 15% 15%;\n    background: radial-gradient(farthest-corner at 24% 70%, rgb(207 209 211) 0%, rgb(177 183 186) 50%, rgb(191 193 194) 129%);\n}\n\n/*.quarter-top-right *>.g-plate {\n    width: 95%;\n    height: 95%;\n    border-radius: 15% 100% 15% 15%;\n    background: radial-gradient(rgb(191 193 194) 129%), rgb(177 183 186) 50% , rgb(207 209 211) 0%, farthest-corner at 24% 70%;\n}*/\n.quarter-top-left *>.g-plate {\n    width: 95%;\n    height: 95%;\n    border-radius: 100% 15% 15% 15%;\n    background: radial-gradient(farthest-corner at 24% 70%, rgb(207 209 211) 0%, rgb(177 183 186) 50%, rgb(191 193 194) 129%);\n}\n\n.g-sector-high {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    top: 50%;\n    left: 50%;\n    background: #ff00004f;\n    transform-origin: 0 0;\n    transform: rotate(328deg) skew(12deg, 23deg);\n}\n\n.g-ticks {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    filter: drop-shadow(2px 4px 6px black);\n}\n\n.quarter-top-right *>.g-ticks {\n    top: -10%;\n    left: 10%;\n}\n.quarter-top-left *>.g-ticks {\n    top: -10%;\n    left: -10%;\n    transform: rotate(270deg);\n}\n\n\n.g-tick {\n    position: relative;\n    left: 0;\n    top: 50%;\n    width: 100%;\n    height: 1px;\n    margin-bottom: -1px;\n    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 2%, rgb(0 0 0 / 60%) 2%, rgb(0 0 0 / 60%) 10%, rgba(0, 0, 0, 0) 10%);\n    transform: rotate(calc(calc(270deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(270deg / var(--ga-tick-count)) + 45deg)));\n}\n\n.quarter-top-right *>.g-tick {\n    width: 86%;\n    position: absolute;\n    left: 0;\n    top: 100%;\n    background: linear-gradient(270deg,rgb(0 0 0 / 60%) 0%, rgb(0 0 0 / 60%) 9%, rgba(0, 0, 0, 0) 9%);\n    transform: rotate(calc(calc(90deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(90deg / var(--ga-tick-count)) - 270deg)));\n    transform-origin: 0% 0%;\n}\n.quarter-top-left *>.g-tick {\n    width: 86%;\n    position: absolute;\n    left: 0;\n    top: 100%;\n    background: linear-gradient(270deg,rgb(0 0 0 / 60%) 0%, rgb(0 0 0 / 60%) 9%, rgba(0, 0, 0, 0) 9%);\n    transform: rotate(calc(calc(90deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(90deg / var(--ga-tick-count)) - 270deg)));\n    transform-origin: -0.5% 0%;\n}\n\n.g-tick.clock {\n    transform: rotate(calc(calc(360deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(360deg / var(--ga-tick-count)) +270deg)));\n}\n\n.g-subtick {\n    position: relative;\n    left: 0;\n    top: 50%;\n    width: 100%;\n    height: 1px;\n    margin-bottom: -1px;\n    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 2%, rgb(0 0 0 / 40%) 2%, rgb(0 0 0 / 40%) 6%, rgba(0, 0, 0, 0) 6%);\n    transform: rotate(calc(calc(270deg / var(--ga-subtick-count)) * var(--ga-tick) - calc(calc(270deg / var(--ga-subtick-count)) + 45deg)));\n}\n\n.quarter-top-right *>.g-subtick {\n    width: 86%;\n    position: absolute;\n    left: 0;\n    top: 100%;\n    background: linear-gradient(270deg,rgb(0 0 0 / 60%) 0%, rgb(0 0 0 / 60%) 5%, rgba(0, 0, 0, 0) 5%);\n    transform: rotate(calc(calc(90deg / var(--ga-subtick-count)) * var(--ga-tick) - calc(calc(90deg / var(--ga-subtick-count)) - 270deg)));\n    transform-origin: 0% 0%;\n}\n.quarter-top-left *>.g-subtick {\n    width: 86%;\n    position: absolute;\n    left: 0;\n    top: 100%;\n    background: linear-gradient(270deg,rgb(0 0 0 / 60%) 0%, rgb(0 0 0 / 60%) 5%, rgba(0, 0, 0, 0) 5%);\n    transform: rotate(calc(calc(90deg / var(--ga-subtick-count)) * var(--ga-tick) - calc(calc(90deg / var(--ga-subtick-count)) - 270deg)));\n    transform-origin: -0.5% 0%;\n}\n\n.g-subtick.clock {\n    transform: rotate(calc(calc(360deg / var(--ga-subtick-count)) * var(--ga-tick) - calc(calc(360deg / var(--ga-subtick-count)) + 270deg)));\n}\n\n.g-num {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    text-align: center;\n    transform: translate(-50%, -50%) rotate(calc(calc(270deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(270deg / var(--ga-tick-count)) + 45deg))) translate(calc(-1px * var(--container-size) * var(--gn-distance))) rotate(calc(calc(270deg / var(--ga-tick-count)) * var(--ga-tick) *-1 - calc(calc(270deg / var(--ga-tick-count))*-1 - 45deg)));\n}\n\n.quarter-top-right *>.g-num {\n    transform: translate(-50%, -50%) rotate(calc(calc(90deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(90deg / var(--ga-tick-count)) - 90deg))) translate(calc(-1px * var(--container-size) * var(--gn-distance))) rotate(calc(calc(90deg / var(--ga-tick-count)) * var(--ga-tick) *-1 - calc(calc(90deg / var(--ga-tick-count))*-1 - 270deg)));\n}\n.quarter-top-left *>.g-num {\n    transform: translate(-50%, -50%) rotate(calc(calc(90deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(90deg / var(--ga-tick-count)) - 90deg))) translate(calc(-1px * var(--container-size) * var(--gn-distance))) rotate(calc(calc(90deg / var(--ga-tick-count)) * var(--ga-tick) *-1 - calc(calc(90deg / var(--ga-tick-count))*-1 - 360deg)));\n}\n\n.g-num.clock {\n    transform: translate(-50%, -50%) rotate(calc(calc(360deg / var(--ga-tick-count)) * var(--ga-tick) - calc(calc(360deg / var(--ga-tick-count)) + 270deg))) translate(calc(-1px * var(--container-size) * var(--gn-distance))) rotate(calc(calc(360deg / var(--ga-tick-count)) * var(--ga-tick) *-1 - calc(calc(360deg / var(--ga-tick-count))*-1 - 270deg)));\n}\n\n.g-nums {\n    position: absolute;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    color: #000000a1;\n    font-size: calc(var(--container-size) * 20%);\n    font-weight: 500;\n    filter: drop-shadow(2px 4px 10px black);\n}\n\n.quarter-top-right *>.g-nums {\n    top: 40%;\n    left: -40%;\n}\n\n.quarter-top-left *>.g-nums {\n    top: 40%;\n    left: 40%;\n    transform: rotate(270deg);\n}\n.g-needle {\n    position: absolute;\n    left: 0;\n    top: 49%;\n    width: 100%;\n    height: 2%;\n    filter: drop-shadow(0px 1px 3px #00000080);\n    background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0, rgba(0, 0, 0, 0) 15%, var(--needle-color) 15%, var(--needle-color) 50%, rgba(0, 0, 0, 0) 50%);\n    transform: rotate(calc(270deg * calc(var(--gauge-value, 0deg) / 100) - 45deg));\n    transition: transform 1s;\n}\n\n.g-needle-secondary {\n    position: absolute;\n    left: 0;\n    top: 49%;\n    width: 100%;\n    height: 2%;\n    filter: drop-shadow(0px 1px 3px #00000080);\n    background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0, rgba(0, 0, 0, 0) 15%, var(--needle-color-secondary) 15%, var(--needle-color-secondary) 50%, rgba(0, 0, 0, 0) 50%);\n    transform: rotate(calc(270deg * calc(var(--gauge-value-secondary, 0deg) / 100) - 45deg));\n    transition: transform 1s;    \n}\n\n.g-target-needle {\n    position: absolute;\n    left: 0;\n    top: 49%;\n    width: 100%;\n    height: 1.5%;\n    transform: rotate(calc(270deg * calc(var(--gauge-target, 0deg) / 100) - 45deg));\n    transition: transform 1s;\n}\n\n.g-target-needle:before {\n    content: \"►\";\n    position: absolute;\n    left: -1%;\n    top: calc(var(--container-size) * 1%);\n    line-height: 0;\n    font-size: calc(var(--container-size) * 35%);\n    color: #ffdc2d;\n    text-shadow: 0 0 3px black;\n}\n\n.quarter-top-right *>.g-needle {\n    position: absolute;\n    width: 74%;\n    height: 2%;\n    top: 89.5%;\n    left: 10%;\n    background: var(--needle-color);\n    transform: rotate(calc(90deg * calc(var(--gauge-value, 0deg) / 100) - 90deg));\n    transform-origin: 0% 50%;\n}\n\n.quarter-top-left *>.g-needle {\n    position: absolute;\n    width: 74%;\n    height: 2%;\n    top: 89.5%;\n    left: 90%;\n    background: var(--needle-color);\n    transform: rotate(calc(90deg * calc(var(--gauge-value, 0deg) / 100) - 270deg));\n    transform-origin: 0% 50%;\n}\n\n.g-needle.hour {\n    background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0, rgba(0, 0, 0, 0) 20%, var(--needle-color) 20%, var(--needle-color) 50%, rgba(0, 0, 0, 0) 50%);\n    transition: unset;\n    transform: rotate(var(--time-hour));\n}\n\n.g-needle.minute {\n    top: 49.25%;\n    height: 1.5%;\n    background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0, rgba(0, 0, 0, 0) 15%, var(--needle-color) 15%, var(--needle-color) 50%, rgba(0, 0, 0, 0) 50%);\n    transition: unset;\n    transform: rotate(var(--time-minute));\n}\n\n.g-needle.second {\n    top: 49.5%;\n    height: 0.5%;\n    background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0, rgba(0, 0, 0, 0) 10%, var(--needle-color) 10%, var(--needle-color) 50%, rgba(0, 0, 0, 0) 50%);\n    transform: rotate(var(--time-second));\n    transition: unset;\n}\n\n.g-needle-ring {\n    position: absolute;\n    width: calc(var(--container-size) * 1.5%);\n    height: calc(var(--container-size) * 1.5%);\n    top: 50%;\n    left: 50%;\n    border-radius: 50%;\n    box-shadow: 0 1px 4px #0000009c;\n    background: var(--needle-color);\n    transform: translate(-50%, -50%);\n}\n\n.quarter-top-right *>.g-needle-ring {\n    top: 90%;\n    left: 10%;\n}\n.quarter-top-left *>.g-needle-ring {\n    top: 90%;\n    left: 90%;\n}\n\n.g-val {\n    position: absolute;\n    text-align: center;\n    left: 50%;\n    bottom: 8%;\n    width: 80px;\n    font-family: monospace;\n    font-size: calc(var(--container-size) * 40%);\n    color: #000000a1;\n    filter: drop-shadow(2px 3px 2px #00000050);\n    transform: translateX(-50%);\n}\n\n.quarter-top-right *>.g-val {\n    width: 100%;\n    bottom: calc(calc(var(--container-size) * 8%) / calc(var(--container-size)/4));\n    font-size: calc(var(--container-size) * 25%);\n}\n.quarter-top-left *>.g-val {\n    width: 100%;\n    bottom: calc(calc(var(--container-size) * 8%) / calc(var(--container-size)/4));\n    font-size: calc(var(--container-size) * 25%);\n}\n.g-val-ring {\n    position: absolute;\n    right: 0%;\n    top: 0%;\n    width: calc(calc(var(--container-size) * 7%) / calc(var(--container-size)/4));\n    height: calc(calc(var(--container-size) * 6%) / calc(var(--container-size)/4));\n    border-radius: 50%;\n    background: linear-gradient(180deg, rgba(78, 78, 78, 1) 0%, rgba(215, 215, 215, 1) 99%, rgba(236, 236, 236, 1) 100%);\n}\n\n.quarter-top-right *> .g-val-ring {\n    right: 0%;\n}\n.quarter-top-left *> .g-val-ring {\n    left:0%;\n}\n.g-val-plate {\n    position: absolute;\n    right: 0%;\n    top: 0%;\n    width: 90%;\n    height: 90%;\n    border-radius: 50%;\n    background: #e4e9ee;\n    box-shadow: inset 0 0 15px #000000a3;\n    transform: translate(-5%, 5%);\n}\n\n.g-label {\n    position: absolute;\n    left: 50%;\n    top: 58%;\n    width: 100%;\n    font-family: monospace;\n    font-size: calc(var(--container-size) * 18%);\n    text-align: center;\n    color: #000000a1;\n    filter: drop-shadow(2px 3px 2px #00000080);\n    transform: translateX(-50%);\n}\n\n.quarter-top-right *>.g-label {\n    left: 35%;\n    top: 60%;\n    width: 70%;\n}\n\n.quarter-top-left *>.g-label {\n    left: 65%;\n    top: 60%;\n    width: 70%;\n}\n\n.g-label::after {\n    position: absolute;\n    content: var(--g-unit);\n    left: 0;\n    top: 100%;\n    width: 100%;\n    height: 100%;\n    font-size: clamp(1em, calc(var(--container-size) * 40%), 1.5em);\n}\n\n.g-rivets {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n}\n\n.g-rivet {\n    position: absolute;\n    width: calc(var(--container-size) * 2px);\n    height: calc(var(--container-size) * 2px);\n    border: 1px solid rgba(255, 255, 255, 0.1);\n    border-radius: 50px;\n    box-shadow: 0px 2px 4px #000, -1px -1px 5px rgba(0, 0, 0, 0.2);\n    background: linear-gradient(135deg, #adadad 0%, #d3d3d3 51%, #d1d1d1 68%, #8c8c8c 100%);\n}\n\n.g-rivet:nth-child(1) {\n    top: calc(var(--container-size) * 1.5px);\n    left: calc(var(--container-size) * 1.5px);\n}\n\n.g-rivet:nth-child(2) {\n    top: calc(var(--container-size) * 1.5px);\n    right: calc(var(--container-size) * 1.5px);\n}\n\n.g-rivet:nth-child(3) {\n    bottom: calc(var(--container-size) * 1.5px);\n    left: calc(var(--container-size) * 1.5px);\n}\n\n.g-rivet:nth-child(4) {\n    bottom: calc(var(--container-size) * 1.5px);\n    right: calc(var(--container-size) * 1.5px);\n}\n\n.g-rivet::before {\n    content: '';\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    width: calc(var(--container-size) * 10%);\n    height: calc(var(--container-size) * 10%);\n    border-radius: 50%;\n    border-bottom: 1px solid rgba(255, 255, 255, 0.3);\n    box-shadow: inset 0px 1px 2px #222;\n    transform: translate(-50%, -50%);\n}\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "global",
+        "className": "",
+        "x": 600,
+        "y": 240,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "234eb326162618a7",
@@ -265,24 +1499,658 @@
         ]
     },
     {
-        "id": "307cb55c70b1ba77",
-        "type": "ui_group",
-        "z": "da4fb43704281986",
-        "name": "World Map",
-        "tab": "78f1ee1b51ffe013",
-        "order": 1,
-        "disp": true,
-        "width": 25,
-        "collapse": false,
-        "className": ""
+        "id": "f0e86e5b.c2eb5",
+        "type": "debug",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 340,
+        "wires": []
     },
     {
-        "id": "78f1ee1b51ffe013",
-        "type": "ui_tab",
-        "name": "Home Page",
-        "icon": "dashboard",
-        "order": 5,
-        "disabled": false,
-        "hidden": false
+        "id": "deade4b6.926288",
+        "type": "change",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "'/tmp/webcam_'& $moment().format('YYYY-MM-DD-hhmmss') & '.jpeg'",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 380,
+        "wires": [
+            [
+                "d062ebca.fa31e8"
+            ]
+        ]
+    },
+    {
+        "id": "d062ebca.fa31e8",
+        "type": "file",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "filename": "",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 850,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bc8cf8a5.78e498",
+        "type": "ui_button",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "group": "5ecf1e5d.c16c4",
+        "order": 3,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "label": "Capture",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-camera fa-2x",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 340,
+        "wires": [
+            [
+                "1491b6df.c56d59"
+            ]
+        ]
+    },
+    {
+        "id": "1491b6df.c56d59",
+        "type": "change",
+        "z": "2f6d8c27b7daa83b",
+        "name": "msg.capture",
+        "rules": [
+            {
+                "t": "set",
+                "p": "capture",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 340,
+        "wires": [
+            [
+                "800f274b.6632d8"
+            ]
+        ]
+    },
+    {
+        "id": "1bfbdc10.aade94",
+        "type": "ui_button",
+        "z": "2f6d8c27b7daa83b",
+        "name": "Clear",
+        "group": "5ecf1e5d.c16c4",
+        "order": 4,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-trash fa-2x",
+        "payload": "\"\"",
+        "payloadType": "json",
+        "topic": "",
+        "x": 150,
+        "y": 380,
+        "wires": [
+            [
+                "800f274b.6632d8"
+            ]
+        ]
+    },
+    {
+        "id": "8cd39b6c.1e3608",
+        "type": "tensorflowCoco",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "modelUrl": "http://localhost:1880/coco/model.json",
+        "scoreThreshold": 0.5,
+        "passthru": "false",
+        "lineColour": "magenta",
+        "x": 470,
+        "y": 520,
+        "wires": [
+            [
+                "75fbf592.1bde7c",
+                "3e1bfffc.64667"
+            ]
+        ]
+    },
+    {
+        "id": "75fbf592.1bde7c",
+        "type": "debug",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "2936e203.f3245e",
+        "type": "ui_table",
+        "z": "2f6d8c27b7daa83b",
+        "group": "5ecf1e5d.c16c4",
+        "name": "",
+        "order": 2,
+        "width": 10,
+        "height": 8,
+        "columns": [
+            {
+                "field": "class",
+                "title": "Object Type",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "score",
+                "title": "Score",
+                "width": "",
+                "align": "left",
+                "formatter": "progress",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 1,
+        "cts": true,
+        "x": 470,
+        "y": 640,
+        "wires": [
+            [
+                "afc2661c.8a52a8",
+                "f1fc41c3.1b5d8"
+            ]
+        ]
+    },
+    {
+        "id": "3e1bfffc.64667",
+        "type": "change",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$append([],payload.{\"class\":class,\"score\":score*100,\"bbox\":bbox})",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 640,
+        "wires": [
+            [
+                "2936e203.f3245e"
+            ]
+        ]
+    },
+    {
+        "id": "847c5db6.44f4e",
+        "type": "link in",
+        "z": "2f6d8c27b7daa83b",
+        "name": "to-webcam",
+        "links": [
+            "23c88371.85c4bc",
+            "70eca315.946a6c"
+        ],
+        "x": 355,
+        "y": 420,
+        "wires": [
+            [
+                "800f274b.6632d8"
+            ]
+        ]
+    },
+    {
+        "id": "afc2661c.8a52a8",
+        "type": "debug",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "70eca315.946a6c",
+        "type": "link out",
+        "z": "2f6d8c27b7daa83b",
+        "name": "annotated-image-output",
+        "mode": "link",
+        "links": [
+            "847c5db6.44f4e"
+        ],
+        "x": 795,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "2be0395e.1879b6",
+        "type": "change",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "image",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 520,
+        "wires": [
+            [
+                "8cd39b6c.1e3608"
+            ]
+        ]
+    },
+    {
+        "id": "f1fc41c3.1b5d8",
+        "type": "change",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "annotations",
+                "pt": "msg",
+                "to": "$append([],payload.{\"label\": class, \"bbox\": bbox})",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "image",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 700,
+        "wires": [
+            [
+                "90d9565a.3b5ea8"
+            ]
+        ]
+    },
+    {
+        "id": "90d9565a.3b5ea8",
+        "type": "annotate-image",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "fill": "",
+        "stroke": "#ffC000",
+        "lineWidth": 5,
+        "fontSize": 24,
+        "fontColor": "#ffC000",
+        "x": 680,
+        "y": 700,
+        "wires": [
+            [
+                "70eca315.946a6c"
+            ]
+        ]
+    },
+    {
+        "id": "800f274b.6632d8",
+        "type": "ui_webcam",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "group": "5ecf1e5d.c16c4",
+        "order": 1,
+        "width": 10,
+        "height": 7,
+        "countdown": false,
+        "autoStart": false,
+        "hideCaptureButton": true,
+        "showImage": 0,
+        "format": "jpeg",
+        "x": 480,
+        "y": 380,
+        "wires": [
+            [
+                "f0e86e5b.c2eb5",
+                "deade4b6.926288",
+                "2be0395e.1879b6"
+            ]
+        ]
+    },
+    {
+        "id": "25a15a91.03a146",
+        "type": "base64",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "action": "str",
+        "property": "payload",
+        "x": 480,
+        "y": 900,
+        "wires": [
+            [
+                "b3082738.d420d8"
+            ]
+        ]
+    },
+    {
+        "id": "aeafe8b.5c1f918",
+        "type": "tensorflowCoco",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "scoreThreshold": "",
+        "x": 490,
+        "y": 1020,
+        "wires": [
+            [
+                "758e8b99.628f54",
+                "7242bb6a.16a664",
+                "7fb61cf1.74a9d4",
+                "52d5e6be.efb998"
+            ]
+        ]
+    },
+    {
+        "id": "b3082738.d420d8",
+        "type": "ui_template",
+        "z": "2f6d8c27b7daa83b",
+        "group": "d920f16c.f3336",
+        "name": "highlightPict",
+        "order": 2,
+        "width": 7,
+        "height": 5,
+        "format": "<!DOCTYPE html>\n<html>\n<style type=\"text/css\"> \n.wrapper {\n    position:absolute;\n    width:320px;\n    height:240px;\n    border:2px solid grey;\n}\n.box {\n    position:absolute;\n    top:{{msg.y}}px;\n    left:{{msg.x}}px;\n    width:{{msg.width}}px;\n    height:{{msg.height}}px;\n    border:2px solid red;\n    background-color:transparent\n    z-index: 2;\n}\n.text {\n    position:absolute;\n    top:{{msg.y+5}}px;\n    left: {{msg.x+5}}px;\n    color: red;\n}\n</style> \n\n<script type=\"text/javascript\">\nscope.$watch('msg', function(msg) {\n    inMessage(msg);\n});\nfunction inMessage(event) {\n    if (event.payload) {\n        document.getElementById('cX').src = \"data:image/jpg;base64,\"+event.payload;\n    }\n}\n</script>\n\n<body>\n    <div class=\"wrapper\">\n        <img src=\"\" id=\"cX\" />\n        <div class=\"box\"></div>\n        <div class=\"text\">{{msg.class}}</div>\n    </div>\n</body>\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 1090,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "758e8b99.628f54",
+        "type": "ui_table",
+        "z": "2f6d8c27b7daa83b",
+        "group": "d920f16c.f3336",
+        "name": "table detection",
+        "order": 3,
+        "width": 7,
+        "height": 3,
+        "columns": [
+            {
+                "field": "class",
+                "title": "Class",
+                "width": "40%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "score",
+                "title": "Score",
+                "width": "60%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 700,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "7242bb6a.16a664",
+        "type": "change",
+        "z": "2f6d8c27b7daa83b",
+        "name": "pay to detect",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "detect",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 1020,
+        "wires": [
+            [
+                "7e8b4bc4.f65cf4"
+            ]
+        ]
+    },
+    {
+        "id": "7fb61cf1.74a9d4",
+        "type": "debug",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 670,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "52d5e6be.efb998",
+        "type": "debug",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "classes",
+        "targetType": "msg",
+        "x": 690,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "79aaf955.461408",
+        "type": "delay",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 1080,
+        "y": 1020,
+        "wires": [
+            [
+                "b3082738.d420d8"
+            ]
+        ]
+    },
+    {
+        "id": "7e8b4bc4.f65cf4",
+        "type": "function",
+        "z": "2f6d8c27b7daa83b",
+        "name": "posiRectangle",
+        "func": "var st = context.get('started')||false;\nvar reset = {reset:true};\n\nif (msg.detect.length>0) {\n    clearTimeout(st);\n    node.send(reset);\n    showBoxes();\n} else {\n    clearTimeout(st);\n    node.send(reset);\n}\n\nfunction writeBox(element) {\n    let box = element;\n    msg.x = box.bbox[0];\n    msg.y = box.bbox[1];\n    msg.width = box.bbox[2];\n    msg.height= box.bbox[3];\n    msg.class = box[\"class\"];\n    msg.score = box[\"score\"];\n    node.send(msg);\n}\n\nfunction showBoxes() {\n    msg.detect.forEach(element => writeBox(element))\n    st = setTimeout( showBoxes, msg.detect.length*2000 );\n    context.set('started', st);\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 880,
+        "y": 1020,
+        "wires": [
+            [
+                "79aaf955.461408"
+            ]
+        ]
+    },
+    {
+        "id": "123cb42b.27cdac",
+        "type": "comment",
+        "z": "2f6d8c27b7daa83b",
+        "name": "NR Object detection",
+        "info": "Example flow that fetches a random image (usually of a person) - displays it and classifies it. \n\nChange the http request to fetch other images if you like - for example change person to dog, or sport.\n\nThanks to @krambriw and @SuperNinja for the overlay code.",
+        "x": 130,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "34eaaa0e.725cc6",
+        "type": "inject",
+        "z": "2f6d8c27b7daa83b",
+        "name": "test",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 90,
+        "y": 900,
+        "wires": [
+            [
+                "7cdcbb1.7611944"
+            ]
+        ]
+    },
+    {
+        "id": "7cdcbb1.7611944",
+        "type": "ui_button",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "group": "d920f16c.f3336",
+        "order": 14,
+        "width": 7,
+        "height": 1,
+        "passthru": true,
+        "label": "New Picture",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "",
+        "topicType": "str",
+        "x": 110,
+        "y": 960,
+        "wires": [
+            [
+                "6a7806b3.548528"
+            ]
+        ]
+    },
+    {
+        "id": "6a7806b3.548528",
+        "type": "http request",
+        "z": "2f6d8c27b7daa83b",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": false,
+        "url": "https://loremflickr.com/320/240/person",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 290,
+        "y": 960,
+        "wires": [
+            [
+                "25a15a91.03a146",
+                "aeafe8b.5c1f918"
+            ]
+        ]
     }
 ]
