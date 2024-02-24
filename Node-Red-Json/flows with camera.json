@@ -32,7 +32,7 @@
         "type": "function",
         "z": "da4fb43704281986",
         "name": "",
-        "func": "// create random position\nvar lat = 22.396428;\nvar lon = 114.109497;\n// 22.396428 and longitude 114.109497\nmsg.payload={\n    lat:lat, \n    lon:lon, \n    name:\"Mike\", \n    icon:\"male\", \n    color:\"#000\"};\nreturn msg;",
+        "func": "// create random position\n// var lat = 22.396428;\n// var lon = 114.109497;\nvar lat = 22.396428 + Math.random() * 0.2;\nvar lon = 114.109497 + Math.random() * 0.2;\nmsg.payload={\n    lat:lat, \n    lon:lon, \n    name:\"Mike\", \n    icon:\"male\", \n    color:\"#000\"};\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -107,8 +107,8 @@
         "z": "da4fb43704281986",
         "group": "307cb55c70b1ba77",
         "order": 2,
-        "width": 0,
-        "height": 0,
+        "width": 25,
+        "height": 10,
         "name": "",
         "lat": "",
         "lon": "",
@@ -132,29 +132,136 @@
         "mapurl": "",
         "mapopt": "",
         "mapwms": false,
-        "x": 790,
+        "x": 780,
         "y": 320,
         "wires": []
     },
     {
-        "id": "282ca4dccc06b29e",
-        "type": "ui_template",
+        "id": "e9d1879bd8253cf6",
+        "type": "worldmap",
         "z": "da4fb43704281986",
-        "group": "3e1d7f38795d9c4b",
-        "name": "Camera",
-        "order": 1,
-        "width": 11,
-        "height": 8,
-        "format": "<html>\n\n<head>\n    <meta charset=\"utf-8\">\n    <title>Display Webcam Stream</title>\n    <style>\n        #container {\n            margin: 0px auto;\n            width: 500px;\n            height: 375px;\n            border: 10px #333 solid;\n        }\n\n        #videoElement {\n            width: 500px;\n            height: 375px;\n            background-color: #666;\n        }\n    </style>\n</head>\n\n<body>\n    <div id=\"container\">\n        <video autoplay=\"true\" id=\"videoElement\">\n        </video>\n    </div>\n    <script>\n        var video = document.querySelector(\"#videoElement\");\n\nif (navigator.mediaDevices.getUserMedia) {\n  navigator.mediaDevices.getUserMedia({ video: true })\n    .then(function (stream) {\n      video.srcObject = stream;\n    })\n    .catch(function (err0r) {\n      console.log(\"Something went wrong!\");\n    });\n}\n    </script>\n</body>\n\n</html>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 440,
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "zoom": "14",
+        "layer": "OSMC",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,BU,RW,SN,AC,TL,HM",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriO,EsriDG,NatGeo,UKOS,OpTop",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 680,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "258c6a8654e1da8b",
+        "type": "inject",
+        "z": "da4fb43704281986",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 310,
+        "y": 400,
+        "wires": [
+            [
+                "3330439f0ecc61f9"
+            ]
+        ]
+    },
+    {
+        "id": "3330439f0ecc61f9",
+        "type": "function",
+        "z": "da4fb43704281986",
+        "name": "Add minimap",
+        "func": "msg.payload = {\n    command: {\n        map: {\n            minimap: \"OSM\",\n            opt: {\n    \t\t\t// centerFixed: [51.05, -1.35],\n                centerFixed: [0, 0],\n    \t\t\ttoggleDisplay: true\n    \t\t}\n        }\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 400,
+        "wires": [
+            [
+                "e9d1879bd8253cf6"
+            ]
+        ]
+    },
+    {
+        "id": "b61ff8a67ff88521",
+        "type": "inject",
+        "z": "da4fb43704281986",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 310,
         "y": 440,
         "wires": [
-            []
+            [
+                "339076fd88e728f1"
+            ]
+        ]
+    },
+    {
+        "id": "339076fd88e728f1",
+        "type": "function",
+        "z": "da4fb43704281986",
+        "name": "Remove minimap",
+        "func": "msg.payload = {\n    command: {\n        map: {\n            minimap: false\n        }\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 440,
+        "wires": [
+            [
+                "e9d1879bd8253cf6"
+            ]
         ]
     },
     {
@@ -163,20 +270,9 @@
         "z": "da4fb43704281986",
         "name": "World Map",
         "tab": "78f1ee1b51ffe013",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "3e1d7f38795d9c4b",
-        "type": "ui_group",
-        "name": "Camera",
-        "tab": "77cedf3b9bb86a96",
         "order": 1,
         "disp": true,
-        "width": "11",
+        "width": 25,
         "collapse": false,
         "className": ""
     },
@@ -185,16 +281,7 @@
         "type": "ui_tab",
         "name": "Home Page",
         "icon": "dashboard",
-        "order": 7,
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "77cedf3b9bb86a96",
-        "type": "ui_tab",
-        "name": "Camera",
-        "icon": "dashboard",
-        "order": 6,
+        "order": 5,
         "disabled": false,
         "hidden": false
     }
