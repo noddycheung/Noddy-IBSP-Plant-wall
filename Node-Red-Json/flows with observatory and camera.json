@@ -25,7 +25,7 @@
         "id": "e2e62c7632b5ea51",
         "type": "tab",
         "label": "Flow 2",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -49,14 +49,6 @@
         "label": "WorldMap",
         "disabled": true,
         "info": ""
-    },
-    {
-        "id": "1851d35e4d010178",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": true,
-        "info": "",
-        "env": []
     },
     {
         "id": "c6fb6049be8e56d0",
@@ -188,7 +180,7 @@
         "id": "d026b35ea57bce21",
         "type": "ui_tab",
         "name": "IoT Green Wall Data",
-        "icon": "home",
+        "icon": "fa-thermometer-full",
         "order": 1,
         "disabled": false,
         "hidden": false
@@ -257,7 +249,7 @@
         "id": "78f1ee1b51ffe013",
         "type": "ui_tab",
         "name": "Mini Observatory",
-        "icon": "fa-thermometer-full",
+        "icon": "fa-umbrella",
         "order": 6,
         "disabled": false,
         "hidden": false
@@ -287,7 +279,7 @@
         "id": "5967b7da.b44598",
         "type": "ui_tab",
         "name": "AI Photo Booth",
-        "icon": "dashboard",
+        "icon": "home",
         "order": 2,
         "disabled": false,
         "hidden": false
@@ -597,7 +589,7 @@
         "type": "ui_group",
         "name": "Hong Kong Current Weather",
         "tab": "78f1ee1b51ffe013",
-        "order": 1,
+        "order": 2,
         "disp": true,
         "width": 20,
         "collapse": false,
@@ -652,89 +644,13 @@
         "hidden": false
     },
     {
-        "id": "99a4dc86.46d248",
-        "type": "ui_group",
-        "name": "Masterswitches",
-        "tab": "258c6649.0213da",
-        "order": 6,
-        "disp": false,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "b12941f.1cd05c",
-        "type": "ui_group",
-        "name": "Condition",
-        "tab": "eb94216d.968598",
-        "order": 5,
-        "disp": false,
-        "width": "4",
-        "collapse": false
-    },
-    {
-        "id": "8da50f69.44fe38",
-        "type": "ui_group",
-        "name": "Wind",
-        "tab": "eb94216d.968598",
-        "order": 4,
-        "disp": false,
-        "width": "4",
-        "collapse": false
-    },
-    {
-        "id": "5a4d76d2.5ae128",
-        "type": "ui_group",
-        "name": "Luftfeuchtigkeit",
-        "tab": "258c6649.0213da",
-        "order": 4,
-        "disp": false,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "14584712.7a2929",
-        "type": "ui_group",
-        "name": "Condition",
-        "tab": "eb94216d.968598",
-        "order": 2,
-        "disp": false,
-        "width": "2",
-        "collapse": false
-    },
-    {
-        "id": "5e0d6747.b726b",
-        "type": "ui_group",
-        "name": "Forecast",
-        "tab": "eb94216d.968598",
-        "order": 6,
-        "disp": false,
-        "width": "8",
-        "collapse": false
-    },
-    {
-        "id": "258c6649.0213da",
-        "type": "ui_tab",
-        "name": "Home",
-        "icon": "home",
-        "order": 1
-    },
-    {
-        "id": "eb94216d.968598",
-        "type": "ui_tab",
-        "name": "Wetterstation",
-        "icon": "fa-thermometer-half",
-        "order": 5,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "fbc558707477dff1",
         "type": "ui_group",
         "name": "World Map",
         "tab": "78f1ee1b51ffe013",
-        "order": 2,
+        "order": 1,
         "disp": true,
-        "width": 20,
+        "width": 9,
         "collapse": false,
         "className": ""
     },
@@ -769,22 +685,18 @@
         "collapse": false
     },
     {
-        "id": "ef22f042.de6a1",
-        "type": "ui_tab",
-        "name": "Home Tab",
-        "icon": "dashboard"
+        "id": "699b821c.069cdc",
+        "type": "ui_group",
+        "name": "4 Days Weather Forcast",
+        "tab": "78f1ee1b51ffe013",
+        "order": 3,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
     },
     {
-        "id": "5b337e3b.68826",
-        "type": "ui_tab",
-        "name": "Test",
-        "icon": "home",
-        "order": 6,
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "f2df2c3eb879e4fd",
+        "id": "3a3cc79063b784da",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -794,7 +706,7 @@
         "height": 1
     },
     {
-        "id": "b45cb6e9a3ee3b39",
+        "id": "7e38d5405ce307c1",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -804,7 +716,7 @@
         "height": 1
     },
     {
-        "id": "4a920912ce24e339",
+        "id": "28e731fcdba8f8da",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -814,7 +726,7 @@
         "height": 1
     },
     {
-        "id": "ef3395354d7e91b5",
+        "id": "a35f1cd3f59b1ade",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -824,7 +736,7 @@
         "height": 1
     },
     {
-        "id": "d5426b38cd5a4ec1",
+        "id": "d2cd2ee596219d57",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -834,7 +746,7 @@
         "height": 1
     },
     {
-        "id": "bc7886b3c08c8a31",
+        "id": "2e67e1da6f7b2998",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -844,7 +756,7 @@
         "height": 1
     },
     {
-        "id": "48561d828a7cf36a",
+        "id": "f43ab7c99f17a8d1",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -854,27 +766,37 @@
         "height": 1
     },
     {
-        "id": "6cfd49b3314afa1a",
+        "id": "c175d815b0532e99",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "73a95a54a9a35a62",
+        "order": 14,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a75232d8afafe41d",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 15,
-        "width": 1,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "ba49e1b7d1dad016",
+        "id": "538a04fe627cdeee",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 16,
-        "width": 2,
+        "width": 1,
         "height": 1
     },
     {
-        "id": "8c43e5d084f37703",
+        "id": "134668d6433ed89a",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -884,27 +806,27 @@
         "height": 1
     },
     {
-        "id": "3543fe322c4b91fc",
+        "id": "195383745a40701e",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 18,
-        "width": 1,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "aaaefab471741211",
+        "id": "5ec9093ee83e2f44",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 19,
-        "width": 2,
+        "width": 1,
         "height": 1
     },
     {
-        "id": "b9b3f91d723332f4",
+        "id": "1974bbe7456b5399",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -914,27 +836,27 @@
         "height": 1
     },
     {
-        "id": "e9d4cff7c4fe95a3",
+        "id": "af762f8b2fc042f8",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 21,
-        "width": 1,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "97efca10897004dd",
+        "id": "d8accd630b2b5846",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 22,
-        "width": 2,
+        "width": 1,
         "height": 1
     },
     {
-        "id": "a96b263850ecd454",
+        "id": "2072319f58e2689c",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -944,7 +866,7 @@
         "height": 1
     },
     {
-        "id": "c677e69616069e07",
+        "id": "7c7eb0703756722b",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -954,37 +876,27 @@
         "height": 1
     },
     {
-        "id": "6eb5396241a43d6a",
+        "id": "b3a7eca2e78f8ceb",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
-        "order": 25,
+        "order": 27,
         "width": 1,
         "height": 1
     },
     {
-        "id": "bd11090e4c1ea795",
-        "type": "ui_spacer",
-        "z": "97edc5c639440d34",
-        "name": "spacer",
-        "group": "73a95a54a9a35a62",
-        "order": 28,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "726b1dac2f8651dd",
+        "id": "60c32dbf2a3e8ad4",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 29,
-        "width": 1,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "4a0abf1c5c38d066",
+        "id": "08e89a9bba7b53cb",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -994,7 +906,7 @@
         "height": 1
     },
     {
-        "id": "a594c01afa91f4f2",
+        "id": "9688ad768a30abea",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -1004,37 +916,47 @@
         "height": 1
     },
     {
-        "id": "b49588cd32249dfa",
+        "id": "783b1b7f1a54cde0",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
-        "order": 34,
+        "order": 32,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "af13d1240429ccc9",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "73a95a54a9a35a62",
+        "order": 33,
         "width": 1,
         "height": 1
     },
     {
-        "id": "0c22cf13a02d7ad9",
+        "id": "a0a1851a616f8bda",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 36,
-        "width": 2,
+        "width": 1,
         "height": 1
     },
     {
-        "id": "2ebbd5b0891cb69f",
+        "id": "fa5c33fb78f333a0",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 37,
-        "width": 1,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "d1745215ad88aa3b",
+        "id": "577d9e82da189e00",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -1044,27 +966,27 @@
         "height": 1
     },
     {
-        "id": "f8edb0c4454959bc",
+        "id": "28f41b320968e385",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 39,
-        "width": 2,
+        "width": 1,
         "height": 1
     },
     {
-        "id": "54ac26ce4c142bb6",
+        "id": "a5a5ae676e5f9c61",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
         "group": "73a95a54a9a35a62",
         "order": 40,
-        "width": 1,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "cceb50e5e2a69169",
+        "id": "438a8cabb91b0f0f",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -1074,17 +996,7 @@
         "height": 1
     },
     {
-        "id": "a95422d9324fe0b3",
-        "type": "ui_spacer",
-        "z": "97edc5c639440d34",
-        "name": "spacer",
-        "group": "73a95a54a9a35a62",
-        "order": 42,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "71d5a3eb42bdf893",
+        "id": "528a3389c54cbe88",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -1094,7 +1006,7 @@
         "height": 1
     },
     {
-        "id": "4cb6b225a002e5c6",
+        "id": "812d15d93ba39a43",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
@@ -1104,12 +1016,252 @@
         "height": 1
     },
     {
-        "id": "ee93545bc51038ed",
+        "id": "619747315690a166",
         "type": "ui_spacer",
         "z": "97edc5c639440d34",
         "name": "spacer",
-        "group": "73a95a54a9a35a62",
-        "order": 45,
+        "group": "699b821c.069cdc",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2e4ff0530f6bf0bc",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ca3a7d3909fcf6ba",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "79514e82fddb92e1",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 9,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "669be3c6e9154d55",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "fcdfb30d5009d026",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 12,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3a194fba8b2f73c7",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 13,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4389b2e30c81b1da",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 14,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "55fc0b62a72a3f6a",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 15,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "bc971bfd03f9453f",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 16,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "8c314389e0c8d869",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 17,
+        "width": 20,
+        "height": 1
+    },
+    {
+        "id": "35fdbfea9f5df317",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 19,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "1eed6de42aaee504",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 21,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "85d4b68f713b6794",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 24,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "5f4744c7cab3001b",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 26,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c86628da18037fba",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 28,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f9afd37cf19928cf",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 29,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c4509fe1eba5f045",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 30,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "91153bfc808fd28d",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 31,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "8c05626ae32ffc8c",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 32,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "b45c297480d4bdd7",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 33,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "47309354d3cf8ccf",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 35,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "19aa6c821ebf04b0",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 37,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "09a95e69cdbb2505",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 40,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "aa04315dabb1278f",
+        "type": "ui_spacer",
+        "z": "97edc5c639440d34",
+        "name": "spacer",
+        "group": "699b821c.069cdc",
+        "order": 42,
         "width": 1,
         "height": 1
     },
@@ -2642,7 +2794,7 @@
         "z": "97edc5c639440d34",
         "group": "73a95a54a9a35a62",
         "name": "",
-        "order": 46,
+        "order": 45,
         "width": 1,
         "height": 1,
         "format": "<style>\n .digital_time {\n    transform:scale(2);\n }\n .detail {\n    background-color: #d5f1f5!important;\n }\n</style>",
@@ -2702,7 +2854,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "60",
+        "repeat": "120",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
@@ -2713,7 +2865,8 @@
         "y": 420,
         "wires": [
             [
-                "485143ff21c511c1"
+                "485143ff21c511c1",
+                "f13b813e61153db7"
             ]
         ]
     },
@@ -2726,7 +2879,7 @@
         "width": 3,
         "height": 2,
         "name": "Max temp",
-        "label": "Max Temp",
+        "label": "Maximum",
         "format": "{{msg.payload.temp_maxc}}°C",
         "layout": "col-center",
         "className": "temp_maxc",
@@ -2747,7 +2900,7 @@
         "width": 3,
         "height": 2,
         "name": "Min temp",
-        "label": "Min Temp",
+        "label": "Minimum",
         "format": "{{msg.payload.temp_minc}}°C",
         "layout": "col-center",
         "className": "temp_minc",
@@ -2796,11 +2949,11 @@
         "type": "ui_text",
         "z": "97edc5c639440d34",
         "group": "73a95a54a9a35a62",
-        "order": 26,
+        "order": 25,
         "width": 3,
         "height": 2,
         "name": "Sunrise",
-        "label": "Sun Rise",
+        "label": "Sunrise",
         "format": "{{msg.payload}}",
         "layout": "col-center",
         "className": "",
@@ -2817,11 +2970,11 @@
         "type": "ui_text",
         "z": "97edc5c639440d34",
         "group": "73a95a54a9a35a62",
-        "order": 27,
+        "order": 26,
         "width": 3,
         "height": 2,
         "name": "Sunset",
-        "label": "Sun Set",
+        "label": "Sunset",
         "format": "{{msg.payload}}",
         "layout": "col-center",
         "className": "",
@@ -2877,7 +3030,7 @@
         "z": "97edc5c639440d34",
         "name": "",
         "group": "73a95a54a9a35a62",
-        "order": 33,
+        "order": 35,
         "width": 6,
         "height": 4,
         "gtype": "donut",
@@ -2885,9 +3038,9 @@
         "label": "m/s",
         "format": "{{payload.windspeed}}",
         "min": 0,
-        "max": "100",
+        "max": "35",
         "colors": [
-            "#00b500",
+            "#00ffff",
             "#e6e600",
             "#ca3838"
         ],
@@ -2905,7 +3058,7 @@
         "z": "97edc5c639440d34",
         "name": "",
         "group": "73a95a54a9a35a62",
-        "order": 32,
+        "order": 34,
         "width": 6,
         "height": 4,
         "gtype": "compass",
@@ -2932,11 +3085,11 @@
         "type": "ui_text",
         "z": "97edc5c639440d34",
         "group": "73a95a54a9a35a62",
-        "order": 6,
+        "order": 42,
         "width": 6,
         "height": 2,
         "name": "Detail",
-        "label": "The weather in Hong Kong is:",
+        "label": "Conclusions:",
         "format": "{{msg.payload.detail}}",
         "layout": "col-center",
         "className": "detail",
@@ -3070,8 +3223,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
-        "x": 290,
-        "y": 780,
+        "x": 300,
+        "y": 1340,
         "wires": [
             [
                 "c855aa5ecc02c319"
@@ -3090,8 +3243,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
-        "y": 840,
+        "x": 480,
+        "y": 1400,
         "wires": [
             [
                 "8efb49b36b4ea184",
@@ -3106,8 +3259,8 @@
         "name": "",
         "group": "fbc558707477dff1",
         "order": 1,
-        "width": 20,
-        "height": 1,
+        "width": 0,
+        "height": 0,
         "passthru": false,
         "label": "Drop Mike",
         "tooltip": "",
@@ -3119,8 +3272,8 @@
         "payloadType": "str",
         "topic": "",
         "topicType": "str",
-        "x": 290,
-        "y": 840,
+        "x": 300,
+        "y": 1400,
         "wires": [
             [
                 "c855aa5ecc02c319"
@@ -3133,8 +3286,8 @@
         "z": "97edc5c639440d34",
         "name": "How to embed Map in Dashboard",
         "info": "This example shows how to embed the Worldmap \nwithin the `node-red-dashboard`\n\nThe  flow creates a dashboard button that \ngenerates a randon position, with the required \nicon, and passes that to the worldmap. The\nmap is configured to automatically pan to the\nposition of any point that arrives.\n",
-        "x": 340,
-        "y": 720,
+        "x": 350,
+        "y": 1280,
         "wires": []
     },
     {
@@ -3145,8 +3298,8 @@
         "depth": "5",
         "layer": "combined",
         "smooth": false,
-        "x": 610,
-        "y": 800,
+        "x": 620,
+        "y": 1360,
         "wires": [
             [
                 "748987fcff9e9578"
@@ -3159,8 +3312,8 @@
         "z": "97edc5c639440d34",
         "group": "fbc558707477dff1",
         "order": 2,
-        "width": 20,
-        "height": 11,
+        "width": 9,
+        "height": 23,
         "name": "",
         "lat": "",
         "lon": "",
@@ -3184,8 +3337,8 @@
         "mapurl": "",
         "mapopt": "",
         "mapwms": false,
-        "x": 760,
-        "y": 840,
+        "x": 770,
+        "y": 1400,
         "wires": []
     },
     {
@@ -3214,8 +3367,8 @@
         "mapurl": "",
         "mapopt": "",
         "mapwms": false,
-        "x": 660,
-        "y": 920,
+        "x": 670,
+        "y": 1480,
         "wires": []
     },
     {
@@ -3239,8 +3392,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
-        "x": 290,
-        "y": 920,
+        "x": 300,
+        "y": 1480,
         "wires": [
             [
                 "3330439f0ecc61f9"
@@ -3252,7 +3405,7 @@
         "type": "function",
         "z": "97edc5c639440d34",
         "name": "Add minimap",
-        "func": "msg.payload = {\n    command: {\n        map: {\n            minimap: \"OSM\",\n            opt: {\n    \t\t\t// centerFixed: [51.05, -1.35],\n                centerFixed: [0, 0],\n    \t\t\ttoggleDisplay: true\n    \t\t}\n        }\n    }\n}\nreturn msg;",
+        "func": "msg.payload = {\n    command: {\n        map: {\n            minimap: \"OSM\",\n//             var lat = 22.27832;\n// var lon = 114.17469;\n            opt: {\n    \t\t\t// centerFixed: [51.05, -1.35],\n                centerFixed: [0, 0],\n    \t\t\ttoggleDisplay: true\n    \t\t}\n        }\n    }\n}\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -3260,7 +3413,7 @@
         "finalize": "",
         "libs": [],
         "x": 470,
-        "y": 920,
+        "y": 1480,
         "wires": [
             [
                 "e9d1879bd8253cf6"
@@ -3288,8 +3441,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
-        "x": 290,
-        "y": 960,
+        "x": 300,
+        "y": 1520,
         "wires": [
             [
                 "339076fd88e728f1"
@@ -3308,8 +3461,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
-        "y": 960,
+        "x": 500,
+        "y": 1520,
         "wires": [
             [
                 "e9d1879bd8253cf6"
@@ -3317,66 +3470,39 @@
         ]
     },
     {
-        "id": "94c2d00e901c3952",
-        "type": "debug",
-        "z": "97edc5c639440d34",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 520,
-        "y": 1080,
-        "wires": []
-    },
-    {
-        "id": "67b83f67737cfb41",
-        "type": "inject",
-        "z": "97edc5c639440d34",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 1080,
-        "wires": [
-            [
-                "f13b813e61153db7"
-            ]
-        ]
-    },
-    {
         "id": "f13b813e61153db7",
         "type": "openweathermap",
         "z": "97edc5c639440d34",
-        "name": "",
+        "name": "Forcast",
         "wtype": "forecast",
         "lon": "114.1577",
         "lat": "22.2855",
         "city": "",
         "country": "",
         "language": "en",
-        "x": 310,
-        "y": 1080,
+        "x": 380,
+        "y": 760,
         "wires": [
             [
-                "94c2d00e901c3952"
+                "b62f20413b5d3ae1",
+                "2aa974b098277c2a",
+                "be0d9e544fb0c779",
+                "bbc030493e019de3",
+                "32c44792b9d326a2",
+                "286074280d54c673",
+                "d39c7e6621e584e2",
+                "a7097bab9425cbb6",
+                "8bf710db9a2c6faa",
+                "f91f360c800ce617",
+                "497a986ce41f3420",
+                "356d428901d09618",
+                "2bce822275ad0e61",
+                "2109c83d9b40c34a",
+                "8bf8345ae8c6808c",
+                "4066c8d31e40bf4b",
+                "f2e94b7441434ff4",
+                "e4fb9cd6de3ce228",
+                "ed296bc2b2e674ee"
             ]
         ]
     },
@@ -3430,7 +3556,7 @@
         "y": 360,
         "wires": [
             [
-                "d62906ce0ef052d5"
+                "09e44193aefea864"
             ]
         ]
     },
@@ -3482,26 +3608,7 @@
         "y": 500,
         "wires": [
             [
-                "c5b35f49925f397b"
-            ]
-        ]
-    },
-    {
-        "id": "d62906ce0ef052d5",
-        "type": "function",
-        "z": "97edc5c639440d34",
-        "name": "Random code",
-        "func": "let num = msg.payload;\n    return msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1340,
-        "y": 360,
-        "wires": [
-            [
-                "09e44193aefea864"
+                "f169a4f8f736f3ec"
             ]
         ]
     },
@@ -3511,7 +3618,7 @@
         "z": "97edc5c639440d34",
         "group": "73a95a54a9a35a62",
         "name": "humidity",
-        "order": 14,
+        "order": 6,
         "width": 6,
         "height": 6,
         "format": "<div id=\"{{'gauge_'+$id}}\" class=\"g-container\" style=\"--gauge-value:0; --container-size:6; --gn-distance:14; --ga-tick-count:10; --ga-subtick-count:100; --g-unit:'%'\">\n    <div id=\"bgr\" class=\"g-body\">\n        <div class=\"g-ring\">\n            <div class=\"g-rivets\">\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n            </div>\n            <div class=\"g-plate\">\n                <div class=\"g-sector g-sector-low\" style=\"transform: rotate(133deg) skew(-28deg, 0deg);\"></div>\n                <div class=\"g-sector g-sector-sub\" style=\"transform: rotate(251deg) skew(23deg, 0deg);\"></div>\n                <div class=\"g-sector g-sector-normal\" style=\"transform: rotate(318deg) skew(59deg, 0deg);\"></div>\n                <div class=\"g-sector g-sector-high\" style=\"transform: rotate(348deg) skew(31deg, 0deg);\"></div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:10;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:11;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:10;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:12;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:13;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:14;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:15;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:16;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:17;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:18;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:19;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:20;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:22;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:23;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:24;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:25;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:26;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:27;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:28;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:29;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:30;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:32;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:33;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:34;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:35;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:36;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:37;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:38;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:39;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:40;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:42;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:43;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:44;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:45;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:46;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:47;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:48;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:49;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:50;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:52;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:53;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:54;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:55;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:56;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:57;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:58;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:59;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:60;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:62;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:63;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:64;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:65;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:66;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:67;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:68;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:69;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:70;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:72;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:73;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:74;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:75;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:76;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:77;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:78;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:79;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:80;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:82;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:83;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:84;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:85;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:86;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:87;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:88;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:89;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:90;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:92;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:93;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:94;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:95;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:96;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:97;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:98;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:99;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:100;\"></div>\n                </div>\n               <div class=\"g-nums\">\n                    <div class=\"g-num\" style=\"--ga-tick:1;\" >0</div>\n                    <div class=\"g-num\" style=\"--ga-tick:2;\">10</div>\n                    <div class=\"g-num\" style=\"--ga-tick:3;\">20</div>\n                    <div class=\"g-num\" style=\"--ga-tick:4;\">30</div>\n                    <div class=\"g-num\" style=\"--ga-tick:5;\">40</div>\n                    <div class=\"g-num\" style=\"--ga-tick:6;\">50</div>\n                    <div class=\"g-num\" style=\"--ga-tick:7;\">60</div>\n                    <div class=\"g-num\" style=\"--ga-tick:8;\">70</div>\n                    <div class=\"g-num\" style=\"--ga-tick:9;\">80</div>\n                    <div class=\"g-num\" style=\"--ga-tick:10;\">90</div>\n                    <div class=\"g-num\" style=\"--ga-tick:11;\">100</div>\n                </div>\n                <div class=\"g-label\">Humidity</div>\n                <div class=\"g-needle\"></div>\n                <div class=\"g-needle-ring\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n<script>\n(function(scope) {\n    let min = 0;\n    let max = 100;\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n        const v = Math.floor(((msg.payload - min) / (max - min)) * 100);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--gauge-value', v);\n        document.getElementById('gauge_val_'+scope.$id).innerText = v;\n    }\n   \n  });\n})(scope);\n</script>\n",
@@ -3535,7 +3642,7 @@
         "width": 6,
         "height": 6,
         "name": "",
-        "title": "Hong Kong Temperature",
+        "title": "Temperature",
         "numColor": 3,
         "colorTop": "#2196f3",
         "colorMiddle": "#8bc34a",
@@ -3578,31 +3685,12 @@
         ]
     },
     {
-        "id": "c5b35f49925f397b",
-        "type": "function",
-        "z": "97edc5c639440d34",
-        "name": "Random code",
-        "func": "let num = msg.payload;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1340,
-        "y": 540,
-        "wires": [
-            [
-                "f169a4f8f736f3ec"
-            ]
-        ]
-    },
-    {
         "id": "f169a4f8f736f3ec",
         "type": "ui_template",
         "z": "97edc5c639440d34",
         "group": "73a95a54a9a35a62",
         "name": "Clouds Precentage",
-        "order": 35,
+        "order": 28,
         "width": 4,
         "height": 4,
         "format": "<div id=\"{{'gauge_'+$id}}\" class=\"g-container\" style=\"--gauge-value:0; --container-size:4; --gn-distance:13; --ga-tick-count:10; --ga-subtick-count:100; --g-unit:'%'\">\n    <div id=\"bgr\" class=\"g-body\">\n        <div class=\"g-ring\">\n            <div class=\"g-rivets\">\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n                <div class=g-rivet></div>\n            </div>\n            <div class=\"g-plate\">\n                <div class=\"g-ticks\">\n                    <div class=\"g-tick\" style=\"--ga-tick:1;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:10;\"></div>\n                    <div class=\"g-tick\" style=\"--ga-tick:11;\"></div>\n                </div>\n                <div class=\"g-ticks\">\n                    <div class=\"g-subtick\" style=\"--ga-tick:2;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:3;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:4;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:5;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:6;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:7;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:8;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:9;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:10;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:12;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:13;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:14;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:15;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:16;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:17;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:18;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:19;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:20;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:22;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:23;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:24;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:25;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:26;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:27;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:28;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:29;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:30;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:32;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:33;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:34;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:35;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:36;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:37;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:38;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:39;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:40;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:42;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:43;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:44;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:45;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:46;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:47;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:48;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:49;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:50;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:52;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:53;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:54;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:55;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:56;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:57;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:58;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:59;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:60;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:62;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:63;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:64;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:65;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:66;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:67;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:68;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:69;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:70;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:72;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:73;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:74;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:75;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:76;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:77;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:78;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:79;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:80;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:82;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:83;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:84;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:85;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:86;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:87;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:88;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:89;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:90;\"></div>\n                    \n                    <div class=\"g-subtick\" style=\"--ga-tick:92;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:93;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:94;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:95;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:96;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:97;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:98;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:99;\"></div>\n                    <div class=\"g-subtick\" style=\"--ga-tick:100;\"></div>\n                </div>\n               <div class=\"g-nums\">\n                    <div class=\"g-num\" style=\"--ga-tick:1;\" >0</div>\n                    <div class=\"g-num\" style=\"--ga-tick:2;\">10</div>\n                    <div class=\"g-num\" style=\"--ga-tick:3;\">20</div>\n                    <div class=\"g-num\" style=\"--ga-tick:4;\">30</div>\n                    <div class=\"g-num\" style=\"--ga-tick:5;\">40</div>\n                    <div class=\"g-num\" style=\"--ga-tick:6;\">50</div>\n                    <div class=\"g-num\" style=\"--ga-tick:7;\">60</div>\n                    <div class=\"g-num\" style=\"--ga-tick:8;\">70</div>\n                    <div class=\"g-num\" style=\"--ga-tick:9;\">80</div>\n                    <div class=\"g-num\" style=\"--ga-tick:10;\">90</div>\n                    <div class=\"g-num\" style=\"--ga-tick:11;\">100</div>\n                </div>\n                <div class=\"g-label\">Clouds</div>\n                <div class=\"g-needle\"></div>\n                <div class=\"g-needle-ring\"></div>\n                <div id=\"{{'gauge_val_'+$id}}\" class=\"g-val\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n<script>\n(function(scope) {\n    let min = 0;\n    let max = 100;\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n        const v = Math.floor(((msg.payload - min) / (max - min)) * 100);\n        document.getElementById('gauge_'+scope.$id).style.setProperty('--gauge-value', v);\n        document.getElementById('gauge_val_'+scope.$id).innerText = v;\n    }\n   \n  });\n})(scope);\n</script>\n",
@@ -3611,11 +3699,928 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1570,
-        "y": 620,
+        "x": 1510,
+        "y": 500,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "b62f20413b5d3ae1",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[2].main.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 740,
+        "wires": [
+            [
+                "d20fde07e17c32e7"
+            ]
+        ]
+    },
+    {
+        "id": "2aa974b098277c2a",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[2].weather[0].description",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 780,
+        "wires": [
+            [
+                "c3a5ffa31f5f6057"
+            ]
+        ]
+    },
+    {
+        "id": "c3a5ffa31f5f6057",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "Description(1 hour)",
+        "label": "1 Hour ~ ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": true,
+        "font": "Georgia,Georgia,serif",
+        "fontSize": "20",
+        "color": "#ffffff",
+        "x": 1090,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "be0d9e544fb0c779",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[3].main.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 880,
+        "wires": [
+            [
+                "3fa7d7f1ee222954"
+            ]
+        ]
+    },
+    {
+        "id": "bbc030493e019de3",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[3].weather[0].description",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 920,
+        "wires": [
+            [
+                "8a7080e9749da9d0"
+            ]
+        ]
+    },
+    {
+        "id": "8a7080e9749da9d0",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "name": "Description(3 hour)",
+        "label": "3 Hour ~ ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": true,
+        "font": "Georgia,Georgia,serif",
+        "fontSize": "20",
+        "color": "#ffffff",
+        "x": 930,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "32c44792b9d326a2",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "1 hours",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[2].dt_txt",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 700,
+        "wires": [
+            [
+                "0a61bc0388c4a999"
+            ]
+        ]
+    },
+    {
+        "id": "0a61bc0388c4a999",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "d": true,
+        "group": "699b821c.069cdc",
+        "order": 34,
+        "width": 6,
+        "height": 1,
+        "name": "1 hour",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1070,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "286074280d54c673",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "3 hours",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[3].dt_txt",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 840,
+        "wires": [
+            [
+                "355ec99e205422f9"
+            ]
+        ]
+    },
+    {
+        "id": "355ec99e205422f9",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "d": true,
+        "group": "699b821c.069cdc",
+        "order": 41,
+        "width": 6,
+        "height": 1,
+        "name": "3 hour",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 870,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "a7097bab9425cbb6",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[13].main.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 900,
+        "y": 1020,
+        "wires": [
+            [
+                "72728b45d64d3f7e"
+            ]
+        ]
+    },
+    {
+        "id": "8bf710db9a2c6faa",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[13].weather[0].description",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 900,
+        "y": 1060,
+        "wires": [
+            [
+                "f83a7fabc4eb48af"
+            ]
+        ]
+    },
+    {
+        "id": "f83a7fabc4eb48af",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "Description(1 Day)",
+        "label": "1 Day ~ ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": true,
+        "font": "Georgia,Georgia,serif",
+        "fontSize": "20",
+        "color": "#ffffff",
+        "x": 1090,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "d39c7e6621e584e2",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "1 Days",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[13].dt_txt",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 980,
+        "wires": [
+            [
+                "d7e57785d7404992"
+            ]
+        ]
+    },
+    {
+        "id": "d7e57785d7404992",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "d": true,
+        "group": "699b821c.069cdc",
+        "order": 43,
+        "width": 6,
+        "height": 1,
+        "name": "1 Day",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1070,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "497a986ce41f3420",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[21].main.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 1160,
+        "wires": [
+            [
+                "5477c0f4fdc0ecbf"
+            ]
+        ]
+    },
+    {
+        "id": "356d428901d09618",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[21].weather[0].description",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 1200,
+        "wires": [
+            [
+                "3569983b76d03233"
+            ]
+        ]
+    },
+    {
+        "id": "3569983b76d03233",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 18,
+        "width": 6,
+        "height": 1,
+        "name": "Description(2 Day)",
+        "label": "2 Day ~ ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": true,
+        "font": "Georgia,Georgia,serif",
+        "fontSize": "20",
+        "color": "#ffffff",
+        "x": 890,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "f91f360c800ce617",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "2 Days",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[21].dt_txt",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 1120,
+        "wires": [
+            [
+                "a5b9bcc205f0fea5"
+            ]
+        ]
+    },
+    {
+        "id": "a5b9bcc205f0fea5",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "d": true,
+        "group": "699b821c.069cdc",
+        "order": 39,
+        "width": 6,
+        "height": 1,
+        "name": "2 Day",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 870,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "2109c83d9b40c34a",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[29].main.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 1020,
+        "wires": [
+            [
+                "8137f3f9fc52b400"
+            ]
+        ]
+    },
+    {
+        "id": "8bf8345ae8c6808c",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[29].weather[0].description",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 1060,
+        "wires": [
+            [
+                "a5ca373784883a80"
+            ]
+        ]
+    },
+    {
+        "id": "a5ca373784883a80",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 20,
+        "width": 6,
+        "height": 1,
+        "name": "Description(3 Day)",
+        "label": "3 Day ~ ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": true,
+        "font": "Georgia,Georgia,serif",
+        "fontSize": "20",
+        "color": "#ffffff",
+        "x": 570,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "2bce822275ad0e61",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "3 Days",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[29].dt_txt",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 980,
+        "wires": [
+            [
+                "592f170a580d6b31"
+            ]
+        ]
+    },
+    {
+        "id": "592f170a580d6b31",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "d": true,
+        "group": "699b821c.069cdc",
+        "order": 36,
+        "width": 6,
+        "height": 1,
+        "name": "3 Day",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 550,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "f2e94b7441434ff4",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[37].main.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 1160,
+        "wires": [
+            [
+                "1279638aca4de34e"
+            ]
+        ]
+    },
+    {
+        "id": "e4fb9cd6de3ce228",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[37].weather[0].description",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 1200,
+        "wires": [
+            [
+                "0e49a3ff911e52a9"
+            ]
+        ]
+    },
+    {
+        "id": "0e49a3ff911e52a9",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 22,
+        "width": 6,
+        "height": 1,
+        "name": "Description(4 Day)",
+        "label": "4 Day ~ ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": true,
+        "font": "Georgia,Georgia,serif",
+        "fontSize": "20",
+        "color": "#ffffff",
+        "x": 430,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "4066c8d31e40bf4b",
+        "type": "change",
+        "z": "97edc5c639440d34",
+        "name": "4 Days",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[37].dt_txt",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 220,
+        "y": 1120,
+        "wires": [
+            [
+                "45edb65f744dabd5"
+            ]
+        ]
+    },
+    {
+        "id": "45edb65f744dabd5",
+        "type": "ui_text",
+        "z": "97edc5c639440d34",
+        "d": true,
+        "group": "699b821c.069cdc",
+        "order": 38,
+        "width": 6,
+        "height": 1,
+        "name": "4 Day",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 410,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "ed296bc2b2e674ee",
+        "type": "debug",
+        "z": "97edc5c639440d34",
+        "name": "msg2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "d20fde07e17c32e7",
+        "type": "ui_widget_thermometer",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 6,
+        "width": 6,
+        "height": 4,
+        "name": "1 hour Temperature",
+        "title": "Temperature",
+        "numColor": 3,
+        "colorTop": "#2196f3",
+        "colorMiddle": "#8bc34a",
+        "colorBottom": "#f44336",
+        "unit": "°C",
+        "scale": "small",
+        "minTemp": 0,
+        "maxTemp": 100,
+        "minTempMoreThanMaxTemp": "1",
+        "numberOfDecimals": "0",
+        "showPercentage": "0",
+        "currentTempFontSize": "1.2",
+        "x": 1170,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "3fa7d7f1ee222954",
+        "type": "ui_widget_thermometer",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 8,
+        "width": 6,
+        "height": 4,
+        "name": "3 hour Temperature",
+        "title": "Temperature",
+        "numColor": 3,
+        "colorTop": "#2196f3",
+        "colorMiddle": "#8bc34a",
+        "colorBottom": "#f44336",
+        "unit": "°C",
+        "scale": "small",
+        "minTemp": 0,
+        "maxTemp": 100,
+        "minTempMoreThanMaxTemp": "1",
+        "numberOfDecimals": "0",
+        "showPercentage": "0",
+        "currentTempFontSize": "1.2",
+        "x": 1150,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "72728b45d64d3f7e",
+        "type": "ui_widget_thermometer",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 10,
+        "width": 6,
+        "height": 4,
+        "name": "1 Day Temperature",
+        "title": "Temperature",
+        "numColor": 3,
+        "colorTop": "#2196f3",
+        "colorMiddle": "#8bc34a",
+        "colorBottom": "#f44336",
+        "unit": "°C",
+        "scale": "small",
+        "minTemp": 0,
+        "maxTemp": 100,
+        "minTempMoreThanMaxTemp": "1",
+        "numberOfDecimals": "0",
+        "showPercentage": "0",
+        "currentTempFontSize": "1.2",
+        "x": 1130,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "8137f3f9fc52b400",
+        "type": "ui_widget_thermometer",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 25,
+        "width": 6,
+        "height": 4,
+        "name": "3 Day Temperature",
+        "title": "Temperature",
+        "numColor": 3,
+        "colorTop": "#2196f3",
+        "colorMiddle": "#8bc34a",
+        "colorBottom": "#f44336",
+        "unit": "°C",
+        "scale": "small",
+        "minTemp": 0,
+        "maxTemp": 100,
+        "minTempMoreThanMaxTemp": "1",
+        "numberOfDecimals": "0",
+        "showPercentage": "0",
+        "currentTempFontSize": "1.2",
+        "x": 590,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "1279638aca4de34e",
+        "type": "ui_widget_thermometer",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 27,
+        "width": 6,
+        "height": 4,
+        "name": "4 Day Temperature",
+        "title": "Temperature",
+        "numColor": 3,
+        "colorTop": "#2196f3",
+        "colorMiddle": "#8bc34a",
+        "colorBottom": "#f44336",
+        "unit": "°C",
+        "scale": "small",
+        "minTemp": 0,
+        "maxTemp": 100,
+        "minTempMoreThanMaxTemp": "1",
+        "numberOfDecimals": "0",
+        "showPercentage": "0",
+        "currentTempFontSize": "1.2",
+        "x": 430,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "5477c0f4fdc0ecbf",
+        "type": "ui_widget_thermometer",
+        "z": "97edc5c639440d34",
+        "group": "699b821c.069cdc",
+        "order": 23,
+        "width": 6,
+        "height": 4,
+        "name": "2 Day Temperature",
+        "title": "Temperature",
+        "numColor": 3,
+        "colorTop": "#2196f3",
+        "colorMiddle": "#8bc34a",
+        "colorBottom": "#f44336",
+        "unit": "°C",
+        "scale": "small",
+        "minTemp": 0,
+        "maxTemp": 100,
+        "minTempMoreThanMaxTemp": "1",
+        "numberOfDecimals": "0",
+        "showPercentage": "0",
+        "currentTempFontSize": "1.2",
+        "x": 910,
+        "y": 1160,
+        "wires": []
     },
     {
         "id": "f596885e1472ad60",
@@ -6151,9 +7156,15 @@
         "label": "",
         "stateField": "payload",
         "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
         "rounded": false,
         "useThemeColors": true,
         "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
         "options": [
             {
                 "label": "Radar",
@@ -6197,566 +7208,6 @@
         "wires": [
             [
                 "6b5809dc.5451f8"
-            ]
-        ]
-    },
-    {
-        "id": "eb760bbb.8e5ec",
-        "type": "inject",
-        "z": "1851d35e4d010178",
-        "name": "Refresh Timer",
-        "repeat": "3600",
-        "crontab": "",
-        "once": false,
-        "onceDelay": "",
-        "topic": "Refresh Timer",
-        "payload": "true",
-        "payloadType": "bool",
-        "x": 160,
-        "y": 200,
-        "wires": [
-            [
-                "e54c1170.c13488",
-                "f6657c5c.2621a8"
-            ]
-        ]
-    },
-    {
-        "id": "74cb77c.92dd108",
-        "type": "ui_button",
-        "z": "1851d35e4d010178",
-        "name": "Weather Refresh",
-        "group": "99a4dc86.46d248",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Aktualisieren",
-        "tooltip": "Wetterdaten aktualisieren",
-        "color": "",
-        "bgcolor": "",
-        "icon": "fa-refresh",
-        "payload": "true",
-        "payloadType": "bool",
-        "topic": "",
-        "x": 130,
-        "y": 280,
-        "wires": [
-            [
-                "e54c1170.c13488",
-                "f6657c5c.2621a8"
-            ]
-        ]
-    },
-    {
-        "id": "4d90e53a.37962c",
-        "type": "ui_text",
-        "z": "1851d35e4d010178",
-        "group": "b12941f.1cd05c",
-        "order": 1,
-        "width": "4",
-        "height": "1",
-        "name": "Condition Txt",
-        "label": "",
-        "format": "{{msg.payload.detail}}",
-        "layout": "row-center",
-        "x": 1010,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "89a4bed9.5b467",
-        "type": "function",
-        "z": "1851d35e4d010178",
-        "name": "Prepare Dashboard Data",
-        "func": "var windDirection = {};\nvar windDirectionIcon = {};\nvar windSpeed = {};\nvar windSpeedIcon = {};\nvar sunRise = {};\nvar sunSet = {};\nvar conditionIcon = {};\nvar date = new Date ();\n\n/* function for converting meteorogical degree to text */\n\nvar degToCard = function(deg){\nif (deg>11.25 && deg<=33.75){\nreturn \"Nord-Nord-Ost\";\n  }else if (deg>33.75 && deg<56.25){\nreturn \"Nord-Ost\";\n  }else if (deg>56.25 && deg<78.75){\nreturn \"Ost-Nord-Ost\";\n  }else if (deg>78.75 && deg<101.25){\nreturn \"Ost\";\n  }else if (deg>101.25 && deg<123.75){\nreturn \"Ost-Süd-Ost\";\n  }else if (deg>123.75 && deg<146.25){\nreturn \"Süd-Ost\";\n  }else if (deg>146.25 && deg<168.75){\nreturn \"Süd-Süd-Ost\";\n  }else if (deg>168.75 && deg<191.25){\nreturn \"Süd\";\n  }else if (deg>191.25 && deg<213.75){\nreturn \"Süd-Süd-West\";\n  }else if (deg>213.75 && deg<236.25){\nreturn \"Süd-West\";\n  }else if (deg>236.25 && deg<258.75){\nreturn \"West-Süd-West\";\n  }else if (deg>258.75 && deg<281.25){\nreturn \"West\";\n  }else if (deg>281.25 && deg<303.75){\nreturn \"West-Nord-West\";\n  }else if (deg>303.75 && deg<326.25){\nreturn \"Nord-West\";\n  }else if (deg>326.25 && deg<348.75){\nreturn \"Nord-Nord-West\";\n  }else{\nreturn \"Nord\"; \n  }\n}\n\n/* function for converting meteorogical degree to weather icons */\n\nvar degToCardIcon = function(deg){\nif (deg>11.25 && deg<=33.75){\nreturn \"wi-from-nne\";\n  }else if (deg>33.75 && deg<56.25){\nreturn \"wi-from-ne\";\n  }else if (deg>56.25 && deg<78.75){\nreturn \"wi-from-ene\";\n  }else if (deg>78.75 && deg<101.25){\nreturn \"wi-from-e\";\n  }else if (deg>101.25 && deg<123.75){\nreturn \"wi-from-ese\";\n  }else if (deg>123.75 && deg<146.25){\nreturn \"wi-from-se\";\n  }else if (deg>146.25 && deg<168.75){\nreturn \"wi-from-sse\";\n  }else if (deg>168.75 && deg<191.25){\nreturn \"wi-from-s\";\n  }else if (deg>191.25 && deg<213.75){\nreturn \"wi-from-ssw\";\n  }else if (deg>213.75 && deg<236.25){\nreturn \"wi-from-sw\";\n  }else if (deg>236.25 && deg<258.75){\nreturn \"wi-from-wsw\";\n  }else if (deg>258.75 && deg<281.25){\nreturn \"wi-from-w\";\n  }else if (deg>281.25 && deg<303.75){\nreturn \"wi-from-wnw\";\n  }else if (deg>303.75 && deg<326.25){\nreturn \"wi-from-nw\";\n  }else if (deg>326.25 && deg<348.75){\nreturn \"wi-from-nnw\";\n  }else{\nreturn \"wi-from-n\"; \n  }\n}\n\n/* Function for converting wind speed into Beaufort scale icon */\n\nvar speedToCardIcon = function(speed){\nif (speed>0.5 && speed<=1.5){\nreturn \"wi-wind-beaufort-1\";\n  }else if (speed>1.5 && speed<=3.3){\nreturn \"wi-wind-beaufort-2\";\n  }else if (speed>3.3 && speed<=5.5){\nreturn \"wi-wind-beaufort-3\";\n  }else if (speed>5.5 && speed<=7.9){\nreturn \"wi-wind-beaufort-4\";\n  }else if (speed>7.9 && speed<=10.7){\nreturn \"wi-wind-beaufort-5\";\n  }else if (speed>10.7 && speed<=13.8){\nreturn \"wi-wind-beaufort-6\";\n  }else if (speed>13.8 && speed<=17.1){\nreturn \"wi-wind-beaufort-7\";\n  }else if (speed>17.1 && speed<=20.7){\nreturn \"wi-wind-beaufort-8\";\n  }else if (speed>20.7 && speed<=24.4){\nreturn \"wi-wind-beaufort-9\";\n  }else if (speed>24.4 && speed<=28.4){\nreturn \"wi-wind-beaufort-10\";\n  }else if (speed>28.4 && speed<=32.6){\nreturn \"wi-wind-beaufort-11\";\n  }else if (speed>32.6){\nreturn \"wi-wind-beaufort-12\";\n  }else{\nreturn \"wi-wind-beaufort-0\"; \n  }\n}\n\n/* Function for Time Conversions */\n\nfunction timeConverter(UNIX_timestamp){\n  var a = new Date(UNIX_timestamp * 1000);\n  var hour = a.getHours();\n  var min = a.getMinutes();\n  if (min < 10) {min = \"0\" + min;}\n    else {min = min;}\n  var sec = a.getSeconds();\n  if (sec < 10) {sec = \"0\" + sec;}\n    else {sec = sec;}\n    \n  var time = hour + ':' + min + ':' + sec ;\n  return time;\n}\n\n/* Convert OpenWeeather Map Icon to https://erikflowers.github.io/weather-icons/ */\n\nconst owIconMap = new Map();\n\nowIconMap.set('01d', 'wi-day-sunny'); // clear sky\nowIconMap.set('02d', 'wi-day-cloudy'); // few clouds\nowIconMap.set('03d', 'wi-cloud'); // scattered clouds\nowIconMap.set('04d', 'wi-cloudy'); // broken clouds\nowIconMap.set('09d', 'wi-day-showers'); // shower rain\nowIconMap.set('10d', 'wi-day-rain'); // rain\nowIconMap.set('11d', 'wi-thunderstorm'); // thunderstorm\nowIconMap.set('13d', 'wi-snow'); // snow\nowIconMap.set('50d', 'wi-fog'); // mist\nowIconMap.set('01n', 'wi-night-clear'); // clear sky\nowIconMap.set('02n', 'wi-night-alt-cloudy'); // few clouds\nowIconMap.set('03n', 'wi-cloud'); // scattered clouds\nowIconMap.set('04n', 'wi-cloudy'); // broken clouds\nowIconMap.set('09n', 'wi-night-alt-showers'); // shower rain\nowIconMap.set('10n', 'wi-night-alt-rain'); // rain\nowIconMap.set('11n', 'wi-thunderstorm'); // thunderstorm\nowIconMap.set('13n', 'wi-snow'); // snow\nowIconMap.set('50n', 'wi-fog'); // mist\n\nconditionIcon.topic = \"ConditionIcon\";\nconditionIcon.payload = owIconMap.get(msg.payload.icon);\n\nwindDirection.topic = \"WindDirection\";\nwindDirection.payload = degToCard(msg.payload.winddirection);\n\nwindDirectionIcon.topic = \"WindDirectionIcon\";\nwindDirectionIcon.payload = degToCardIcon(msg.payload.winddirection);\n\nwindSpeed.topic = \"WindSpeed\";\nwindSpeed.payload = msg.payload.windspeed +  \" m/s\"; /* \" + windDirection.payload; */\n\nwindSpeedIcon.topic = \"WindSpeedIcon\";\nwindSpeedIcon.payload = speedToCardIcon(msg.payload.windspeed);\n\nsunRise.topic = \"SunRise\";\nsunRise.payload = timeConverter(msg.payload.sunrise);\n\nsunSet.topic = \"SunRet\";\nsunSet.payload = timeConverter(msg.payload.sunset);\n\nowIconMap.clear(); //freeing resource\n\nreturn [conditionIcon, windSpeedIcon, windSpeed, windDirection, windDirectionIcon, sunRise, sunSet];",
-        "outputs": 7,
-        "noerr": 0,
-        "x": 700,
-        "y": 360,
-        "wires": [
-            [
-                "d0990bb3.6ee1f8"
-            ],
-            [
-                "6bfd9bef.141194"
-            ],
-            [
-                "49e2e33e.486c14"
-            ],
-            [],
-            [
-                "a8c65467.d3352"
-            ],
-            [
-                "393c1d0b.05766a"
-            ],
-            [
-                "d2011150.f678f"
-            ]
-        ]
-    },
-    {
-        "id": "49e2e33e.486c14",
-        "type": "ui_text",
-        "z": "1851d35e4d010178",
-        "group": "8da50f69.44fe38",
-        "order": 2,
-        "width": "2",
-        "height": "1",
-        "name": "WindSpeed",
-        "label": "WindSpeed",
-        "format": "{{msg.payload}}",
-        "layout": "row-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": "",
-        "color": "#000000",
-        "x": 1010,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "393c1d0b.05766a",
-        "type": "ui_text",
-        "z": "1851d35e4d010178",
-        "group": "5a4d76d2.5ae128",
-        "order": 4,
-        "width": "2",
-        "height": "1",
-        "name": "Sunrise",
-        "label": "Sunrise",
-        "format": "{{msg.payload}}",
-        "layout": "col-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": "",
-        "color": "#000000",
-        "x": 990,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "d2011150.f678f",
-        "type": "ui_text",
-        "z": "1851d35e4d010178",
-        "group": "5a4d76d2.5ae128",
-        "order": 6,
-        "width": "2",
-        "height": "1",
-        "name": "Sunset",
-        "label": "Sunset",
-        "format": "{{msg.payload}}",
-        "layout": "col-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": "",
-        "color": "#000000",
-        "x": 990,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "a767f2cc.5f3478",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5a4d76d2.5ae128",
-        "name": "Sunrise Icon",
-        "order": 3,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: left;align-items: center;\">\n<i class=\"fa-2x wi wi-sunrise\"></i>\n</div> ",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1000,
-        "y": 460,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7dfa615d.50546",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5a4d76d2.5ae128",
-        "name": "Sunset Icon",
-        "order": 5,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: left;align-items: center;\">\n<i class=\"fa-2x wi wi-sunset\"></i>\n</div> ",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1000,
-        "y": 540,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a8c65467.d3352",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "8da50f69.44fe38",
-        "name": "WindDirection icon",
-        "order": 3,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons-wind.css\">\n<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-2x wi wi-wind {{msg.payload}}\"></i>\n</div> ",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1020,
-        "y": 400,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e54c1170.c13488",
-        "type": "openweathermap",
-        "z": "1851d35e4d010178",
-        "name": "Current Weather",
-        "wtype": "current",
-        "lon": "114.1577",
-        "lat": "22.2855",
-        "city": "",
-        "country": "",
-        "language": "en",
-        "x": 400,
-        "y": 200,
-        "wires": [
-            [
-                "89a4bed9.5b467",
-                "4d90e53a.37962c"
-            ]
-        ]
-    },
-    {
-        "id": "6bfd9bef.141194",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "8da50f69.44fe38",
-        "name": "WindSpeed Icon",
-        "order": 1,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons-wind.css\">\n<div style=\"display: flex;height: 100%;justify-content: left;align-items: center;\">\n<i class=\"fa-2x wi wi-wind {{msg.payload}}\"></i>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1020,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "480a6cbf.880804",
-        "type": "debug",
-        "z": "1851d35e4d010178",
-        "name": "Forecast debug",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "x": 1010,
-        "y": 1000,
-        "wires": []
-    },
-    {
-        "id": "5af8efb7.126a98",
-        "type": "comment",
-        "z": "1851d35e4d010178",
-        "name": "Open Weather API für aktuelles Wetter und Forecast",
-        "info": "",
-        "x": 500,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "d0990bb3.6ee1f8",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "14584712.7a2929",
-        "name": "Condition Icon",
-        "order": 1,
-        "width": "2",
-        "height": "2",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-4x wi {{msg.payload}}\"></i>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1010,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f6657c5c.2621a8",
-        "type": "openweathermap",
-        "z": "1851d35e4d010178",
-        "name": "5 Day Forecast",
-        "wtype": "forecast",
-        "lon": "114.1577",
-        "lat": "22.2855",
-        "city": "",
-        "country": "",
-        "language": "en",
-        "x": 370,
-        "y": 660,
-        "wires": [
-            [
-                "25b2dc06.cd7bdc",
-                "e58a247.3094b58",
-                "c5b71946.ca4de",
-                "480a6cbf.880804"
-            ]
-        ]
-    },
-    {
-        "id": "25b2dc06.cd7bdc",
-        "type": "function",
-        "z": "1851d35e4d010178",
-        "name": "Prepare Forecast Icon",
-        "func": "var wfcIcon1 = {};\nvar wfcIcon2 = {}; \nvar wfcIcon3 = {};\nvar wfcIcon4 = {};\nvar wfcIcon5 = {};\nvar wfcIcon6 = {};\nvar wfcIcon7 = {};\nvar wfcIcon8 = {};\n\n\nvar date = new Date ();\n\n/* Function for Time Conversions */\n\nfunction timeConverter(UNIX_timestamp){\n  var a = new Date(UNIX_timestamp * 1000);\n  var hour = a.getHours();\n  var min = a.getMinutes();\n  if (min < 10) {min = \"0\" + min;}\n    else {min = min;}\n  var sec = a.getSeconds();\n  if (sec < 10) {sec = \"0\" + sec;}\n    else {sec = sec;}\n    \n  var time = hour + ':' + min; /* + ':' + sec ;*/\n  return time;\n}\n\n/* Convert OpenWeeather Map Icon to https://erikflowers.github.io/weather-icons/ */\n\nconst owIconMap = new Map();\n\nowIconMap.set('01d', 'wi-day-sunny'); // clear sky\nowIconMap.set('02d', 'wi-day-cloudy'); // few clouds\nowIconMap.set('03d', 'wi-cloud'); // scattered clouds\nowIconMap.set('04d', 'wi-cloudy'); // broken clouds\nowIconMap.set('09d', 'wi-day-showers'); // shower rain\nowIconMap.set('10d', 'wi-day-rain'); // rain\nowIconMap.set('11d', 'wi-thunderstorm'); // thunderstorm\nowIconMap.set('13d', 'wi-snow'); // snow\nowIconMap.set('50d', 'wi-fog'); // mist\nowIconMap.set('01n', 'wi-night-clear'); // clear sky\nowIconMap.set('02n', 'wi-night-alt-cloudy'); // few clouds\nowIconMap.set('03n', 'wi-cloud'); // scattered clouds\nowIconMap.set('04n', 'wi-cloudy'); // broken clouds\nowIconMap.set('09n', 'wi-night-alt-showers'); // shower rain\nowIconMap.set('10n', 'wi-night-alt-rain'); // rain\nowIconMap.set('11n', 'wi-thunderstorm'); // thunderstorm\nowIconMap.set('13n', 'wi-snow'); // snow\nowIconMap.set('50n', 'wi-fog'); // mist\n\nwfcIcon1.topic = msg.payload[0].dt_txt;\nwfcIcon1.payload = owIconMap.get(msg.payload[0].weather[0].icon);\n\nwfcIcon2.topic = msg.payload[1].dt_txt;\nwfcIcon2.payload = owIconMap.get(msg.payload[1].weather[0].icon);\n\nwfcIcon3.topic = msg.payload[2].dt_txt;\nwfcIcon3.payload = owIconMap.get(msg.payload[2].weather[0].icon);\n\nwfcIcon4.topic = msg.payload[3].dt_txt;\nwfcIcon4.payload = owIconMap.get(msg.payload[3].weather[0].icon);\n\nwfcIcon5.topic = msg.payload[4].dt_txt;\nwfcIcon5.payload = owIconMap.get(msg.payload[4].weather[0].icon);\n\nwfcIcon6.topic = msg.payload[5].dt_txt;\nwfcIcon6.payload = owIconMap.get(msg.payload[5].weather[0].icon);\n\nwfcIcon7.topic = msg.payload[6].dt_txt;\nwfcIcon7.payload = owIconMap.get(msg.payload[6].weather[0].icon);\n\nwfcIcon8.topic = msg.payload[7].dt_txt;\nwfcIcon8.payload = owIconMap.get(msg.payload[7].weather[0].icon);\n\n\nowIconMap.clear(); //freeing resource\n\nreturn [wfcIcon1, wfcIcon2, wfcIcon3, wfcIcon4, wfcIcon5, wfcIcon6, wfcIcon7, wfcIcon8];",
-        "outputs": 8,
-        "noerr": 0,
-        "x": 710,
-        "y": 720,
-        "wires": [
-            [
-                "39139188.be2256"
-            ],
-            [
-                "c24820ec.48ca8"
-            ],
-            [
-                "764a58c0.442438"
-            ],
-            [
-                "6eab6954.c57d38"
-            ],
-            [
-                "c756059d.18796"
-            ],
-            [
-                "53046826.3645"
-            ],
-            [
-                "229014e6.b0e14c"
-            ],
-            [
-                "fd1a001d.2fc35"
-            ]
-        ]
-    },
-    {
-        "id": "39139188.be2256",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5e0d6747.b726b",
-        "name": "WFc Icon 1",
-        "order": 2,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-1x wi {{msg.payload}}\"></i>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1000,
-        "y": 660,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c24820ec.48ca8",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5e0d6747.b726b",
-        "name": "WFc Icon 2",
-        "order": 3,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-1x wi {{msg.payload}}\"></i>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1000,
-        "y": 700,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "764a58c0.442438",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5e0d6747.b726b",
-        "name": "WFc Icon 3",
-        "order": 4,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-1x wi {{msg.payload}}\"></i>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1000,
-        "y": 740,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6eab6954.c57d38",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5e0d6747.b726b",
-        "name": "WFc Icon 4",
-        "order": 5,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-1x wi {{msg.payload}}\"></i>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1000,
-        "y": 780,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c756059d.18796",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5e0d6747.b726b",
-        "name": "WFc Icon 5",
-        "order": 6,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-1x wi {{msg.payload}}\"></i>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1000,
-        "y": 820,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "53046826.3645",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5e0d6747.b726b",
-        "name": "WFc Icon 6",
-        "order": 7,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-1x wi {{msg.payload}}\"></i>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1000,
-        "y": 860,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "229014e6.b0e14c",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5e0d6747.b726b",
-        "name": "WFc Icon 7",
-        "order": 8,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-1x wi {{msg.payload}}\"></i>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1000,
-        "y": 900,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fd1a001d.2fc35",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5e0d6747.b726b",
-        "name": "WFc Icon 8",
-        "order": 9,
-        "width": "1",
-        "height": "1",
-        "format": "<link rel=\"stylesheet\" href=\"/weather-icons/mycss/weather-icons.min.css\">\n<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-1x wi {{msg.payload}}\"></i>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 1000,
-        "y": 940,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e58a247.3094b58",
-        "type": "function",
-        "z": "1851d35e4d010178",
-        "name": "Prepare Forecast Data",
-        "func": "var fcdata = {};\n\nfcdata.payload = {\n  forecast: {\n    dt00: {\n      dt_txt: msg.payload[0].dt_txt,\n      temp_min: msg.payload[0].main.temp_min,\n      temp_max: msg.payload[0].main.temp_max,\n      temp: msg.payload[0].main.temp,\n      desc: msg.payload[0].weather[0].description\n    },\n    dt01: {\n      dt_txt: msg.payload[1].dt_txt,\n      temp_min: msg.payload[1].main.temp_min,\n      temp_max: msg.payload[1].main.temp_max,\n      temp: msg.payload[1].main.temp,\n      desc: msg.payload[1].weather[0].description\n    },\n    dt02: {\n      dt_txt: msg.payload[2].dt_txt,\n      temp_min: msg.payload[2].main.temp_min,\n      temp_max: msg.payload[2].main.temp_max,\n      temp: msg.payload[2].main.temp,\n      desc: msg.payload[2].weather[0].description\n    },\n    dt03: {\n      dt_txt: msg.payload[3].dt_txt,\n      temp_min: msg.payload[3].main.temp_min,\n      temp_max: msg.payload[3].main.temp_max,\n      temp: msg.payload[3].main.temp,\n      desc: msg.payload[3].weather[0].description\n    },\n    dt04: {\n      dt_txt: msg.payload[4].dt_txt,\n      temp_min: msg.payload[4].main.temp_min,\n      temp_max: msg.payload[4].main.temp_max,\n      temp: msg.payload[4].main.temp,\n      desc: msg.payload[4].weather[0].description\n    },\n    dt05: {\n      dt_txt: msg.payload[5].dt_txt,\n      temp_min: msg.payload[5].main.temp_min,\n      temp_max: msg.payload[5].main.temp_max,\n      temp: msg.payload[5].main.temp,\n      desc: msg.payload[5].weather[0].description\n    },\n    dt06: {\n      dt_txt: msg.payload[6].dt_txt,\n      temp_min: msg.payload[6].main.temp_min,\n      temp_max: msg.payload[6].main.temp_max,\n      temp: msg.payload[6].main.temp,\n      desc: msg.payload[6].weather[0].description\n    },\n    dt07: {\n      dt_txt: msg.payload[7].dt_txt,\n      temp_min: msg.payload[7].main.temp_min,\n      temp_max: msg.payload[7].main.temp_max,\n      temp: msg.payload[7].main.temp,\n      desc: msg.payload[7].weather[0].description\n    }\n  }\n}\n\n\n\nreturn fcdata;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 710,
-        "y": 1000,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "770400c.08ade8",
-        "type": "ui_template",
-        "z": "1851d35e4d010178",
-        "group": "5e0d6747.b726b",
-        "name": "Forecast",
-        "order": 1,
-        "width": "8",
-        "height": "1",
-        "format": "<div layout=\"row\" layout-align=\"space-around start\" ng-repeat=\"data in msg.payload.row\">\n  <span flex style=\"color: white\">{{data.cell01}}</span>\n  <span flex style=\"color: white\">{{data.cell02}}</span>\n  <span flex style=\"color: white\">{{data.cell03}}</span>\n  <span flex style=\"color: white\">{{data.cell04}}</span>\n  <span flex style=\"color: white\">{{data.cell05}}</span>\n  <span flex style=\"color: white\">{{data.cell06}}</span>\n  <span flex style=\"color: white\">{{data.cell07}}</span>\n  <span flex style=\"color: white\">{{data.cell08}}</span>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": false,
-        "templateScope": "local",
-        "className": "",
-        "x": 990,
-        "y": 1120,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c5b71946.ca4de",
-        "type": "function",
-        "z": "1851d35e4d010178",
-        "name": "Prepare forecast for UI widget",
-        "func": "var fcdata = {};\n\n// prepare forecast data for CSS based ui widget\n\nfcdata.payload = {\n  row: {\n  \tdata01: {\n  \t\tcell01: msg.payload[0].dt_txt.substring(11, 16),\n  \t\tcell02: msg.payload[1].dt_txt.substring(11, 16),\n  \t\tcell03: msg.payload[2].dt_txt.substring(11, 16),\n  \t\tcell04: msg.payload[3].dt_txt.substring(11, 16),\n  \t\tcell05: msg.payload[4].dt_txt.substring(11, 16),\n  \t\tcell06: msg.payload[5].dt_txt.substring(11, 16),\n  \t\tcell07: msg.payload[6].dt_txt.substring(11, 16),\n  \t\tcell08: msg.payload[7].dt_txt.substring(11, 16)\n  \t},\n  \tdata02: {\n  \t\tcell01: msg.payload[0].main.temp,\n  \t\tcell02: msg.payload[1].main.temp,\n  \t\tcell03: msg.payload[2].main.temp,\n  \t\tcell04: msg.payload[3].main.temp,\n  \t\tcell05: msg.payload[4].main.temp,\n  \t\tcell06: msg.payload[5].main.temp,\n  \t\tcell07: msg.payload[6].main.temp,\n  \t\tcell08: msg.payload[7].main.temp\n  \t}\n  }\n}\n\nreturn fcdata;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 750,
-        "y": 1140,
-        "wires": [
-            [
-                "770400c.08ade8"
             ]
         ]
     }
