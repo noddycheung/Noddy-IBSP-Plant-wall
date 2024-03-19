@@ -16,16 +16,11 @@
 
 byte SuperPlant[17] = {};
 
-// char a = 'a';
-// printf((int)a); //97
-// printf((byte)a); //0x61
-// printf("%X", a);
-
 FlowSensor flowSensor(FlowSensor1);
 
 SolenoidValve Valve1(solenoidValve1);
-// SolenoidValve Valve2(solenoidValve2);
-// SolenoidValve Valve3(solenoidValve3);
+SolenoidValve Valve2(solenoidValve2);
+SolenoidValve Valve3(solenoidValve3);
 
 waterPump pump(waterPumpPinA, waterPumpPinB);
 UltrasonicSensor waterLevelSensor(trigPin, echoPin);
@@ -39,20 +34,20 @@ void pinSetup(){
 
 void valveInit(){
   Valve1.initializeValve();
-  // Valve2.initializeValve();
-  // Valve3.initializeValve();
+  Valve2.initializeValve();
+  Valve3.initializeValve();
 }
 
 void testValve(){
   // digitalWrite(solenoidValve1, HIGH);
   Valve1.valveClose();
-  // Valve2.valveClose();
-  // Valve3.valveClose();
+  Valve2.valveClose();
+  Valve3.valveClose();
   delay(3000);
   // digitalWrite(solenoidValve1, LOW);
   Valve1.valveOpen();
-  // Valve2.valveOpen();
-  // Valve3.valveOpen();
+  Valve2.valveOpen();
+  Valve3.valveOpen();
   delay(1000);
 }
 /////////////////////////////////////////
@@ -104,15 +99,14 @@ void loop() {
   SuperPlant[15] = (byte)((waterLevel & 0xFF00) >> 8);
   SuperPlant[16] = (byte)((waterLevel & 0x00FF));
   Serial.write(SuperPlant, sizeof(SuperPlant));
-  // Serial.println("----------");
   
 
-///////////////////////////////////////////////////////////////
-//<error>
+// ///////////////////////////////////////////////////////////////
+
 
   // Soil Humidity Contrl Pump
   if (humidity < 3000) {
-    pump.pumpRate(90);
+    // pump.pumpRate(90);
 
     // Get Flowrate control Valve
     flowSensor.getflowRate();
@@ -126,14 +120,12 @@ void loop() {
       }
   }
   else {
+    Valve1.valveClose();
     pump.pumpRate(0);
   }
-  
-//</error>
-///////////////////////////////////////////////////////////////////////
 
   // ultrasonic
-  // waterLevelSensor.update();
+  // waterLevelSensor.getDistance();
 
   //waterPump
   // pump.pumpRate(90);
