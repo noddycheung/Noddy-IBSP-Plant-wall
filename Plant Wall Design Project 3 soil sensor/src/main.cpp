@@ -151,7 +151,7 @@ void loop() {
     controlSensor(humidity2, humidity_target, flowSensor2, Valve2);
     controlSensor(humidity3, humidity_target, flowSensor3, Valve3);
 
-  if (humidity > humidity_target && humidity2 > humidity_target && humidity3 > humidity_target){
+  if (humidity > humidity_target && humidity2 > humidity_target && humidity3 > humidity_target && waterLevel < 20){
     ClosePump();
   }else {
     OpenPump();

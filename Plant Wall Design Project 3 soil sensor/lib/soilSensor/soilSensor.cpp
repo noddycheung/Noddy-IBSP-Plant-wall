@@ -7,14 +7,15 @@ int SoilSensor::TemperatureValue() {
   Serial2.readBytes(receivedData, sizeof(receivedData));
   unsigned int soilTemperature = (receivedData[5] << 8) | receivedData[6];
   uint TemperatureValue = (float)soilTemperature / 10.0 * 100.0;
-  return TemperatureValue;
   // Serial.print("Soil Temperature: ");
-  // Serial.println(TemperatureValue);
+  // Serial.println(TemperatureValue);\
+  delay(10);
+  return TemperatureValue;
 }
 int SoilSensor::HumidityValue() {
-  byte temp[] = {0x01,0x03,0x00,0x12,0x00,0x02,0x64,0x0e};
+  byte humid[] = {0x01,0x03,0x00,0x12,0x00,0x02,0x64,0x0e};
   byte receivedData[9];
-  Serial2.write(temp, sizeof(temp));
+  Serial2.write(humid, sizeof(humid));
   Serial2.readBytes(receivedData, sizeof(receivedData));
   unsigned int soilHumidity = (receivedData[3] << 8) | receivedData[4];
   uint HumidityValue = (float)soilHumidity / 10.0 * 100.0;
@@ -110,15 +111,16 @@ int SoilSensor::TemperatureValue2() {
   return TemperatureValue2;
 }
 int SoilSensor::HumidityValue2() {
-  byte temp[] = {0x02,0x03,0x00,0x12,0x00,0x02,0x64,0x3D};
+  byte humid[] = {0x02,0x03,0x00,0x12,0x00,0x02,0x64,0x3D};
   byte receivedData[9];
-  Serial2.write(temp, sizeof(temp));
+  Serial2.write(humid, sizeof(humid));
   Serial2.readBytes(receivedData, sizeof(receivedData));
   // Serial.println("Received Data:");
   unsigned int soilHumidity = (receivedData[3] << 8) | receivedData[4];
   uint HumidityValue = (float)soilHumidity / 10.0 * 100.0;
   // Serial.print("Soil Humidity2: ");
   // Serial.println(HumidityValue);
+  delay(10);
   return HumidityValue;
 }
 int SoilSensor::conductivity2() {
@@ -207,12 +209,13 @@ int SoilSensor::TemperatureValue3() {
   uint TemperatureValue = (float)soilTemperature / 10.0 * 100.0;
   // Serial.print("Soil Temperature3: ");
   // Serial.println(TemperatureValue);
+  delay(10);
   return TemperatureValue;
 }
 int SoilSensor::HumidityValue3() {
-  byte temp[] = {0x03,0x03,0x00,0x12,0x00,0x02,0x65,0xec};
+  byte humid[] = {0x03,0x03,0x00,0x12,0x00,0x02,0x65,0xec};
   byte receivedData[9];
-  Serial2.write(temp, sizeof(temp));
+  Serial2.write(humid, sizeof(humid));
   Serial2.readBytes(receivedData, sizeof(receivedData));
   unsigned int soilHumidity = (receivedData[3] << 8) | receivedData[4];
   uint HumidityValue = (float)soilHumidity / 10.0 * 100.0;
