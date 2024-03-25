@@ -3,6 +3,7 @@
 #include <Adafruit_I2CDevice.h>
 #include <SPI.h>
 
+#include "CRC16.h"
 #include "FlowSensor.h"
 #include "msg.h"
 #include "soilSensor.h"
@@ -74,6 +75,7 @@ void controlSensor(int humidity, int targetHumidity, FlowSensor &flowSensor, Sol
 }
 
 void loop() {  
+    delay(1000);
     int temperature = mySoilSensor.TemperatureValue();
     int humidity = mySoilSensor.HumidityValue();
     int conductivity = mySoilSensor.conductivity();
@@ -81,7 +83,7 @@ void loop() {
     int nitrogenValue = mySoilSensor.nitrogen();
     int phosphorusValue = mySoilSensor.Phosphorus();
     int potassiumValue = mySoilSensor.Potassium();
-    
+    delay(1000);
     int temperature2 = mySoilSensor.TemperatureValue2();
     int humidity2 = mySoilSensor.HumidityValue2();
     int conductivity2 = mySoilSensor.conductivity2();
@@ -89,7 +91,7 @@ void loop() {
     int nitrogenValue2 = mySoilSensor.nitrogen2();
     int phosphorusValue2 = mySoilSensor.Phosphorus2();
     int potassiumValue2 = mySoilSensor.Potassium2();
-
+    delay(1000);
     int temperature3 = mySoilSensor.TemperatureValue3();
     int humidity3 = mySoilSensor.HumidityValue3();
     int conductivity3 = mySoilSensor.conductivity3();
@@ -151,10 +153,11 @@ void loop() {
     controlSensor(humidity2, humidity_target, flowSensor2, Valve2);
     controlSensor(humidity3, humidity_target, flowSensor3, Valve3);
 
-  if (humidity > humidity_target && humidity2 > humidity_target && humidity3 > humidity_target && waterLevel < 20){
+  if (humidity > humidity_target && humidity2 > humidity_target && humidity3 > humidity_target){
     ClosePump();
   }else {
     OpenPump();
+    delay(1000);
     int temperature = mySoilSensor.TemperatureValue();
     int humidity = mySoilSensor.HumidityValue();
     int conductivity = mySoilSensor.conductivity();
@@ -162,7 +165,7 @@ void loop() {
     int nitrogenValue = mySoilSensor.nitrogen();
     int phosphorusValue = mySoilSensor.Phosphorus();
     int potassiumValue = mySoilSensor.Potassium();
-    
+    delay(1000);
     int temperature2 = mySoilSensor.TemperatureValue2();
     int humidity2 = mySoilSensor.HumidityValue2();
     int conductivity2 = mySoilSensor.conductivity2();
@@ -170,7 +173,7 @@ void loop() {
     int nitrogenValue2 = mySoilSensor.nitrogen2();
     int phosphorusValue2 = mySoilSensor.Phosphorus2();
     int potassiumValue2 = mySoilSensor.Potassium2();
-
+    delay(1000);
     int temperature3 = mySoilSensor.TemperatureValue3();
     int humidity3 = mySoilSensor.HumidityValue3();
     int conductivity3 = mySoilSensor.conductivity3();
