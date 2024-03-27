@@ -8,7 +8,7 @@ int SoilSensor::TemperatureValue() {
   unsigned int soilTemperature = (receivedData[5] << 8) | receivedData[6];
   uint TemperatureValue = (float)soilTemperature / 10.0 * 100.0;
   // Serial.print("Soil Temperature: ");
-  // Serial.println(TemperatureValue);\
+  // Serial.println(TemperatureValue);
   delay(10);
   return TemperatureValue;
 }

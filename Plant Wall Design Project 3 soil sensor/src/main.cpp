@@ -5,7 +5,6 @@
 
 #include "CRC16.h"
 #include "FlowSensor.h"
-#include "msg.h"
 #include "soilSensor.h"
 #include "solenoidValve.h"
 #include "UltrasonicSensor.h"
@@ -29,10 +28,6 @@ SoilSensor mySoilSensor;
 
 int humidity_target = 3000;
 int targetwaterlvl = 20;
-
-int humidity;
-int humidity2;
-int humidity3;
 
 void valveInit(){
   Valve1.initializeValve();

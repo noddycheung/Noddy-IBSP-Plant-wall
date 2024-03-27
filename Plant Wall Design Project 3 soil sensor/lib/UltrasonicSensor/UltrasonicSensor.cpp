@@ -11,6 +11,41 @@ void UltrasonicSensor::begin() {
   pinMode(echoPin, INPUT);
 }
 
+int UltrasonicSensor::getDistance() {
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+    
+    // Transmitting pulse
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(2);
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+
+    // Waiting for pulse
+    t = pulseIn(echoPin, HIGH);
+
+    // Calculating distance
+    h = t * 0.017; 
+
+    h = h - fullTankDistance;  // 5cm
+    h = emptyTankDistance - h - fullTankDistance;  // 20cm
+
+    // distance in %, 0-100 %
+    total = emptyTankDistance - fullTankDistance;
+    hp = h / total * 100;
+
+    // Check for out-of-bounds values
+    if (hp > 100) {
+      hp = 100;
+    } else if (hp < 0) {
+      hp = 0;
+    }
+  }
+  return hp;
+}
+
 // void UltrasonicSensor::update() {
 //   unsigned long currentMillis = millis();
 //   if (currentMillis - previousMillis >= interval) {
@@ -68,38 +103,3 @@ void UltrasonicSensor::begin() {
 //     }
 //   }
 // }
-
-int UltrasonicSensor::getDistance() {
-  unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis >= interval) {
-    previousMillis = currentMillis;
-    
-    // Transmitting pulse
-    digitalWrite(trigPin, LOW);
-    delayMicroseconds(2);
-    digitalWrite(trigPin, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(trigPin, LOW);
-
-    // Waiting for pulse
-    t = pulseIn(echoPin, HIGH);
-
-    // Calculating distance
-    h = t * 0.017; 
-
-    h = h - fullTankDistance;  // 5cm
-    h = emptyTankDistance - h - fullTankDistance;  // 20cm
-
-    // distance in %, 0-100 %
-    total = emptyTankDistance - fullTankDistance;
-    hp = h / total * 100;
-
-    // Check for out-of-bounds values
-    if (hp > 100) {
-      hp = 100;
-    } else if (hp < 0) {
-      hp = 0;
-    }
-  }
-  return hp;
-}
