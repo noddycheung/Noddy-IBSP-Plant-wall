@@ -26,7 +26,7 @@ int UltrasonicSensor::getDistance() {
     // Waiting for pulse
     t = pulseIn(echoPin, HIGH);
 
-    // Calculating distance
+  //   // Calculating distance
     h = t * 0.017; 
 
     h = h - fullTankDistance;  // 5cm

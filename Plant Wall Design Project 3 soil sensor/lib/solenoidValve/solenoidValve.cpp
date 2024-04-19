@@ -10,9 +10,12 @@ void SolenoidValve::initializeValve() {
 }
 
 void SolenoidValve::valveOpen() {
-  digitalWrite(pin, HIGH);
+  // digitalWrite(pin, HIGH);
+  digitalWrite(pin, LOW);
+  
 }
 
 void SolenoidValve::valveClose() {
-  digitalWrite(pin, LOW);
+  // digitalWrite(pin, LOW);
+  digitalWrite(pin, HIGH);
 }
