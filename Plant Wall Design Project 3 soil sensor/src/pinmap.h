@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-#define trigPin 13
-#define echoPin 26//12
+// #define trigPin 26
+// #define echoPin 13//12
 
 #define FlowSensor1 21//2
 #define FlowSensor2 22
