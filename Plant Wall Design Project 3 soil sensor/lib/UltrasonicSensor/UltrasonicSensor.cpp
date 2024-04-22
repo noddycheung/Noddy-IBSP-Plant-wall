@@ -10,6 +10,7 @@ float UltrasonicSensor::readDistance() {
   byte hdr, data_h, data_l, chksum;
   unsigned int distance = 0;
   ss.print(0x00);
+  delay(70);
   hdr = ss.read();
   if (hdr == 255) {
     data_h = ss.read();
